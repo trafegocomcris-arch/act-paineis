@@ -69,14 +69,25 @@ body.modo-linha .cli-mets{flex:1;border-top:none;padding-top:0;grid-template-col
 body.modo-linha .cli-pe{flex:0 0 150px;justify-content:flex-end}
 body.modo-linha .cli-pe .rot{display:none}
 body.modo-linha .ir{display:none}
-@media (max-width:820px){body.modo-linha .cli{flex-direction:column;align-items:stretch;gap:12px}body.modo-linha .cli-topo,body.modo-linha .cli-pe{flex:none}body.modo-linha .cli-pe{justify-content:flex-start}}
+@media (max-width:820px){body.modo-linha .cli{flex-direction:column;align-items:stretch;gap:12px}body.modo-linha .cli-topo,body.modo-linha .cli-pe{flex:none}body.modo-linha .cli-pe{justify-content:flex-start}body.modo-linha .cli-mets{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){
+  .lista{grid-template-columns:1fr}
+  .cli-mets{grid-template-columns:repeat(3,1fr)}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .kpi{padding:14px 4vw 16px 14px}
+  .meta{grid-template-columns:repeat(2,1fr)}
+  .meta>div{padding:12px 12px 14px}
+  .meta>div:nth-child(odd){border-left:none;padding-left:0}
+  .controles{flex-wrap:wrap}
+  .controles input{min-width:0;width:100%;flex:1 1 100%}
+}
 </style></head><body>
 
 <div class="capa">
   <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painéis dos Clientes</div></div>
   <h1>Todos os clientes, <em>um clique</em> do detalhe.</h1>
   <div class="meta">
-    <div><span class="rot">Atualizado em</span><b>26/08/2026 13:18</b></div>
+    <div><span class="rot">Atualizado em</span><b>26/08/2026 14:03</b></div>
     <div><span class="rot">Clientes</span><b>28</b></div>
     <div><span class="rot">Janela dos números</span><b>últimos 7 dias</b></div>
   </div>

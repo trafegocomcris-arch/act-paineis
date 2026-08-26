@@ -38,17 +38,21 @@ footer b{color:var(--ambar);font-weight:600}
 .chips button.on{background:var(--ambar);border-color:var(--ambar);color:#0a0a0a}
 .chips .sep{width:1px;height:20px;background:var(--linha)}
 #per-rot{font-size:11.5px;color:var(--ter);margin-left:auto}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:14px;overflow:hidden;margin-top:26px}
-.kpi{background:var(--surf);padding:16px 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:26px}
+.kpi{background:var(--surf);border:1px solid var(--linha);border-radius:12px;padding:14px 16px}
 .kpi b{font-family:var(--tit);font-weight:800;font-size:clamp(20px,2.4vw,26px);display:block;line-height:1.1;letter-spacing:-.02em;margin-top:4px}
 .kpi small{display:block;font-size:11px;color:var(--sec);margin-top:2px}
 .delta{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:20px;margin-top:7px}
 .delta.bom{background:rgba(70,192,139,.12);color:var(--verde)}
 .delta.ruim{background:rgba(229,72,77,.12);color:var(--verm)}
 .delta.neutro{background:var(--surf2);color:var(--ter)}
-.graficos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:12px}
+.graficos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
 .graf{background:var(--surf);border:1px solid var(--linha);border-radius:14px;padding:16px 16px 10px;min-width:0}
-.graf svg{width:100%;height:auto;display:block}
+.graf svg{display:block;touch-action:none}
+.g-area{position:relative}
+.gtip{position:absolute;background:#0a0a0a;border:1px solid var(--linha);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.5);z-index:5}
+.gtip b{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--ter);display:block;margin-bottom:1px}
+.gtip i{font-style:normal;display:block;font-size:10.5px;color:var(--ter)}
 .g-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
 .g-h b{font-family:var(--tit);font-size:16px}
 .g-h small{font-size:10px;color:var(--ter);font-weight:400}
@@ -56,7 +60,7 @@ footer b{color:var(--ambar);font-weight:600}
 .tra{stroke-dasharray:1;stroke-dashoffset:1;animation:tracar 1.1s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes tracar{to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion: reduce){.tra{animation:none;stroke-dashoffset:0}}
-.sec-h{display:flex;align-items:baseline;gap:12px;margin:44px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--linha)}
+.sec-h{display:flex;align-items:center;gap:12px;margin:44px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--linha);flex-wrap:wrap}
 .sec-h h2{font-family:var(--tit);font-weight:800;font-size:19px;letter-spacing:-.02em;margin:0}
 .card{display:flex;gap:16px;background:var(--surf);border:1px solid var(--linha);border-radius:14px;padding:15px;margin-bottom:11px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
@@ -78,6 +82,24 @@ footer b{color:var(--ambar);font-weight:600}
 .m span{display:block;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ter);margin-bottom:1px}
 .m b{font-family:var(--tit);font-weight:700;font-size:14.5px}
 .m small{display:block;font-size:10.5px;color:var(--sec)}
+.tend{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--linha)}
+.rot2{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sec);margin-left:6px}
+.hist{font-size:12px;color:var(--ter);margin:6px 0 8px}
+.bloco.resumo .b-h i{color:var(--ambar)}
+.res{margin:6px 0 0;font-size:13px;color:var(--sec)}
+.res span{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-right:10px;padding:2px 9px;border-radius:20px;border:1px solid}
+.res.ok span{color:var(--verde);border-color:rgba(70,192,139,.4)}
+.res.warn span{color:var(--coral);border-color:rgba(240,138,108,.4)}
+.res.bad span{color:var(--verm);border-color:rgba(229,72,77,.4)}
+.why{border-radius:0 8px 8px 0;padding:8px 12px;font-size:13px;margin-bottom:8px}
+.why span{display:block;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+.why.bom{background:rgba(70,192,139,.07);border-left:2px solid var(--verde)}
+.why.bom span{color:var(--verde)}
+.why.ruim{background:rgba(229,72,77,.07);border-left:2px solid var(--verm)}
+.why.ruim span{color:var(--verm)}
+.links{margin:9px 0 0;font-size:12.5px}
+.bt-bib{margin-left:auto;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(245,177,19,.4);border-radius:20px;padding:6px 13px;white-space:nowrap;transition:all .2s}
+.bt-bib:hover{background:var(--ambar);color:#0a0a0a;text-decoration:none}
 .plano{background:rgba(245,177,19,.06);border-left:2px solid var(--ambar);border-radius:0 8px 8px 0;padding:8px 12px;font-size:13px}
 .plano span{display:block;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);margin-bottom:2px}
 .bloco{border:1px solid var(--linha);border-radius:14px;background:var(--surf);padding:17px 19px;margin-top:12px}
@@ -92,7 +114,22 @@ footer b{color:var(--ambar);font-weight:600}
 .bloco.porque .b-h i{color:var(--verde)}.bloco.ideias .b-h i{color:var(--ambar)}.bloco.nicho .b-h i{color:var(--coral)}
 .conc li b{color:var(--texto)}
 .vazio{color:var(--ter);font-size:13px;padding:12px 0}
-@media (max-width:600px){.card{flex-direction:column}.foto,.foto img,.semfoto{width:100%;flex-basis:auto}.foto img,.semfoto{height:170px}}
+@media (max-width:820px){.graficos{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .card{flex-direction:column}.foto,.foto img,.semfoto{width:100%;flex-basis:auto}.foto img,.semfoto{height:170px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .kpi{padding:12px 13px}
+  .kpi b{font-size:19px}
+  .meta{grid-template-columns:repeat(2,1fr)}
+  .meta>div{padding:12px 12px 14px}
+  .meta>div:nth-child(odd){border-left:none;padding-left:0}
+  .chips{gap:6px;padding:9px 4vw;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chips button{padding:7px 12px;flex:none}
+  #per-rot{display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wrap{padding-bottom:60px}
+}
 @media print{body,.capa{background:#fff;color:#111}.chips{display:none}.card,.bloco,.graf,.kpi{background:#fff;border-color:#ddd}.rev{opacity:1;transform:none}}
 </style></head><body>
 
@@ -100,7 +137,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painel de Performance</div></div>
   <h1>CACTO DE PRATA</h1>
   <div class="meta">
-    <div><span class="rot">Atualizado em</span><b>26/08/2026 13:18</b></div>
+    <div><span class="rot">Atualizado em</span><b>26/08/2026 14:03</b></div>
     <div><span class="rot">Resultado principal</span><b>Compras</b></div>
     <div><span class="rot">Nicho</span><b>joias e acessórios</b></div>
     <div><span class="rot">Atualização</span><b>todo dia de manhã</b></div>
@@ -130,94 +167,269 @@ footer b{color:var(--ambar);font-weight:600}
   </div>
   <div class="graficos rev"><div class="graf" id="gseg" style="grid-column:1/-1"></div></div>
 
-  <div class="sec-h rev"><h2>Criativos em destaque</h2><span class="rot" id="cria-rot"></span></div>
+  <div class="sec-h rev"><h2>Os 5 melhores criativos</h2><span class="rot" id="cria-rot"></span><a class="bt-bib" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">todos os anúncios ativos na Biblioteca ↗</a></div>
   <div class="rev"><div id="cria7">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJyoGo6olq7pwru2b69naVfeISfWbdhUa6CFojvgYjQxzlhUdXg1ywM75yYvPDmpXe6VumOi7pnap0izKhPubW7L6sf9HX7D8zJkcKAqs8tl4vktjyKCTqbdkVs4RTFkE5qP9OqFmZlWfXiQcUSQ3LT" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKwg8uC6goSaFVbeiRHYhM1vMNF7c3jMZHfOtpdS50KObsxHILpCuUqUIiCtOag-dWq6zVvntpN3PA4lsqQStJ4D-h7y4CnMzV5H1gqYIRwA6nsTwYSHKXIt5w7tzTHvOxelmjexKLdWa_W5Gb68Cnb" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>COLAR-PERFEITO-ABR-C1</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>9</b><small>R$ 20,42 cada</small></div><div class="m"><span>Vendas</span><b>R$ 972,13</b><small>ROAS 5,29x</small></div><div class="m"><span>Seguidores</span><b>9</b><small>R$ 20,42 cada</small></div><div class="m"><span>Cliques</span><b>184</b><small>R$ 1,00 cada</small></div><div class="m"><span>CTR</span><b>1.89%</b></div><div class="m"><span>Freq</span><b>2.2</b></div><div class="m"><span>Gasto</span><b>R$ 183,76</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>9</b><small>R$ 20,42 cada</small></div><div class="m"><span>Vendas</span><b>R$ 972,13</b><small>ROAS 5,29x</small></div><div class="m"><span>Seguidores</span><b>9</b><small>R$ 20,42 cada</small></div><div class="m"><span>Cliques</span><b>184</b><small>R$ 1,00 cada</small></div><div class="m"><span>CTR</span><b>1.89%</b></div><div class="m"><span>CPM</span><b>R$ 7,44</b></div><div class="m"><span>Freq</span><b>2.2</b></div><div class="m"><span>Alcance</span><b>11.232</b></div><div class="m"><span>Gasto</span><b>R$ 183,76</b></div><div class="m"><span>Vídeos assistidos</span><b>903</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta neutro">estável</span><span class="rot2">custo</span><span class="delta ruim">▲ 9%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 5,29 em vendas; e CTR de 1.89% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 26,25/dia, ir pra ~R$ 31,50/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJpoIpq8ja5SfCUJplsUaPPAMuDlfxvWExV-lBge8kV2VFfO71mxQEDLxHcKnwNLmhfu9F0kZRjk0pEA0trYjeKBDjsV1UpJ803_Ra7_ZExp3-TE4HpJKbN3DMRE9h7lBV19KA-pU751ZcUhcdkENeO" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIltF1AjzpjTm2R-sOhNuaJ_ZIyDJtHiAasJJurutM8W782IHL5N-BYUceeaf8n7aNpOeVCLGkLDrXfxFBGJhYY0sY4dtQXe5xWPq4mWynEpk385D-KIRgrqA-AwxSMMKIV-8QcAoaSYsnJzTXLrJcx" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>ANEL-ABR-C1-ST</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>6</b><small>R$ 21,09 cada</small></div><div class="m"><span>Vendas</span><b>R$ 948,66</b><small>ROAS 7,50x</small></div><div class="m"><span>Cliques</span><b>199</b><small>R$ 0,64 cada</small></div><div class="m"><span>CTR</span><b>2.78%</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Gasto</span><b>R$ 126,52</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>6</b><small>R$ 21,09 cada</small></div><div class="m"><span>Vendas</span><b>R$ 948,66</b><small>ROAS 7,50x</small></div><div class="m"><span>Cliques</span><b>199</b><small>R$ 0,64 cada</small></div><div class="m"><span>CTR</span><b>2.78%</b></div><div class="m"><span>CPM</span><b>R$ 7,84</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>9.591</b></div><div class="m"><span>Gasto</span><b>R$ 126,52</b></div><div class="m"><span>Vídeos assistidos</span><b>370</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 11%</span><span class="rot2">custo</span><span class="delta bom">▼ 31%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 7,50 em vendas; e o CTR de 2.78% está 26% acima da média da conta — o gancho prende a atenção</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 18,07/dia, ir pra ~R$ 21,69/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://scontent-sea1-1.xx.fbcdn.net/v/t15.5256-10/764524055_1248203694022236_4826898448066264223_n.jpg?_nc_cat=100&amp;ccb=1-7&amp;_nc_ohc=cahb56mn6tEQ7kNvwFJGKcn&amp;_nc_oc=AdqO6S7oT5LphqzjnGqtdJNu91rdMiZ2BN_h-j5FimIG451412RF-IUfEYSrdmwn9NI&amp;_nc_zt=23&amp;_nc_ht=scontent-sea1-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=_SxvrMLwe90LP6EAE2e0Kg&amp;_nc_tpa=Q5bMBQK5waqV0FLTpWF8jZmMedaTe8Irs6pKeR2S7eZdSA9fWiPeK3m8uuptXyaoUu_7qPHgtFMSdwBQEw&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQHKA70GgJhiODoc8zdNznJjWrks-1cTtQYl23ZGHumQwQ&amp;oe=6A94E583" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t15.5256-10/764524055_1248203694022236_4826898448066264223_n.jpg?_nc_cat=100&amp;ccb=1-7&amp;_nc_ohc=cahb56mn6tEQ7kNvwEb9sJD&amp;_nc_oc=AdqbDnlHxitFUyYfNSBgRZ7Jf_d7OSSLDEqc2Z3l-HP4LpAW0sWNSKpSfXf06Pg5d5A&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=uXSbqR6_Sa1VAXtlsxB6kA&amp;_nc_tpa=Q5bMBQKTOhtO3HXoYfUWZDIl4mMQ-EcZyx_4aglSDoOMdS07tQ4IhHZZiJPLLKKaOFtwCyl6LF0giDl3RA&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQHqxr886MTR1B25y0R_jqixn_NzjRL20CrqcNyOoXTg5w&amp;oe=6A94E583" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>[AD42][02.08][REELS PROMO ][BRINCO PEDRAS DUPLASR$60] — Cópia</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>6</b><small>R$ 19,27 cada</small></div><div class="m"><span>Vendas</span><b>R$ 580,00</b><small>ROAS 5,02x</small></div><div class="m"><span>Seguidores</span><b>9</b><small>R$ 12,84 cada</small></div><div class="m"><span>Cliques</span><b>171</b><small>R$ 0,68 cada</small></div><div class="m"><span>CTR</span><b>2.49%</b></div><div class="m"><span>Freq</span><b>2.0</b></div><div class="m"><span>Gasto</span><b>R$ 115,60</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>6</b><small>R$ 19,27 cada</small></div><div class="m"><span>Vendas</span><b>R$ 580,00</b><small>ROAS 5,02x</small></div><div class="m"><span>Seguidores</span><b>9</b><small>R$ 12,84 cada</small></div><div class="m"><span>Cliques</span><b>171</b><small>R$ 0,68 cada</small></div><div class="m"><span>CTR</span><b>2.49%</b></div><div class="m"><span>CPM</span><b>R$ 8,63</b></div><div class="m"><span>Freq</span><b>2.0</b></div><div class="m"><span>Alcance</span><b>6.647</b></div><div class="m"><span>Gasto</span><b>R$ 115,60</b></div><div class="m"><span>Vídeos assistidos</span><b>393</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 15%</span><span class="rot2">custo</span><span class="delta ruim">▲ 54%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 5,02 em vendas; e CTR de 2.49% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 16,51/dia, ir pra ~R$ 19,82/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJoGxQD0gHxnUvcwECMfNhaE29xysBtrwMLyruKhnKeoiaS_nD7vzH76xsSyeNV21i87UAzSePVQnQkXaf2Op7RnIaUtFAkkfc2RuSFvdbAUxYKtNLSKK4AiMM3WsAO0RmbXvOoz2wEAT9jaV2Abf5K" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIJAmYwxAawzLG6OSlwFccnBM2PCHROi2jGhM7E5Uc8WeO_j0oUul3u7JNGJ4v4QI-6RPFVGrKoyPyC9UwhVxVbGnFfNldB3e3INUAaV9hr4bjcjSgKdt7t5m8G8yEm6rPO0_zuaWQANeKxw83DMg4g" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>CONJUNTO-OVAL-ABR-C1</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>3</b><small>R$ 10,63 cada</small></div><div class="m"><span>Vendas</span><b>R$ 221,90</b><small>ROAS 6,96x</small></div><div class="m"><span>Cliques</span><b>32</b><small>R$ 1,00 cada</small></div><div class="m"><span>CTR</span><b>2.10%</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Gasto</span><b>R$ 31,88</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>3</b><small>R$ 10,63 cada</small></div><div class="m"><span>Vendas</span><b>R$ 221,90</b><small>ROAS 6,96x</small></div><div class="m"><span>Cliques</span><b>32</b><small>R$ 1,00 cada</small></div><div class="m"><span>CTR</span><b>2.10%</b></div><div class="m"><span>CPM</span><b>R$ 10,14</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>2.046</b></div><div class="m"><span>Gasto</span><b>R$ 31,88</b></div><div class="m"><span>Vídeos assistidos</span><b>65</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta neutro">estável</span><span class="rot2">custo</span><span class="delta bom">▼ 53%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 6,96 em vendas; e CTR de 2.10% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 4,55/dia, ir pra ~R$ 5,47/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://external-sea1-1.xx.fbcdn.net/emg1/v/t13/1337090194863168707?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLTRyve0wFTY4m8P6G2P2UzpEKQRxniZ7IxSkGCPE8vNikcaolv68wkRORxKsYw_V0nGh_vrKg2cvd3_F0aHhX8aH8PH0q7kEPwrzO34WxeysdeDQZz678iVrcNNWCL18fvnWLCGEsr8tl80yRmEtFr&amp;fb_obo=1&amp;utld=facebook.com&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=_SxvrMLwe90LP6EAE2e0Kg&amp;_nc_oc=Adod13M0LrYnc9rLBUv35hFxIam15iKJRCqhnkEVCWSaB_lZTUQ6y8_G5Y0FZCbOAQA&amp;ccb=13-1&amp;oh=06_Q3_CAb9hBHSW_CxmMzvLk3Ky2LZo10wJREq7o57ykWRJiFb0&amp;oe=6A9107F2&amp;_nc_sid=58080a" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://external-atl3-1.xx.fbcdn.net/emg1/v/t13/1337090194863168707?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQLTRyve0wFTY4m8P6G2P2UzpEKQRxniZ7IxSkGCPE8vNikcaolv68wkRORxKsYw_V0nGh_vrKg2cvd3_F0aHhX8aH8PH0q7kEPwrzO34WxeysdeDQZz678iVrcNNWCL18fvnWLCGEsr8tl80yRmEtFr&amp;fb_obo=1&amp;utld=facebook.com&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=uXSbqR6_Sa1VAXtlsxB6kA&amp;_nc_oc=Ado4ZrAVyU9Dihzgf3NSfPp6XJLexPmgrUgrSXrmPyZTjqBR4nQbXaQo13m4bKM870k&amp;ccb=13-1&amp;oh=06_Q3_CAVsfdpOZ4CL4NIrKJPgdNKQ5gazw4Epw_KF-MT1YxbNG&amp;oe=6A9107F2&amp;_nc_sid=58080a" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>conjunto isabella</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>2</b><small>R$ 9,18 cada</small></div><div class="m"><span>Vendas</span><b>R$ 290,00</b><small>ROAS 15,80x</small></div><div class="m"><span>Cliques</span><b>12</b><small>R$ 1,53 cada</small></div><div class="m"><span>CTR</span><b>1.79%</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Gasto</span><b>R$ 18,36</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>2</b><small>R$ 9,18 cada</small></div><div class="m"><span>Vendas</span><b>R$ 290,00</b><small>ROAS 15,80x</small></div><div class="m"><span>Cliques</span><b>12</b><small>R$ 1,53 cada</small></div><div class="m"><span>CTR</span><b>1.79%</b></div><div class="m"><span>CPM</span><b>R$ 9,68</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>1.121</b></div><div class="m"><span>Gasto</span><b>R$ 18,36</b></div><div class="m"><span>Vídeos assistidos</span><b>7</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 39%</span></div>
+      <p class="hist">período anterior era médio</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 15,80 em vendas; e CTR de 1.79% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 2,62/dia, ir pra ~R$ 3,15/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
      <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;COLAR-PERFEITO-ABR-C1&quot; está na frente porque cada R$ 1,00 investido nele voltou como R$ 5,29 em vendas (ROAS 5,29x); além disso, a frequência de 2.2 mostra que ainda tem muito público novo pra alcançar antes de saturar.
 
 Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div><div id="cria30">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJajSwfRoJOnxi1lLA0OuhL7aMiPGqesvvVma_MCcNH-GI1Sj9Oqzimk63f2hQxCl584Wuj-dwL7FDsGZI3aNL91ihnpoJzaR2x4NqSRT5V01_cZT770n6PrhY_Ynz1VqoAN40V6G72ISoGE6FBwc7J" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKZeilEZ3tfDjA5X2g3k3MVh6DrqzHk_iOl0Xuh81aLdM-PmgaEsDofdMAW_SqWwGjvo0GFLFzfhlT2BqWb-12yKW1Z6vPy7y1MiPdvIo8ZZTOotm4FCdobkhT7CuOjxaaS9vZdioJ4nkqgBQ8fNIZD" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>ANEL-ABR-C1-ST</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>19</b><small>R$ 25,49 cada</small></div><div class="m"><span>Vendas</span><b>R$ 3.245,96</b><small>ROAS 6,70x</small></div><div class="m"><span>Cliques</span><b>923</b><small>R$ 0,52 cada</small></div><div class="m"><span>CTR</span><b>2.94%</b></div><div class="m"><span>Freq</span><b>2.3</b></div><div class="m"><span>Gasto</span><b>R$ 484,26</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>19</b><small>R$ 25,49 cada</small></div><div class="m"><span>Vendas</span><b>R$ 3.245,96</b><small>ROAS 6,70x</small></div><div class="m"><span>Cliques</span><b>923</b><small>R$ 0,52 cada</small></div><div class="m"><span>CTR</span><b>2.94%</b></div><div class="m"><span>CPM</span><b>R$ 6,24</b></div><div class="m"><span>Freq</span><b>2.3</b></div><div class="m"><span>Alcance</span><b>33.543</b></div><div class="m"><span>Gasto</span><b>R$ 484,26</b></div><div class="m"><span>Vídeos assistidos</span><b>1.593</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta neutro">estável</span><span class="rot2">custo</span><span class="delta ruim">▲ 233%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 6,70 em vendas; e o CTR de 2.94% está 56% acima da média da conta — o gancho prende a atenção</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 16,14/dia, ir pra ~R$ 19,37/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIm57oF15nC9uuB8U11xFdHM0daxj4GtSds1IChf9g3297zGHx7SdVkrRktazfWKEIz9mkdpBGoV9CjgjFfT98U3NYq6ocvD3jnIBaBCRmIpmm9Xn6a_SrwyzbX1mDNhYq56g6Gpzc5rsyxnl6y8klc" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLfLIwrj3H3ncKxG85tkDmCD8pL_F50tibevZqkikyBlJwVMjxvHPpGoGjxEoyGkDH8VUF6pQ7Ud6ZphHZU68yEIYK6igXtwNQ1dRdJCGu5mLk4iqH0YTvHBRAw7Nwn-vbcUb3SUp6GJPYkZDPcukul" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>CONJUNTO-OVAL-ABR-C1</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>11</b><small>R$ 24,02 cada</small></div><div class="m"><span>Vendas</span><b>R$ 1.190,66</b><small>ROAS 4,51x</small></div><div class="m"><span>Cliques</span><b>316</b><small>R$ 0,84 cada</small></div><div class="m"><span>CTR</span><b>2.12%</b></div><div class="m"><span>Freq</span><b>2.2</b></div><div class="m"><span>Gasto</span><b>R$ 264,26</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>11</b><small>R$ 24,02 cada</small></div><div class="m"><span>Vendas</span><b>R$ 1.190,66</b><small>ROAS 4,51x</small></div><div class="m"><span>Cliques</span><b>316</b><small>R$ 0,84 cada</small></div><div class="m"><span>CTR</span><b>2.12%</b></div><div class="m"><span>CPM</span><b>R$ 7,84</b></div><div class="m"><span>Freq</span><b>2.2</b></div><div class="m"><span>Alcance</span><b>15.622</b></div><div class="m"><span>Gasto</span><b>R$ 264,26</b></div><div class="m"><span>Vídeos assistidos</span><b>734</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 12%</span><span class="rot2">custo</span><span class="delta ruim">▲ 349%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 4,51 em vendas; e CTR de 2.12% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 8,81/dia, ir pra ~R$ 10,57/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://scontent-sea1-1.xx.fbcdn.net/v/t45.1600-4/727800175_122197321652527476_6266319323185384562_n.jpg?_nc_cat=104&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=QpS_qdrYrf0Q7kNvwEUaKIx&amp;_nc_oc=Adrzyqd9ywv3FwFDXpV8Ao0zDi8VWo5R_3BIBPtZIkKFyu1VnDPxB0k2twe-BlAN0aU&amp;_nc_zt=1&amp;_nc_ht=scontent-sea1-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=Gl7QVp6ZvV7bx5UOwF_55g&amp;_nc_tpa=Q5bMBQKXnLh36euC2MPXsAQGeZGOiPVd1l2RG43uPd8pKwxUxHx4zuNVYf7ckT1KrjLK_TGfzC2y0BLEwQ&amp;oh=00_AQFwr3tb9G-sX45m1_ui847Gw4iUW_nVCgrMAgcs4icbUg&amp;oe=6A94F3B0" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/727800175_122197321652527476_6266319323185384562_n.jpg?_nc_cat=104&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=QpS_qdrYrf0Q7kNvwEKsUNe&amp;_nc_oc=AdpQQZwRrRKAMj5YYEtVBGgW6rFHz2wGoomTauuuLbG82uNYIkPGPqOeNkZaI8DW8dw&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=GnAV9xXwE_BmN8mKGYtUuA&amp;_nc_tpa=Q5bMBQIgU2pYOVJyy71m3DhSoJ2gtfrtm9jFy-ILOZ6UlltV0aHSQtDaE-f17tMWJliVRLeglDKlZJMuTw&amp;oh=00_AQGbPw6Otnoy2KiJPNVXUP7UrFYKSbzsszJWxA78znghAA&amp;oe=6A94F3B0" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>[AD33][22.06][STORIES][ANÉIS MIX]</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>19</b><small>R$ 13,79 cada</small></div><div class="m"><span>Vendas</span><b>R$ 2.052,92</b><small>ROAS 7,83x</small></div><div class="m"><span>Cliques</span><b>481</b><small>R$ 0,54 cada</small></div><div class="m"><span>CTR</span><b>1.99%</b></div><div class="m"><span>Freq</span><b>2.4</b></div><div class="m"><span>Gasto</span><b>R$ 262,03</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>19</b><small>R$ 13,79 cada</small></div><div class="m"><span>Vendas</span><b>R$ 2.052,92</b><small>ROAS 7,83x</small></div><div class="m"><span>Cliques</span><b>481</b><small>R$ 0,54 cada</small></div><div class="m"><span>CTR</span><b>1.99%</b></div><div class="m"><span>CPM</span><b>R$ 5,81</b></div><div class="m"><span>Freq</span><b>2.4</b></div><div class="m"><span>Alcance</span><b>18.779</b></div><div class="m"><span>Gasto</span><b>R$ 262,03</b></div><div class="m"><span>Vídeos assistidos</span><b>1</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 12%</span><span class="rot2">custo</span><span class="delta ruim">▲ 91%</span></div>
+      <p class="hist">período anterior era fatigado</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 7,83 em vendas; e CTR de 1.99% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 8,73/dia, ir pra ~R$ 10,48/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://scontent-sea5-1.xx.fbcdn.net/v/t15.5256-10/763894867_1926852624667138_4829605744911798333_n.jpg?_nc_cat=108&amp;ccb=1-7&amp;_nc_ohc=yjmXgiChzlMQ7kNvwEPTbdA&amp;_nc_oc=AdrLgYyvx5oat86mJo2G4JSdNGjwsEmCz6L9MXQaM-ry5VIJhJ99rTFsw381t-mPNCk&amp;_nc_zt=23&amp;_nc_ht=scontent-sea5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=Gl7QVp6ZvV7bx5UOwF_55g&amp;_nc_tpa=Q5bMBQKhZ6d1KUljJhSDPEDf4oyF_i3glYGRht3fOG-yc2k7qaeu8Qa6zIymL9wvdXIeJrpd8DW9T34PFg&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQF_pKVr6pftryDzl7faA5kPdWbpvhHYKRF6aYjoG8knew&amp;oe=6A94F846" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t15.5256-10/763894867_1926852624667138_4829605744911798333_n.jpg?_nc_cat=108&amp;ccb=1-7&amp;_nc_ohc=yjmXgiChzlMQ7kNvwHK2TMy&amp;_nc_oc=Adprp2goATGZ2vx5oLWbde0FR61044ybUWOIEBg4oC3R_qwokNSzSvhSHyl6NeSYRY8&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=GnAV9xXwE_BmN8mKGYtUuA&amp;_nc_tpa=Q5bMBQKWvSB9p9Yp-k6awQ9XHYFSbsOqpVoBnjwcZbhh0s5OsCI5LE_SScmVufX0aU69ZDY3uko1Z1mx8g&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQHIAD_ixymZJk49l9veA67V_Z6qaUKmG-G-FkMCJT7qxg&amp;oe=6A94F846" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>[AD42][02.08][REELS PROMO ][BRINCO PEDRAS DUPLASR$60] — Cópia</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>8</b><small>R$ 15,66 cada</small></div><div class="m"><span>Vendas</span><b>R$ 946,00</b><small>ROAS 7,55x</small></div><div class="m"><span>Cliques</span><b>318</b><small>R$ 0,39 cada</small></div><div class="m"><span>CTR</span><b>2.92%</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Gasto</span><b>R$ 125,26</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>8</b><small>R$ 15,66 cada</small></div><div class="m"><span>Vendas</span><b>R$ 946,00</b><small>ROAS 7,55x</small></div><div class="m"><span>Cliques</span><b>318</b><small>R$ 0,39 cada</small></div><div class="m"><span>CTR</span><b>2.92%</b></div><div class="m"><span>CPM</span><b>R$ 7,18</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>10.043</b></div><div class="m"><span>Gasto</span><b>R$ 125,26</b></div><div class="m"><span>Vídeos assistidos</span><b>615</b></div></div>
+      
+      <p class="hist">novo no ranking neste período</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 7,55 em vendas; e o CTR de 2.92% está 56% acima da média da conta — o gancho prende a atenção</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 4,18/dia, ir pra ~R$ 5,01/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJrtZ_14stFw5y8qwrmVze-9jDMglS3_PVgbWWRdMwIra8GQ0IM3KbEad2Ely5lXSEWHZPq9coa2JMTC_7fTUS30DOEFdQ5B-Y3gcJntisOsE20384uKooyQLnBQIMKN0XX076jkuvDeCTBwz1gg8J3" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQI4QyuOrnDpDu__IUhNfeF5rBp7RAmG-5DrRBk19erZz6vHN6juZe2VnnbhSvLf6gryXA7MCNDC5wHnhpJCbU1oJ1VsTujDUmeQaoyxSw_agDwnyuDwRBQ529BLmr09-Wrxfgu-hX5bp12B1_x2h4RZ" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD27 - Anés novos — Cópia — Cópia — Cópia</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>12</b><small>R$ 10,07 cada</small></div><div class="m"><span>Vendas</span><b>R$ 1.248,00</b><small>ROAS 10,33x</small></div><div class="m"><span>Cliques</span><b>142</b><small>R$ 0,85 cada</small></div><div class="m"><span>CTR</span><b>1.58%</b></div><div class="m"><span>Freq</span><b>2.2</b></div><div class="m"><span>Gasto</span><b>R$ 120,79</b></div></div>
-      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+      <div class="grid"><div class="m"><span>Compras</span><b>12</b><small>R$ 10,07 cada</small></div><div class="m"><span>Vendas</span><b>R$ 1.248,00</b><small>ROAS 10,33x</small></div><div class="m"><span>Cliques</span><b>142</b><small>R$ 0,85 cada</small></div><div class="m"><span>CTR</span><b>1.58%</b></div><div class="m"><span>CPM</span><b>R$ 6,32</b></div><div class="m"><span>Freq</span><b>2.2</b></div><div class="m"><span>Alcance</span><b>8.879</b></div><div class="m"><span>Gasto</span><b>R$ 120,79</b></div><div class="m"><span>Vídeos assistidos</span><b>406</b></div></div>
+      
+      <p class="hist">novo no ranking neste período</p>
+      <div class="why bom"><span>Por que funciona</span>cada R$ 1,00 investido volta como R$ 10,33 em vendas; e CTR de 1.58% é forte — o criativo chama atenção de verdade</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 4,03/dia, ir pra ~R$ 4,83/dia) e não mexer no criativo</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
      <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;ANEL-ABR-C1-ST&quot; está na frente porque cada R$ 1,00 investido nele voltou como R$ 6,70 em vendas (ROAS 6,70x); além disso, o CTR de 2.94% está 58% acima da média da conta, sinal de que o gancho prende a atenção logo de cara; além disso, a frequência de 2.3 mostra que ainda tem muito público novo pra alcançar antes de saturar.
 
 Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div></div>
+
+  <div class="sec-h rev"><h2>Os que precisam de atenção</h2><span class="rot" id="pior-rot"></span></div>
+  <div class="rev"><div id="pior7">
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://external-atl3-1.xx.fbcdn.net/emg1/v/t13/6182648736147078597?url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fimage%2F%3Fd%3DAQKo3pVFM-SlAqGt6qdsXxqpyKFNUD4-E-JxdNXe9aZZkZisDKFnr-pgTaMmZcnE15OV5WIf8fSnCkfxRobwSQEqdIK7Ar8DL4jSBBbJJSNA6d930GeB0sCZ0FwmLdDoFEelbi-JeNuuciz2ofz-K48d&amp;fb_obo=1&amp;utld=facebook.com&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=uXSbqR6_Sa1VAXtlsxB6kA&amp;_nc_oc=AdpAQSGUwMzKiwMRD92Q9WDyr8v8Ea87OZNB3rm3ib2FLBpPkfm5Tw_Dztpgb8UlRKg&amp;ccb=13-1&amp;oh=06_Q3_CAc2XM4WMDKAzHJw3qy1x4RotwBgpKL23NDMi5a7Zui_W&amp;oe=6A910130&amp;_nc_sid=58080a" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>Post do Instagram: 〰️ Anéis para formatura
+ 
+
+R$...</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Seguidores</span><b>32</b><small>R$ 1,14 cada</small></div><div class="m"><span>Cliques</span><b>195</b><small>R$ 0,19 cada</small></div><div class="m"><span>CTR</span><b>3.36%</b></div><div class="m"><span>CPM</span><b>R$ 6,00</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>5.595</b></div><div class="m"><span>Gasto</span><b>R$ 36,43</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 28%</span></div>
+      <p class="hist">período anterior era vencedor</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 36,43 sem trazer nenhum resultado</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLIuVgnm46eaAvM1FeKNMEXisQt82rRJHraYVUsweTO6qrv44hxfOFyfeVQHxhamISsNrIBqcQ3_PXKn5kO3kakOfqMk2LeONCsxib-_qNKsu-BQYUbOn4PAMeXY07W9BHxRu0ZtOV4YP8xXregYQ5U" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>BRINCO-ABR-C2</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>10</b><small>R$ 0,79 cada</small></div><div class="m"><span>CTR</span><b>1.85%</b></div><div class="m"><span>CPM</span><b>R$ 7,27</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>869</b></div><div class="m"><span>Gasto</span><b>R$ 7,87</b></div><div class="m"><span>Vídeos assistidos</span><b>14</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 99%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 7,87 sem trazer nenhum resultado</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/730083310_122197323302527476_1093848537267880875_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KW2d1PI_Y3wQ7kNvwGvFtGw&amp;_nc_oc=AdqkEiGndVlBc5FZetwSLSsff4z6ECscWTZeC4DOekLjQuO-EvN-p005DVg8hbPcz_Y&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=uXSbqR6_Sa1VAXtlsxB6kA&amp;_nc_tpa=Q5bMBQIRiHV3vfGhFfux4Gdef7r9iWT62WzQ7VnNc_kg2fBCZ1GXNNIskA0AyTmYce2YYvvzjGVLxOPr0Q&amp;oh=00_AQEqrCoCCmL9x1ZrOBxfk3yJX7wmRhRmHI13Oy9P4mrasQ&amp;oe=6A9502C1" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD34][22.06][STORIES][CONJUNTOS MIX] — Cópia — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>10</b><small>R$ 0,78 cada</small></div><div class="m"><span>CTR</span><b>1.15%</b></div><div class="m"><span>CPM</span><b>R$ 6,37</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>892</b></div><div class="m"><span>Gasto</span><b>R$ 7,77</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 63%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 7,77 sem trazer nenhum resultado; e o CTR de 1.15% está bem abaixo da média — o gancho não está prendendo</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKoFuxdKnypzEc416NStLu87kkpkyjmjbSXBDaWRVCPIW0jwHWE7g94tyzy7VtSmAN5T_69LKelXCdxOMCAM0Xv9R3KnJXiBkk3TL4UUTiRIaym1JbILYRu3pfYD1IkVYrke0AD83-kBtjokpEQoULE" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>AD29 - Nova coleção pulseiras</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>5</b><small>R$ 0,91 cada</small></div><div class="m"><span>CTR</span><b>1.83%</b></div><div class="m"><span>CPM</span><b>R$ 10,39</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>321</b></div><div class="m"><span>Gasto</span><b>R$ 4,53</b></div><div class="m"><span>Vídeos assistidos</span><b>7</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 35%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 4,53 sem trazer nenhum resultado</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/726289691_122197047884527476_3479333235820185472_n.jpg?_nc_cat=103&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=hNEawhth-I4Q7kNvwE1Qe4H&amp;_nc_oc=AdojcuaqPgZ2BI4MtpKCRbNTUsjZzZV8ZCtzBsVx4OA6zaAiwyo46fU-dOs6Ml-Dy5Y&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=uXSbqR6_Sa1VAXtlsxB6kA&amp;_nc_tpa=Q5bMBQKnMse5ziXfx-0AcBz8lWa0K76BAkGX0kgAR673QXwK9kO3uxo4RLbv9At3Y92l-y8_52wbELWS2w&amp;oh=00_AQFyZy_oAL-XMcZzyHuavLq-w13LpZcZ65WjsOsvwwXOqQ&amp;oe=6A94FDBC" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD32][19.06][REELS][COLEÇÃO BIWA v1] — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>3</b><small>R$ 1,35 cada</small></div><div class="m"><span>CTR</span><b>0.82%</b></div><div class="m"><span>CPM</span><b>R$ 8,26</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>395</b></div><div class="m"><span>Gasto</span><b>R$ 4,04</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 47%</span></div>
+      <p class="hist">período anterior era vencedor</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 4,04 sem trazer nenhum resultado; e o CTR de 0.82% está bem abaixo da média — o gancho não está prendendo</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article></div><div id="pior30">
+  <article class="card" data-st="pausar">
+    <div class="foto"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/774652594_122201768372527476_4187723003165658668_n.png?stp=dst-jpg_tt6&amp;_nc_cat=103&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=bMbobBj8CpgQ7kNvwGO-JCd&amp;_nc_oc=AdoPzXi1HcpNbORXfa0uFtz2y_6N7yjVZ5lDXOgXCroK2Q4H9TjZ9P17340WbLKpryw&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=GnAV9xXwE_BmN8mKGYtUuA&amp;_nc_tpa=Q5bMBQIufywbzUCLXOpxxb3GRPVsrBuhERebSgPhUmIQMomh5g6cuHUxBo-hPrzrfZBjZqUkZZXiO3sVVQ&amp;oh=00_AQFCbiB60UiFJ5MSnWs6ptXgNc90ZvozZfxdy-LCsJIWHA&amp;oe=6A94F20A" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill pausar">Pausar</span><h3>[AD02][12.08][IMG][LEMBRETE LIVE]</h3></header>
+      <div class="grid"><div class="m"><span>Compras</span><b>1</b><small>R$ 192,90 cada</small></div><div class="m"><span>Vendas</span><b>R$ 210,00</b><small>ROAS 1,09x</small></div><div class="m"><span>Cliques</span><b>23</b><small>R$ 8,39 cada</small></div><div class="m"><span>CTR</span><b>2.13%</b></div><div class="m"><span>CPM</span><b>R$ 11,19</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>15.474</b></div><div class="m"><span>Gasto</span><b>R$ 192,90</b></div><div class="m"><span>Vídeos assistidos</span><b>68</b></div></div>
+      
+      <p class="hist">novo no ranking neste período</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 766% mais que a média da conta</div>
+      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 6,43/dia pro vencedor &quot;ANEL-ABR-C1-ST&quot;</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKcuw9ywNwJO0FJ6Ndx5IsJsikPMm0tdwskBC6UWcqmakM5AaN85hgk4NiclTbmomzio3tRXSKVmPW4zhrQ6-kvpD_GiHcNS3pj9VDDV633J6C4iU7QmhLbxr4LHOXrLP07G04omrZy0HyvGiHAdBS1" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>AD26 - Kit perfeito</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>19</b><small>R$ 0,57 cada</small></div><div class="m"><span>CTR</span><b>2.41%</b></div><div class="m"><span>CPM</span><b>R$ 6,21</b></div><div class="m"><span>Freq</span><b>1.3</b></div><div class="m"><span>Alcance</span><b>1.314</b></div><div class="m"><span>Gasto</span><b>R$ 10,84</b></div><div class="m"><span>Vídeos assistidos</span><b>21</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 10%</span></div>
+      <p class="hist">período anterior era vencedor</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 10,84 sem trazer nenhum resultado</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLVgXJY_5eZbWu6Nztzl_aFiqQdNsbO_0U3Ie06c9STcgIvUs1gDdhGB3is3eCMtWuPQykxGVf_fdP9yqNvYZS0e-b-ehytt5rOjCKnWipVs72GuVAzGYifizJrMbhqnFUCCg5Un1ACzFmj1IMybrRo" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD01][12.08][REELS][PÉROLA LIVE]</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>2.73%</b></div><div class="m"><span>CPM</span><b>R$ 13,44</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>646</b></div><div class="m"><span>Gasto</span><b>R$ 9,37</b></div><div class="m"><span>Vídeos assistidos</span><b>61</b></div></div>
+      
+      <p class="hist">novo no ranking neste período</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 9,37 sem trazer nenhum resultado</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/729466651_122197327202527476_813726300014798798_n.jpg?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=JjtdGWqlvE0Q7kNvwEboMgA&amp;_nc_oc=AdoIQcoOtFVmZ2LtvqXn-WLLrGrbAOc7Lhr7B1dPU5WGDQkzQhJ9F5zjKvOj8ENqBr4&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=GnAV9xXwE_BmN8mKGYtUuA&amp;_nc_tpa=Q5bMBQJ4gKpsv57fcfPjPIkeYOb09tnup8aWsngConKlDnKOXlEnbJzlt2Rp-IB6yDTj2ocOgNLfDaaDLA&amp;oh=00_AQHW4C61eefol24ZmILN4jMRsU_T5GZsu0jvtJptMceS6g&amp;oe=6A94DBFE" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD36][22.06][STORIES][BRINCOS MIX] — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>6</b><small>R$ 0,93 cada</small></div><div class="m"><span>CTR</span><b>1.06%</b></div><div class="m"><span>CPM</span><b>R$ 6,56</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>697</b></div><div class="m"><span>Gasto</span><b>R$ 5,58</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 7%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 5,58 sem trazer nenhum resultado; e o CTR de 1.06% está bem abaixo da média — o gancho não está prendendo</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/727800175_122197321652527476_6266319323185384562_n.jpg?_nc_cat=104&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=QpS_qdrYrf0Q7kNvwEKsUNe&amp;_nc_oc=AdpQQZwRrRKAMj5YYEtVBGgW6rFHz2wGoomTauuuLbG82uNYIkPGPqOeNkZaI8DW8dw&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=GnAV9xXwE_BmN8mKGYtUuA&amp;_nc_tpa=Q5bMBQIgU2pYOVJyy71m3DhSoJ2gtfrtm9jFy-ILOZ6UlltV0aHSQtDaE-f17tMWJliVRLeglDKlZJMuTw&amp;oh=00_AQGbPw6Otnoy2KiJPNVXUP7UrFYKSbzsszJWxA78znghAA&amp;oe=6A94F3B0" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD33][22.06][STORIES][ANÉIS MIX] — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>2</b><small>R$ 1,94 cada</small></div><div class="m"><span>CTR</span><b>0.78%</b></div><div class="m"><span>CPM</span><b>R$ 7,51</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>428</b></div><div class="m"><span>Gasto</span><b>R$ 3,87</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 54%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 3,87 sem trazer nenhum resultado; e o CTR de 0.78% está bem abaixo da média — o gancho não está prendendo</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=397083513499636" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article></div></div>
+
+  <div class="rev"><div id="res7"><div class="bloco resumo"><div class="b-h"><i>▸</i><b>Resumo de ações</b></div>
+      <p class="res ok"><span>Escalar</span>conjunto isabella · COLAR-PERFEITO-ABR-C1 · ANEL-ABR-C1-ST · CONJUNTO-OVAL-ABR-C1 · [AD36][22.06][STORIES][BRINCOS MIX] — Cópia · [AD34][22.06][STORIES][CONJUNTOS MIX] — Cópia</p><p class="res warn"><span>Renovar</span>[AD35][22.06][STORIES][COLARES MIX] — Cópia</p>
+    </div></div><div id="res30"><div class="bloco resumo"><div class="b-h"><i>▸</i><b>Resumo de ações</b></div>
+      <p class="res ok"><span>Escalar</span>AD27 - Anés novos · conjunto isabella · ANEL-ABR-C1-ST · CONJUNTO-OVAL-ABR-C1 · [AD33][22.06][STORIES][ANÉIS MIX] · [AD35][22.06][STORIES][COLARES MIX]</p><p class="res warn"><span>Renovar</span>[AD35][22.06][STORIES][COLARES MIX] — Cópia · [AD34][22.06][STORIES][CONJUNTOS MIX] — Cópia</p><p class="res bad"><span>Pausar</span>Post do Instagram: Clássica, sofisticada e... · Post do Instagram: Qualquer conjunto por 80,00 🌟 · Post do Instagram: 〰️ Anéis para formatura
+ 
+
+R$... · BRINCO-ABR-C2 · [AD02][12.08][IMG][LEMBRETE LIVE] · [AD01][12.08][CARROSSEL][3 MOTIVOS]</p>
+    </div></div></div>
 
   <div class="bloco ideias rev"><div class="b-h"><i>◆</i><b>Ideias pra testar esta semana</b></div><ol><li>Vídeo de teste de garantia: mostre a peça na água, no perfume e no álcool em 15s e feche com a promessa de garantia do banho.</li><li>Reels de convite ao grupo VIP prometendo uma peça em oferta por dia — grave a tela do grupo com as ofertas anteriores.</li><li>Criativo de kit revendedora: filme a caixa sendo aberta com as peças e o valor de investimento inicial escrito na tela.</li></ol></div>
   <div class="bloco nicho rev"><div class="b-h"><i>▲</i><b>O que o nicho está rodando · joias e acessórios</b></div>
@@ -234,12 +446,13 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   const $$ = (s) => Array.from(document.querySelectorAll(s));
   const br = (n) => (parseFloat(n) || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const brInt = (n) => Math.round(parseFloat(n) || 0).toLocaleString("pt-BR");
+  const ddmm = (d) => d.slice(8, 10) + "/" + d.slice(5, 7);
+  const mReduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let periodo = 7;
   let comparar = true;
 
   function janela(p, desloc) {
-    // desloc 0 = atual, 1 = período anterior
     const fim = D.serie.length - p * desloc;
     return D.serie.slice(Math.max(0, fim - p), fim);
   }
@@ -269,7 +482,6 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     const bom = invertido ? d < 0 : d > 0;
     return '<span class="delta ' + (bom ? "bom" : "ruim") + '">' + (d > 0 ? "▲" : "▼") + " " + pct + "%</span>";
   }
-
   function kpi(rotulo, valor, extra, del) {
     return '<div class="kpi"><span class="rot">' + rotulo + "</span><b>" + valor + "</b>" +
       (extra ? '<small>' + extra + "</small>" : "") + (del || "") + "</div>";
@@ -291,41 +503,73 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     $("#kpis").innerHTML = h;
   }
 
-  /* ---------- gráficos SVG ---------- */
-  function linha(el, atual, anterior, opts) {
-    const W = 560, H = 170, P = { t: 14, r: 10, b: 24, l: 10 };
-    const todos = comparar && anterior ? atual.concat(anterior) : atual.slice();
-    let max = Math.max.apply(null, todos.map((p) => p.v));
-    if (!isFinite(max) || max <= 0) max = 1;
-    max *= 1.12;
+  /* ---------- gráficos responsivos com tooltip ---------- */
+  function grafico(el, atual, anterior, opts) {
+    const W = Math.max(240, el.clientWidth - 34);
+    const H = 190, P = { t: 16, r: 12, b: 26, l: 12 };
     const iw = W - P.l - P.r, ih = H - P.t - P.b;
-    const px = (i, n) => P.l + (n <= 1 ? iw / 2 : (i / (n - 1)) * iw);
+    const todos = comparar && anterior && anterior.length ? atual.concat(anterior) : atual.slice();
+    let max = Math.max.apply(null, todos.map((p) => p.v).concat([0]));
+    if (!isFinite(max) || max <= 0) max = 1;
+    max *= 1.15;
+    const n = atual.length;
+    const px = (i, m) => P.l + (m <= 1 ? iw / 2 : (i / (m - 1)) * iw);
     const py = (v) => P.t + ih - (v / max) * ih;
     const caminho = (pts) => pts.map((p, i) => (i ? "L" : "M") + px(i, pts.length).toFixed(1) + "," + py(p.v).toFixed(1)).join(" ");
 
-    let s = '<svg viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none">';
+    let s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '">';
     for (let g = 1; g <= 3; g++) {
       const y = P.t + (ih / 4) * g;
-      s += '<line x1="' + P.l + '" y1="' + y + '" x2="' + (W - P.r) + '" y2="' + y + '" stroke="#1F1F23" stroke-width="1"/>';
+      s += '<line x1="' + P.l + '" y1="' + y.toFixed(1) + '" x2="' + (W - P.r) + '" y2="' + y.toFixed(1) + '" stroke="#1F1F23"/>';
     }
     if (comparar && anterior && anterior.length) {
-      s += '<path d="' + caminho(anterior) + '" fill="none" stroke="#4a4a50" stroke-width="1.6" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/>';
+      s += '<path d="' + caminho(anterior) + '" fill="none" stroke="#54545c" stroke-width="1.5" stroke-dasharray="4 4"/>';
     }
-    if (atual.length) {
-      const area = caminho(atual) + " L" + px(atual.length - 1, atual.length).toFixed(1) + "," + (P.t + ih) + " L" + px(0, atual.length).toFixed(1) + "," + (P.t + ih) + " Z";
+    if (n) {
+      const area = caminho(atual) + " L" + px(n - 1, n).toFixed(1) + "," + (P.t + ih) + " L" + px(0, n).toFixed(1) + "," + (P.t + ih) + " Z";
       s += '<path d="' + area + '" fill="' + opts.cor + '" opacity="0.10"/>';
-      s += '<path d="' + caminho(atual) + '" fill="none" stroke="' + opts.cor + '" stroke-width="2.2" stroke-linecap="round" vector-effect="non-scaling-stroke" pathLength="1" class="tra"/>';
-      const ult = atual[atual.length - 1];
-      s += '<circle cx="' + px(atual.length - 1, atual.length).toFixed(1) + '" cy="' + py(ult.v).toFixed(1) + '" r="3.4" fill="' + opts.cor + '"/>';
+      s += '<path d="' + caminho(atual) + '" fill="none" stroke="' + opts.cor + '" stroke-width="2.2" stroke-linecap="round" pathLength="1"' + (mReduz ? "" : ' class="tra"') + "/>";
+      s += '<circle cx="' + px(n - 1, n).toFixed(1) + '" cy="' + py(atual[n - 1].v).toFixed(1) + '" r="3.4" fill="' + opts.cor + '"/>';
     }
+    s += '<line class="guia" x1="-9" y1="' + P.t + '" x2="-9" y2="' + (P.t + ih) + '" stroke="#F5B113" stroke-width="1" opacity="0"/>';
+    s += '<circle class="pnt" cx="-9" cy="-9" r="4" fill="' + opts.cor + '" stroke="#0B0C0E" stroke-width="2" opacity="0"/>';
     s += "</svg>";
-    const ini = atual.length ? atual[0].d.slice(8, 10) + "/" + atual[0].d.slice(5, 7) : "";
-    const fim = atual.length ? atual[atual.length - 1].d.slice(8, 10) + "/" + atual[atual.length - 1].d.slice(5, 7) : "";
-    const ultimo = atual.length ? atual[atual.length - 1].v : 0;
+
+    const ultimo = n ? atual[n - 1].v : 0;
     el.innerHTML =
       '<div class="g-h"><span class="rot">' + opts.titulo + '</span><b style="color:' + opts.cor + '">' + opts.fmt(ultimo) + " <small>ontem</small></b></div>" +
-      s +
-      '<div class="g-x"><span>' + ini + "</span><span>" + fim + "</span></div>";
+      '<div class="g-area">' + s + '<div class="gtip" hidden></div></div>' +
+      '<div class="g-x"><span>' + (n ? ddmm(atual[0].d) : "") + "</span><span>" + (n > 2 ? ddmm(atual[Math.floor((n - 1) / 2)].d) : "") + "</span><span>" + (n ? ddmm(atual[n - 1].d) : "") + "</span></div>";
+
+    // interação: tooltip por toque/mouse
+    const areaEl = el.querySelector(".g-area");
+    const svg = areaEl.querySelector("svg");
+    const tip = areaEl.querySelector(".gtip");
+    const guia = svg.querySelector(".guia");
+    const pnt = svg.querySelector(".pnt");
+    function mover(ev) {
+      if (!n) return;
+      const rect = svg.getBoundingClientRect();
+      const cx = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+      let i = Math.round(((cx - P.l) / iw) * (n - 1));
+      i = Math.max(0, Math.min(n - 1, i));
+      const X = px(i, n), Y = py(atual[i].v);
+      guia.setAttribute("x1", X); guia.setAttribute("x2", X); guia.setAttribute("opacity", "0.5");
+      pnt.setAttribute("cx", X); pnt.setAttribute("cy", Y); pnt.setAttribute("opacity", "1");
+      let txt = "<b>" + ddmm(atual[i].d) + "</b>" + opts.fmt(atual[i].v);
+      if (comparar && anterior && anterior[i] != null) txt += '<i>anterior: ' + opts.fmt(anterior[i].v) + "</i>";
+      tip.innerHTML = txt;
+      tip.hidden = false;
+      const tw = tip.offsetWidth;
+      let esq = X - tw / 2;
+      esq = Math.max(4, Math.min(W - tw - 4, esq));
+      tip.style.left = esq + "px";
+      tip.style.top = Math.max(2, Y - tip.offsetHeight - 12) + "px";
+    }
+    function sair() { tip.hidden = true; guia.setAttribute("opacity", "0"); pnt.setAttribute("opacity", "0"); }
+    areaEl.addEventListener("pointermove", mover);
+    areaEl.addEventListener("pointerdown", mover);
+    areaEl.addEventListener("pointerleave", sair);
   }
 
   function renderGraficos() {
@@ -333,50 +577,66 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     const anterior = janela(periodo, 1);
     const serieDe = (fatia, fn) => fatia.map((x) => ({ d: x.d, v: fn(x) }));
     const rKey = D.resultado.chave;
-    linha($("#g1"), serieDe(atual, (x) => x[rKey] || 0), serieDe(anterior, (x) => x[rKey] || 0), { titulo: D.resultado.nome + " por dia", cor: "#F5B113", fmt: (v) => brInt(v) });
-    linha($("#g2"), serieDe(atual, (x) => x.g), serieDe(anterior, (x) => x.g), { titulo: "Investimento por dia", cor: "#ABA8A2", fmt: (v) => "R$ " + br(v) });
-    linha($("#g3"), serieDe(atual, (x) => (x[rKey] > 0 ? x.g / x[rKey] : 0)), serieDe(anterior, (x) => (x[rKey] > 0 ? x.g / x[rKey] : 0)), { titulo: "Custo por " + D.resultado.nome.toLowerCase().replace(/s$/, "") + " por dia", cor: "#46C08B", fmt: (v) => (v > 0 ? "R$ " + br(v) : "—") });
+    grafico($("#g1"), serieDe(atual, (x) => x[rKey] || 0), serieDe(anterior, (x) => x[rKey] || 0), { titulo: D.resultado.nome + " por dia", cor: "#F5B113", fmt: (v) => brInt(v) });
+    grafico($("#g2"), serieDe(atual, (x) => x.g), serieDe(anterior, (x) => x.g), { titulo: "Investimento por dia", cor: "#9b9ba6", fmt: (v) => "R$ " + br(v) });
+    grafico($("#g3"), serieDe(atual, (x) => (x[rKey] > 0 ? x.g / x[rKey] : 0)), serieDe(anterior, (x) => (x[rKey] > 0 ? x.g / x[rKey] : 0)), { titulo: "Custo por " + D.resultado.nome.toLowerCase().replace(/s$/, "") + " por dia", cor: "#46C08B", fmt: (v) => (v > 0 ? "R$ " + br(v) : "—") });
     const temVendas = D.serie.some((x) => x.val > 0);
-    if (temVendas) {
-      linha($("#g4"), serieDe(atual, (x) => x.val), serieDe(anterior, (x) => x.val), { titulo: "Vendas (R$) por dia", cor: "#46C08B", fmt: (v) => "R$ " + br(v) });
-    } else {
-      linha($("#g4"), serieDe(atual, (x) => (x.imp > 0 ? (x.clk / x.imp) * 100 : 0)), serieDe(anterior, (x) => (x.imp > 0 ? (x.clk / x.imp) * 100 : 0)), { titulo: "CTR por dia", cor: "#F08A6C", fmt: (v) => v.toFixed(2) + "%" });
-    }
-    // seguidores: barras semanais (coleta é semanal)
+    if (temVendas) grafico($("#g4"), serieDe(atual, (x) => x.val), serieDe(anterior, (x) => x.val), { titulo: "Vendas (R$) por dia", cor: "#46C08B", fmt: (v) => "R$ " + br(v) });
+    else grafico($("#g4"), serieDe(atual, (x) => (x.imp > 0 ? (x.clk / x.imp) * 100 : 0)), serieDe(anterior, (x) => (x.imp > 0 ? (x.clk / x.imp) * 100 : 0)), { titulo: "CTR por dia", cor: "#F08A6C", fmt: (v) => v.toFixed(2) + "%" });
+    renderSeguidores();
+  }
+
+  function renderSeguidores() {
     const seg = D.seguidores || [];
     const alvo = $("#gseg");
-    if (!seg.length) { alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span></div><p class="vazio">A primeira coleta semanal ainda vai alimentar este gráfico.</p>'; }
-    else {
-      const W = 560, H = 150, P = { t: 16, r: 10, b: 26, l: 10 };
-      const max = Math.max.apply(null, seg.map((x) => x.seguidores)) * 1.15 || 1;
-      const iw = W - P.l - P.r, ih = H - P.t - P.b;
-      const bw = Math.min(46, (iw / seg.length) * 0.55);
-      let s = '<svg viewBox="0 0 ' + W + " " + H + '">';
-      seg.forEach((x, i) => {
-        const cx = P.l + ((i + 0.5) / seg.length) * iw;
-        const h = (x.seguidores / max) * ih;
-        s += '<rect x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="4" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.45) + '"><title>' + x.until + ": " + x.seguidores + "</title></rect>";
-        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 5).toFixed(1) + '" text-anchor="middle" font-size="10" fill="#ABA8A2" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
-        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + x.until.slice(8, 10) + "/" + x.until.slice(5, 7) + "</text>";
-      });
-      s += "</svg>";
-      const ult = seg[seg.length - 1];
-      alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div>' + s;
+    if (!seg.length) {
+      alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span></div><p class="vazio">A primeira coleta semanal ainda vai alimentar este gráfico.</p>';
+      return;
     }
+    const W = Math.max(240, alvo.clientWidth - 34), H = 170, P = { t: 22, r: 8, b: 26, l: 8 };
+    const iw = W - P.l - P.r, ih = H - P.t - P.b;
+    const max = Math.max.apply(null, seg.map((x) => x.seguidores)) * 1.15 || 1;
+    const bw = Math.min(52, (iw / seg.length) * 0.55);
+    const mostraRotulo = iw / seg.length > 34;
+    let s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '">';
+    seg.forEach((x, i) => {
+      const cx = P.l + ((i + 0.5) / seg.length) * iw;
+      const h = Math.max(2, (x.seguidores / max) * ih);
+      s += '<rect x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="4" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.42) + '"><title>semana até ' + ddmm(x.until) + ": " + brInt(x.seguidores) + " seguidores</title></rect>";
+      if (mostraRotulo || i === seg.length - 1) {
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 6).toFixed(1) + '" text-anchor="middle" font-size="10.5" fill="#ABA8A2" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + ddmm(x.until) + "</text>";
+      }
+    });
+    s += "</svg>";
+    const ult = seg[seg.length - 1];
+    alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div><div class="g-area">' + s + "</div>";
   }
 
   function renderCriativos() {
     const usa30 = periodo > 7;
+    const rot = usa30 ? "últimos 30 dias" : "últimos 7 dias";
     $("#cria7").style.display = usa30 ? "none" : "";
     $("#cria30").style.display = usa30 ? "" : "none";
-    $("#cria-rot").textContent = usa30 ? "top criativos · últimos 30 dias" : "top criativos · últimos 7 dias";
+    $("#cria-rot").textContent = rot;
+    const p7 = $("#pior7"), p30 = $("#pior30");
+    if (p7 && p30) {
+      p7.style.display = usa30 ? "none" : "";
+      p30.style.display = usa30 ? "" : "none";
+      $("#pior-rot").textContent = rot;
+    }
+    const r7 = $("#res7"), r30 = $("#res30");
+    if (r7 && r30) {
+      r7.style.display = usa30 ? "none" : "";
+      r30.style.display = usa30 ? "" : "none";
+    }
   }
 
   function render() {
     $$("#chips button[data-p]").forEach((b) => b.classList.toggle("on", parseInt(b.dataset.p, 10) === periodo));
     $("#chip-comp").classList.toggle("on", comparar);
     const rot = periodo === 1 ? "ontem" : "últimos " + periodo + " dias";
-    $("#per-rot").textContent = rot + (comparar ? " · comparando com os " + periodo + " dias anteriores (linha tracejada)" : "");
+    $("#per-rot").textContent = rot + (comparar ? " · tracejado = período anterior" : "");
     renderKpis();
     renderGraficos();
     renderCriativos();
@@ -385,9 +645,10 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   $$("#chips button[data-p]").forEach((b) => b.addEventListener("click", () => { periodo = parseInt(b.dataset.p, 10); render(); }));
   $("#chip-comp").addEventListener("click", () => { comparar = !comparar; render(); });
 
-  // revelação ao rolar
+  let rid = null;
+  window.addEventListener("resize", () => { clearTimeout(rid); rid = setTimeout(renderGraficos, 160); });
+
   const revs = $$(".rev");
-  const mReduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!("IntersectionObserver" in window) || mReduz) revs.forEach((el) => el.classList.add("in"));
   else {
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
