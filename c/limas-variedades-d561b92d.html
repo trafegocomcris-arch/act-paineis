@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LIMAS VARIEDADES · Painel ACT Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--fundo:#0B0C0E;--capa:#0a0a0a;--surf:#141416;--surf2:#1B1C1F;--linha:#1F1F23;
+  --texto:#F3F1EC;--sec:#ABA8A2;--ter:#77746F;--ambar:#F5B113;--verde:#46C08B;--coral:#F08A6C;--verm:#E5484D;
+  --tit:"Manrope","Segoe UI",Arial,sans-serif;--corpo:"Inter","Segoe UI",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--corpo);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ambar);text-decoration:none}a:hover{text-decoration:underline}
+.rot{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ter)}
+.capa{background:var(--capa);padding:clamp(30px,5vw,50px) 6vw 0}
+.marca{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--tit);font-weight:800;font-size:22px;letter-spacing:-.03em}
+.logo i{color:var(--ambar);font-style:normal}
+.kicker{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ambar)}
+h1{font-family:var(--tit);font-weight:800;font-size:clamp(26px,4.2vw,40px);letter-spacing:-.03em;line-height:1.1;margin:22px 0 26px}
+h1 em{font-style:normal;color:var(--ambar)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-top:1px solid var(--linha)}
+.meta>div{padding:14px 18px 20px;border-left:1px solid var(--linha)}
+.meta>div:first-child{border-left:none;padding-left:0}
+.meta span{display:block;margin-bottom:4px}
+.meta b{font-family:var(--tit);font-weight:700;font-size:14px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 6vw 90px}
+.rev{opacity:0;transform:translateY(12px);transition:opacity .55s ease var(--d,0ms),transform .55s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.rev.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+footer{border-top:1px solid var(--linha);margin-top:64px;padding:20px 0 0;font-size:12px;color:var(--ter)}
+footer b{color:var(--ambar);font-weight:600}
+
+.chips{position:sticky;top:0;z-index:30;background:rgba(10,10,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--linha);display:flex;gap:8px;align-items:center;padding:10px 6vw;flex-wrap:wrap}
+.chips button{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sec);background:none;border:1px solid var(--linha);border-radius:20px;padding:7px 14px;cursor:pointer;transition:all .2s}
+.chips button:hover{border-color:var(--ambar);color:var(--ambar)}
+.chips button.on{background:var(--ambar);border-color:var(--ambar);color:#0a0a0a}
+.chips .sep{width:1px;height:20px;background:var(--linha)}
+#per-rot{font-size:11.5px;color:var(--ter);margin-left:auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:14px;overflow:hidden;margin-top:26px}
+.kpi{background:var(--surf);padding:16px 18px}
+.kpi b{font-family:var(--tit);font-weight:800;font-size:clamp(20px,2.4vw,26px);display:block;line-height:1.1;letter-spacing:-.02em;margin-top:4px}
+.kpi small{display:block;font-size:11px;color:var(--sec);margin-top:2px}
+.delta{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:20px;margin-top:7px}
+.delta.bom{background:rgba(70,192,139,.12);color:var(--verde)}
+.delta.ruim{background:rgba(229,72,77,.12);color:var(--verm)}
+.delta.neutro{background:var(--surf2);color:var(--ter)}
+.graficos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:12px}
+.graf{background:var(--surf);border:1px solid var(--linha);border-radius:14px;padding:16px 16px 10px;min-width:0}
+.graf svg{width:100%;height:auto;display:block}
+.g-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.g-h b{font-family:var(--tit);font-size:16px}
+.g-h small{font-size:10px;color:var(--ter);font-weight:400}
+.g-x{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--ter);padding:4px 2px 2px}
+.tra{stroke-dasharray:1;stroke-dashoffset:1;animation:tracar 1.1s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes tracar{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){.tra{animation:none;stroke-dashoffset:0}}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin:44px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--linha)}
+.sec-h h2{font-family:var(--tit);font-weight:800;font-size:19px;letter-spacing:-.02em;margin:0}
+.card{display:flex;gap:16px;background:var(--surf);border:1px solid var(--linha);border-radius:14px;padding:15px;margin-bottom:11px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
+.card[data-st=vencedor]::before{background:var(--verde)}.card[data-st=medio]::before{background:var(--ambar)}
+.card[data-st=fatigado]::before{background:var(--coral)}.card[data-st=pausar]::before{background:var(--verm)}
+.card:hover{transform:translateY(-2px);border-color:#2c2c31}
+.foto{flex:0 0 110px}
+.foto img{width:110px;height:110px;object-fit:cover;border-radius:10px;display:block;background:var(--surf2)}
+.semfoto{width:110px;height:110px;border-radius:10px;background:var(--surf2);color:var(--ter);font-size:10px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.info{flex:1;min-width:0}
+.info header{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.info h3{font-family:var(--tit);font-weight:700;font-size:14px;margin:0}
+.pill{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;border:1px solid}
+.pill.vencedor{color:var(--verde);border-color:rgba(70,192,139,.4);background:rgba(70,192,139,.08)}
+.pill.medio{color:var(--ambar);border-color:rgba(245,177,19,.4);background:rgba(245,177,19,.08)}
+.pill.fatigado{color:var(--coral);border-color:rgba(240,138,108,.4);background:rgba(240,138,108,.08)}
+.pill.pausar{color:var(--verm);border-color:rgba(229,72,77,.4);background:rgba(229,72,77,.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:9px 16px;padding:10px 0;border-top:1px solid var(--linha)}
+.m span{display:block;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ter);margin-bottom:1px}
+.m b{font-family:var(--tit);font-weight:700;font-size:14.5px}
+.m small{display:block;font-size:10.5px;color:var(--sec)}
+.plano{background:rgba(245,177,19,.06);border-left:2px solid var(--ambar);border-radius:0 8px 8px 0;padding:8px 12px;font-size:13px}
+.plano span{display:block;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);margin-bottom:2px}
+.bloco{border:1px solid var(--linha);border-radius:14px;background:var(--surf);padding:17px 19px;margin-top:12px}
+.b-h{display:flex;gap:10px;align-items:center;margin-bottom:7px}
+.b-h i{font-style:normal;font-size:13px}
+.b-h b{font-family:var(--tit);font-weight:700;font-size:14px}
+.bloco p,.bloco li{font-size:13.5px;color:var(--sec)}
+.bloco p{margin:0}.bloco ol,.bloco ul{margin:4px 0 0;padding-left:20px}
+.bloco li{margin-bottom:6px}.bloco li::marker{color:var(--ambar)}
+.bloco .sub{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--texto);margin-top:13px}
+.bloco .sub em{font-style:normal;color:var(--ter);text-transform:none;letter-spacing:0}
+.bloco.porque .b-h i{color:var(--verde)}.bloco.ideias .b-h i{color:var(--ambar)}.bloco.nicho .b-h i{color:var(--coral)}
+.conc li b{color:var(--texto)}
+.vazio{color:var(--ter);font-size:13px;padding:12px 0}
+@media (max-width:600px){.card{flex-direction:column}.foto,.foto img,.semfoto{width:100%;flex-basis:auto}.foto img,.semfoto{height:170px}}
+@media print{body,.capa{background:#fff;color:#111}.chips{display:none}.card,.bloco,.graf,.kpi{background:#fff;border-color:#ddd}.rev{opacity:1;transform:none}}
+</style></head><body>
+
+<div class="capa">
+  <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painel de Performance</div></div>
+  <h1>LIMAS VARIEDADES</h1>
+  <div class="meta">
+    <div><span class="rot">Atualizado em</span><b>26/08/2026 13:18</b></div>
+    <div><span class="rot">Resultado principal</span><b>Conversas</b></div>
+    <div><span class="rot">Nicho</span><b>personalização e brindes</b></div>
+    <div><span class="rot">Atualização</span><b>todo dia de manhã</b></div>
+  </div>
+  <div style="height:26px"></div>
+</div>
+
+<div class="chips" id="chips">
+  <button data-p="1">1 dia</button>
+  <button data-p="3">3 dias</button>
+  <button data-p="7" class="on">7 dias</button>
+  <button data-p="14">14 dias</button>
+  <button data-p="30">30 dias</button>
+  <span class="sep"></span>
+  <button id="chip-comp" class="on">comparar</button>
+  <span id="per-rot"></span>
+</div>
+
+<div class="wrap">
+  <div class="kpis rev in" id="kpis"></div>
+
+  <div class="graficos rev in">
+    <div class="graf" id="g1"></div>
+    <div class="graf" id="g2"></div>
+    <div class="graf" id="g3"></div>
+    <div class="graf" id="g4"></div>
+  </div>
+  <div class="graficos rev"><div class="graf" id="gseg" style="grid-column:1/-1"></div></div>
+
+  <div class="sec-h rev"><h2>Criativos em destaque</h2><span class="rot" id="cria-rot"></span></div>
+  <div class="rev"><div id="cria7">
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIer6ZL9kSKUEt9dpOVuSdR3s_ZzvW9ei4Xxi7BAcv-8AdU7i0hLSVRLvlRyEr8Wx9awi9STBlkdh2JQXswoxSTNGEphHpLINUapx97BVZuaibMOSZxRI03C3wEBlR7kaA4gh7DzPMXe-xNIlWpagHH" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 05 - 22.04 - ATACADO v3 - A PARTIR DE 26 reais</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>38</b><small>R$ 4,19 cada</small></div><div class="m"><span>Seguidores</span><b>21</b><small>R$ 7,59 cada</small></div><div class="m"><span>Cliques</span><b>94</b><small>R$ 1,69 cada</small></div><div class="m"><span>CTR</span><b>2.67%</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Gasto</span><b>R$ 159,30</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQK1dILe0IFuzacccpPXwJBrIbQ8_2vtFX7xE-qq7by_Lz9nwRfDZSytQWENEC7KWsAr83eMv3ii0xuyXCgpt0gDFrazgXaFKCBYc6R0oqt2-1J6C4L_3I-FRCMmRvI9wNBI8RNiseruiqeFjAmSJ5yo" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 06 - 22.05 - Apresentação GERAL Limas</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>25</b><small>R$ 3,71 cada</small></div><div class="m"><span>Seguidores</span><b>10</b><small>R$ 9,28 cada</small></div><div class="m"><span>Cliques</span><b>65</b><small>R$ 1,43 cada</small></div><div class="m"><span>CTR</span><b>2.81%</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Gasto</span><b>R$ 92,82</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLMypc4sxKWyo5jtjNza8wNIjKYzBPO6j20QdN-G0wSl1j6xJZdScEVulJ9cRdgtfWYTvZh8zCDNHWOo_M5s8gusfSrDTKrE7hDKOnSgrdeUoDRKPXnmsnsIbIGcBKveaJZ-rtIRW488RDOiePdL6wf" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 15 - 09.07 - VAREJO - COPO PERFEITO DIA A DIA</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>34</b><small>R$ 2,65 cada</small></div><div class="m"><span>Seguidores</span><b>10</b><small>R$ 9,01 cada</small></div><div class="m"><span>Cliques</span><b>58</b><small>R$ 1,55 cada</small></div><div class="m"><span>CTR</span><b>2.49%</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Gasto</span><b>R$ 90,11</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLMypc4sxKWyo5jtjNza8wNIjKYzBPO6j20QdN-G0wSl1j6xJZdScEVulJ9cRdgtfWYTvZh8zCDNHWOo_M5s8gusfSrDTKrE7hDKOnSgrdeUoDRKPXnmsnsIbIGcBKveaJZ-rtIRW488RDOiePdL6wf" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 15 - 09.07 - VAREJO - COPO PERFEITO DIA A DIA</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>28</b><small>R$ 3,15 cada</small></div><div class="m"><span>Seguidores</span><b>3</b><small>R$ 29,41 cada</small></div><div class="m"><span>Cliques</span><b>52</b><small>R$ 1,70 cada</small></div><div class="m"><span>CTR</span><b>2.18%</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Gasto</span><b>R$ 88,24</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQK1dILe0IFuzacccpPXwJBrIbQ8_2vtFX7xE-qq7by_Lz9nwRfDZSytQWENEC7KWsAr83eMv3ii0xuyXCgpt0gDFrazgXaFKCBYc6R0oqt2-1J6C4L_3I-FRCMmRvI9wNBI8RNiseruiqeFjAmSJ5yo" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 06 - 22.05 - Apresentação GERAL Limas — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>21</b><small>R$ 3,43 cada</small></div><div class="m"><span>Seguidores</span><b>7</b><small>R$ 10,28 cada</small></div><div class="m"><span>Cliques</span><b>51</b><small>R$ 1,41 cada</small></div><div class="m"><span>CTR</span><b>2.57%</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Gasto</span><b>R$ 71,97</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+     <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;AD 05 - 22.04 - ATACADO v3 - A PARTIR DE 26 reais&quot; está na frente porque a frequência de 1.6 mostra que ainda tem muito público novo pra alcançar antes de saturar; além disso, a taxa de clique no link mostra que a oferta está clara, não é só curiosidade.
+
+Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div><div id="cria30">
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKw-89F7C4h-zuJCSuEwLoVyr01VJm4w9teAz_a_c25Qlqit3KPYfuDKDGzv3CnIwUC1rxF_1Edqvo5N6b4RMYIPS9P011sU_cStI-__p7nDOinR1wY2ye4TzyfjFCU_VG0ajPxOVrfymZTr3faJVBs" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 02 - ATACADO v2 - A PARTIR DE 10 PÇS — Cópia — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>98</b><small>R$ 2,88 cada</small></div><div class="m"><span>Cliques</span><b>202</b><small>R$ 1,40 cada</small></div><div class="m"><span>CTR</span><b>2.93%</b></div><div class="m"><span>Freq</span><b>1.8</b></div><div class="m"><span>Gasto</span><b>R$ 282,49</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJ_NO4WfvM4DE4u_uS7nw7utzPAlRUY5DJgqTEE5aNJP043NXcPastZ83bRx330qWUYKTQhN6cqRNsqr52_uCVH1qD2aRs9SwZBZYGS3jNVLw8Hy-T4XywWRCoXXoU_YWjxRynwy1M4zOJzpJpIOIR6" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 15 - 09.07 - VAREJO - COPO PERFEITO DIA A DIA</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>84</b><small>R$ 2,27 cada</small></div><div class="m"><span>Seguidores</span><b>3</b><small>R$ 63,53 cada</small></div><div class="m"><span>Cliques</span><b>144</b><small>R$ 1,32 cada</small></div><div class="m"><span>CTR</span><b>2.45%</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Gasto</span><b>R$ 190,60</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQITeBtY7M0WQMoZdzD7Y2GRAin9CYrIE0UjXMgZgGRuRVKXcAI5GwEcSdSb2PCngmOcjZhviM0ZeU4ECvLtY_KRXDBHrt1pCPp2Vpx1NGXVW_-AFOUNqhbNFRjLAGNWzr2y6gRLombNsqg4A9FVix9_" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 05 - 22.04 - ATACADO v3 - A PARTIR DE 26 reais</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>38</b><small>R$ 4,24 cada</small></div><div class="m"><span>Seguidores</span><b>21</b><small>R$ 7,68 cada</small></div><div class="m"><span>Cliques</span><b>95</b><small>R$ 1,70 cada</small></div><div class="m"><span>CTR</span><b>2.69%</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Gasto</span><b>R$ 161,26</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJ_NO4WfvM4DE4u_uS7nw7utzPAlRUY5DJgqTEE5aNJP043NXcPastZ83bRx330qWUYKTQhN6cqRNsqr52_uCVH1qD2aRs9SwZBZYGS3jNVLw8Hy-T4XywWRCoXXoU_YWjxRynwy1M4zOJzpJpIOIR6" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 15 - 09.07 - VAREJO - COPO PERFEITO DIA A DIA</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>61</b><small>R$ 2,62 cada</small></div><div class="m"><span>Seguidores</span><b>10</b><small>R$ 15,97 cada</small></div><div class="m"><span>Cliques</span><b>117</b><small>R$ 1,37 cada</small></div><div class="m"><span>CTR</span><b>2.64%</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Gasto</span><b>R$ 159,73</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+  <article class="card" data-st="vencedor">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQITeBtY7M0WQMoZdzD7Y2GRAin9CYrIE0UjXMgZgGRuRVKXcAI5GwEcSdSb2PCngmOcjZhviM0ZeU4ECvLtY_KRXDBHrt1pCPp2Vpx1NGXVW_-AFOUNqhbNFRjLAGNWzr2y6gRLombNsqg4A9FVix9_" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 05 - 22.04 - ATACADO v3 - A PARTIR DE 26 reais</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>44</b><small>R$ 3,34 cada</small></div><div class="m"><span>Cliques</span><b>90</b><small>R$ 1,63 cada</small></div><div class="m"><span>CTR</span><b>3.38%</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Gasto</span><b>R$ 146,86</b></div></div>
+      <div class="plano"><span>Plano</span>Escalar orçamento em 20 a 30%</div>
+    </div>
+  </article>
+     <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;AD 02 - ATACADO v2 - A PARTIR DE 10 PÇS — Cópia — Cópia&quot; está na frente porque cada resultado sai 48% mais barato que nos outros criativos; além disso, a frequência de 1.8 mostra que ainda tem muito público novo pra alcançar antes de saturar; além disso, a taxa de clique no link mostra que a oferta está clara, não é só curiosidade.
+
+Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div></div>
+
+  <div class="bloco ideias rev"><div class="b-h"><i>◆</i><b>Ideias pra testar esta semana</b></div><ol><li>Vídeo do processo: a garrafa lisa entrando na máquina e saindo personalizada em 15s, com o preço unitário na tela.</li><li>Criativo de ocasião: kit de copos personalizados pra aniversário, formatura e empresa lado a lado, com CTA de orçamento no WhatsApp.</li><li>Reels de encomenda real sendo embalada com o nome do cliente aparecendo, fechando com 'faz a sua a partir de X unidades'.</li></ol></div>
+  <div class="bloco nicho rev"><div class="b-h"><i>▲</i><b>O que o nicho está rodando · personalização e brindes</b></div>
+        <p class="sub">Tendências da semana</p><ul><li>Frete grátis por estado como gancho regional ('Frete Grátis Para o Paraná') — a personalização é dada como certa, a disputa é na entrega.</li><li>Os grandes do nicho (Gocase) rodam dezenas de variações de catálogo por semana, tratando cada estampa como um anúncio próprio.</li><li>Brindes corporativos anunciam separado do presente pessoal: quem fala com empresa usa outro criativo de quem fala com consumidor final.</li></ul>
+        <p class="sub">Concorrentes no ar <em>· Biblioteca do Meta</em></p><ul class="conc"><li><b>Gocase Brasil</b> — Gigante do nicho rodando dezenas de variações de catálogo simultâneas, cada estampa tratada como um criativo próprio. <a href="https://www.facebook.com/ads/library/?id=1793418981679842" target="_blank">ver anúncio ↗</a></li><li><b>Gift Web Personalizados</b> — Usa frete grátis por estado como gancho regional, com variações separadas pra Paraná e São Paulo. <a href="https://www.facebook.com/ads/library/?id=2016462572333227" target="_blank">ver anúncio ↗</a></li><li><b>Toppiabrindes</b> — Foca em brindes corporativos com criativo próprio pra empresas, separado do presente pessoal. <a href="https://www.facebook.com/ads/library/?id=2500278887117515" target="_blank">ver anúncio ↗</a></li></ul>
+      </div>
+
+  <footer>Painel gerado automaticamente pela <b>ACT Digital</b> · métricas direto do Meta Ads, atualizadas todo dia de manhã · seguidores coletados semanalmente · link exclusivo deste cliente, não compartilhe.</footer>
+</div>
+
+<script>window.ACT={"nome":"LIMAS VARIEDADES","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-27","g":0,"imp":0,"cl":0,"clk":0,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-28","g":8.129999999999999,"imp":488,"cl":3,"clk":7,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":94.52999999999999,"imp":6120,"cl":56,"clk":156,"conv":27,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":79.32,"imp":6750,"cl":57,"clk":164,"conv":37,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":78.32,"imp":7290,"cl":60,"clk":178,"conv":30,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":56.4,"imp":5024,"cl":48,"clk":143,"conv":26,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":43.78,"imp":4025,"cl":36,"clk":116,"conv":22,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":56.379999999999995,"imp":5229,"cl":47,"clk":135,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":46.970000000000006,"imp":4582,"cl":39,"clk":88,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":68.18,"imp":6190,"cl":45,"clk":116,"conv":21,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":9.11,"imp":831,"cl":4,"clk":16,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":43.95,"imp":4125,"cl":23,"clk":65,"conv":10,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":86.05,"imp":7246,"cl":64,"clk":161,"conv":27,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":80.04,"imp":6545,"cl":63,"clk":148,"conv":32,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":80.74,"imp":7283,"cl":49,"clk":122,"conv":22,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":50.43000000000001,"imp":4524,"cl":46,"clk":94,"conv":18,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":65.03,"imp":5343,"cl":39,"clk":105,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-14","g":73.52,"imp":7527,"cl":41,"clk":111,"conv":21,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":9.57,"imp":869,"cl":7,"clk":19,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-16","g":0,"imp":0,"cl":0,"clk":0,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-17","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":64.71,"imp":5271,"cl":43,"clk":118,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-21","g":85.13,"imp":6700,"cl":61,"clk":164,"conv":33,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-22","g":61.53,"imp":4704,"cl":53,"clk":130,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-23","g":68.99,"imp":4957,"cl":42,"clk":106,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-24","g":61.16,"imp":4250,"cl":37,"clk":105,"conv":19,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":73.19,"imp":5386,"cl":44,"clk":118,"conv":19,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":55.97,"imp":4132,"cl":41,"clk":90,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":5.83,"imp":354,"cl":4,"clk":12,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":24.66,"imp":2021,"cl":9,"clk":40,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":100.34,"imp":6362,"cl":66,"clk":178,"conv":35,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-30","g":79.04,"imp":5153,"cl":72,"clk":175,"conv":37,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-31","g":73.99000000000001,"imp":5083,"cl":45,"clk":123,"conv":22,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-01","g":77.02,"imp":5864,"cl":58,"clk":139,"conv":26,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":55.63999999999999,"imp":4064,"cl":46,"clk":111,"conv":23,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":57.66,"imp":4260,"cl":46,"clk":122,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-04","g":0,"imp":0,"cl":0,"clk":0,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-06","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-07","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":98.05,"imp":6542,"cl":49,"clk":110,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":61.16000000000001,"imp":3991,"cl":30,"clk":84,"conv":11,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":64.87,"imp":2846,"cl":32,"clk":73,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":78.2,"imp":4008,"cl":46,"clk":108,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-12","g":66.62,"imp":5274,"cl":53,"clk":133,"conv":27,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-13","g":61.14999999999999,"imp":3938,"cl":43,"clk":111,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":42.97,"imp":3035,"cl":29,"clk":94,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-15","g":9.15,"imp":638,"cl":5,"clk":19,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-18","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":28.089999999999996,"imp":1850,"cl":13,"clk":38,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":104.06,"imp":6202,"cl":76,"clk":181,"conv":42,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":97.79,"imp":6389,"cl":61,"clk":149,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":99.09,"imp":6791,"cl":63,"clk":171,"conv":27,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":47.05,"imp":3252,"cl":32,"clk":79,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":84.36000000000001,"imp":5495,"cl":47,"clk":131,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":81.15,"imp":4743,"cl":51,"clk":135,"conv":22,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":252}]};(function scriptCliente() {
+  const D = window.ACT;
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  const br = (n) => (parseFloat(n) || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const brInt = (n) => Math.round(parseFloat(n) || 0).toLocaleString("pt-BR");
+
+  let periodo = 7;
+  let comparar = true;
+
+  function janela(p, desloc) {
+    // desloc 0 = atual, 1 = período anterior
+    const fim = D.serie.length - p * desloc;
+    return D.serie.slice(Math.max(0, fim - p), fim);
+  }
+  function soma(fatia) {
+    const t = { g: 0, imp: 0, cl: 0, clk: 0, conv: 0, comp: 0, val: 0, leads: 0, vis: 0 };
+    fatia.forEach((x) => { for (const k in t) t[k] += x[k] || 0; });
+    return t;
+  }
+  function kpisDe(t) {
+    const r = t[D.resultado.chave] || 0;
+    return {
+      gasto: t.g,
+      resultado: r,
+      custo: r > 0 ? t.g / r : 0,
+      cliques: t.cl,
+      ctr: t.imp > 0 ? (t.clk / t.imp) * 100 : 0,
+      cpm: t.imp > 0 ? (t.g / t.imp) * 1000 : 0,
+      vendas: t.val,
+      roas: t.g > 0 && t.val > 0 ? t.val / t.g : 0,
+    };
+  }
+  function delta(atual, anterior, invertido) {
+    if (!comparar || !anterior || !isFinite(anterior) || anterior === 0 || !isFinite(atual)) return "";
+    const d = (atual - anterior) / anterior;
+    const pct = Math.round(Math.abs(d) * 100);
+    if (pct < 1) return '<span class="delta neutro">estável</span>';
+    const bom = invertido ? d < 0 : d > 0;
+    return '<span class="delta ' + (bom ? "bom" : "ruim") + '">' + (d > 0 ? "▲" : "▼") + " " + pct + "%</span>";
+  }
+
+  function kpi(rotulo, valor, extra, del) {
+    return '<div class="kpi"><span class="rot">' + rotulo + "</span><b>" + valor + "</b>" +
+      (extra ? '<small>' + extra + "</small>" : "") + (del || "") + "</div>";
+  }
+
+  function renderKpis() {
+    const atual = kpisDe(soma(janela(periodo, 0)));
+    const ant = kpisDe(soma(janela(periodo, 1)));
+    let h = "";
+    h += kpi(D.resultado.nome, brInt(atual.resultado), atual.custo > 0 ? "R$ " + br(atual.custo) + " cada" : "", delta(atual.resultado, ant.resultado, false));
+    h += kpi("Custo por " + D.resultado.nome.toLowerCase().replace(/s$/, ""), atual.custo > 0 ? "R$ " + br(atual.custo) : "—", "", delta(atual.custo, ant.custo, true));
+    if (atual.vendas > 0 || ant.vendas > 0) {
+      h += kpi("Vendas", "R$ " + br(atual.vendas), atual.roas > 0 ? "ROAS " + br(atual.roas) + "x" : "", delta(atual.vendas, ant.vendas, false));
+    }
+    h += kpi("Investimento", "R$ " + br(atual.gasto), "", delta(atual.gasto, ant.gasto, false));
+    h += kpi("Cliques no link", brInt(atual.cliques), "", delta(atual.cliques, ant.cliques, false));
+    h += kpi("CTR", atual.ctr.toFixed(2) + "%", "", delta(atual.ctr, ant.ctr, false));
+    h += kpi("CPM", "R$ " + br(atual.cpm), "", delta(atual.cpm, ant.cpm, true));
+    $("#kpis").innerHTML = h;
+  }
+
+  /* ---------- gráficos SVG ---------- */
+  function linha(el, atual, anterior, opts) {
+    const W = 560, H = 170, P = { t: 14, r: 10, b: 24, l: 10 };
+    const todos = comparar && anterior ? atual.concat(anterior) : atual.slice();
+    let max = Math.max.apply(null, todos.map((p) => p.v));
+    if (!isFinite(max) || max <= 0) max = 1;
+    max *= 1.12;
+    const iw = W - P.l - P.r, ih = H - P.t - P.b;
+    const px = (i, n) => P.l + (n <= 1 ? iw / 2 : (i / (n - 1)) * iw);
+    const py = (v) => P.t + ih - (v / max) * ih;
+    const caminho = (pts) => pts.map((p, i) => (i ? "L" : "M") + px(i, pts.length).toFixed(1) + "," + py(p.v).toFixed(1)).join(" ");
+
+    let s = '<svg viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none">';
+    for (let g = 1; g <= 3; g++) {
+      const y = P.t + (ih / 4) * g;
+      s += '<line x1="' + P.l + '" y1="' + y + '" x2="' + (W - P.r) + '" y2="' + y + '" stroke="#1F1F23" stroke-width="1"/>';
+    }
+    if (comparar && anterior && anterior.length) {
+      s += '<path d="' + caminho(anterior) + '" fill="none" stroke="#4a4a50" stroke-width="1.6" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/>';
+    }
+    if (atual.length) {
+      const area = caminho(atual) + " L" + px(atual.length - 1, atual.length).toFixed(1) + "," + (P.t + ih) + " L" + px(0, atual.length).toFixed(1) + "," + (P.t + ih) + " Z";
+      s += '<path d="' + area + '" fill="' + opts.cor + '" opacity="0.10"/>';
+      s += '<path d="' + caminho(atual) + '" fill="none" stroke="' + opts.cor + '" stroke-width="2.2" stroke-linecap="round" vector-effect="non-scaling-stroke" pathLength="1" class="tra"/>';
+      const ult = atual[atual.length - 1];
+      s += '<circle cx="' + px(atual.length - 1, atual.length).toFixed(1) + '" cy="' + py(ult.v).toFixed(1) + '" r="3.4" fill="' + opts.cor + '"/>';
+    }
+    s += "</svg>";
+    const ini = atual.length ? atual[0].d.slice(8, 10) + "/" + atual[0].d.slice(5, 7) : "";
+    const fim = atual.length ? atual[atual.length - 1].d.slice(8, 10) + "/" + atual[atual.length - 1].d.slice(5, 7) : "";
+    const ultimo = atual.length ? atual[atual.length - 1].v : 0;
+    el.innerHTML =
+      '<div class="g-h"><span class="rot">' + opts.titulo + '</span><b style="color:' + opts.cor + '">' + opts.fmt(ultimo) + " <small>ontem</small></b></div>" +
+      s +
+      '<div class="g-x"><span>' + ini + "</span><span>" + fim + "</span></div>";
+  }
+
+  function renderGraficos() {
+    const atual = janela(periodo, 0);
+    const anterior = janela(periodo, 1);
+    const serieDe = (fatia, fn) => fatia.map((x) => ({ d: x.d, v: fn(x) }));
+    const rKey = D.resultado.chave;
+    linha($("#g1"), serieDe(atual, (x) => x[rKey] || 0), serieDe(anterior, (x) => x[rKey] || 0), { titulo: D.resultado.nome + " por dia", cor: "#F5B113", fmt: (v) => brInt(v) });
+    linha($("#g2"), serieDe(atual, (x) => x.g), serieDe(anterior, (x) => x.g), { titulo: "Investimento por dia", cor: "#ABA8A2", fmt: (v) => "R$ " + br(v) });
+    linha($("#g3"), serieDe(atual, (x) => (x[rKey] > 0 ? x.g / x[rKey] : 0)), serieDe(anterior, (x) => (x[rKey] > 0 ? x.g / x[rKey] : 0)), { titulo: "Custo por " + D.resultado.nome.toLowerCase().replace(/s$/, "") + " por dia", cor: "#46C08B", fmt: (v) => (v > 0 ? "R$ " + br(v) : "—") });
+    const temVendas = D.serie.some((x) => x.val > 0);
+    if (temVendas) {
+      linha($("#g4"), serieDe(atual, (x) => x.val), serieDe(anterior, (x) => x.val), { titulo: "Vendas (R$) por dia", cor: "#46C08B", fmt: (v) => "R$ " + br(v) });
+    } else {
+      linha($("#g4"), serieDe(atual, (x) => (x.imp > 0 ? (x.clk / x.imp) * 100 : 0)), serieDe(anterior, (x) => (x.imp > 0 ? (x.clk / x.imp) * 100 : 0)), { titulo: "CTR por dia", cor: "#F08A6C", fmt: (v) => v.toFixed(2) + "%" });
+    }
+    // seguidores: barras semanais (coleta é semanal)
+    const seg = D.seguidores || [];
+    const alvo = $("#gseg");
+    if (!seg.length) { alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span></div><p class="vazio">A primeira coleta semanal ainda vai alimentar este gráfico.</p>'; }
+    else {
+      const W = 560, H = 150, P = { t: 16, r: 10, b: 26, l: 10 };
+      const max = Math.max.apply(null, seg.map((x) => x.seguidores)) * 1.15 || 1;
+      const iw = W - P.l - P.r, ih = H - P.t - P.b;
+      const bw = Math.min(46, (iw / seg.length) * 0.55);
+      let s = '<svg viewBox="0 0 ' + W + " " + H + '">';
+      seg.forEach((x, i) => {
+        const cx = P.l + ((i + 0.5) / seg.length) * iw;
+        const h = (x.seguidores / max) * ih;
+        s += '<rect x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="4" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.45) + '"><title>' + x.until + ": " + x.seguidores + "</title></rect>";
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 5).toFixed(1) + '" text-anchor="middle" font-size="10" fill="#ABA8A2" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + x.until.slice(8, 10) + "/" + x.until.slice(5, 7) + "</text>";
+      });
+      s += "</svg>";
+      const ult = seg[seg.length - 1];
+      alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div>' + s;
+    }
+  }
+
+  function renderCriativos() {
+    const usa30 = periodo > 7;
+    $("#cria7").style.display = usa30 ? "none" : "";
+    $("#cria30").style.display = usa30 ? "" : "none";
+    $("#cria-rot").textContent = usa30 ? "top criativos · últimos 30 dias" : "top criativos · últimos 7 dias";
+  }
+
+  function render() {
+    $$("#chips button[data-p]").forEach((b) => b.classList.toggle("on", parseInt(b.dataset.p, 10) === periodo));
+    $("#chip-comp").classList.toggle("on", comparar);
+    const rot = periodo === 1 ? "ontem" : "últimos " + periodo + " dias";
+    $("#per-rot").textContent = rot + (comparar ? " · comparando com os " + periodo + " dias anteriores (linha tracejada)" : "");
+    renderKpis();
+    renderGraficos();
+    renderCriativos();
+  }
+
+  $$("#chips button[data-p]").forEach((b) => b.addEventListener("click", () => { periodo = parseInt(b.dataset.p, 10); render(); }));
+  $("#chip-comp").addEventListener("click", () => { comparar = !comparar; render(); });
+
+  // revelação ao rolar
+  const revs = $$(".rev");
+  const mReduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!("IntersectionObserver" in window) || mReduz) revs.forEach((el) => el.classList.add("in"));
+  else {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    revs.forEach((el) => io.observe(el));
+  }
+  window.addEventListener("beforeprint", () => revs.forEach((el) => el.classList.add("in")));
+  render();
+})();</script>
+</body></html>
