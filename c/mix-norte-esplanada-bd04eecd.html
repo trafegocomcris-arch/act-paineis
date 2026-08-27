@@ -13,7 +13,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--corpo);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--ambar);text-decoration:none}a:hover{text-decoration:underline}
 .rot{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ter)}
-.capa{background:var(--capa);padding:clamp(30px,5vw,50px) 6vw 0}
+.capa{background:radial-gradient(700px 320px at 88% -12%, rgba(245,177,19,.07), transparent 62%),var(--capa);padding:clamp(30px,5vw,50px) 6vw 0}
 .marca{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .logo{font-family:var(--tit);font-weight:800;font-size:22px;letter-spacing:-.03em}
 .logo i{color:var(--ambar);font-style:normal}
@@ -46,6 +46,23 @@ footer b{color:var(--ambar);font-weight:600}
 .delta.bom{background:rgba(70,192,139,.12);color:var(--verde)}
 .delta.ruim{background:rgba(229,72,77,.12);color:var(--verm)}
 .delta.neutro{background:var(--surf2);color:var(--ter)}
+@keyframes swapIn{from{opacity:.25;transform:translateY(7px)}to{opacity:1;transform:none}}
+.swap{animation:swapIn .38s cubic-bezier(.2,.7,.2,1)}
+.kpi{transition:transform .22s ease,border-color .22s ease}
+.kpi:hover{transform:translateY(-2px);border-color:rgba(245,177,19,.45)}
+.foto img{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.card:hover .foto img{transform:scale(1.045)}
+.chips button{transition:all .18s ease}
+.chips button:active{transform:scale(.94)}
+.sem-tab tbody tr{transition:background .18s ease}
+.sem-tab tbody tr:hover td:not(.atual){background:rgba(255,255,255,.025)}
+.sbar{animation:crescerBar .7s cubic-bezier(.2,.7,.2,1) both;transform-origin:bottom;transition:opacity .18s ease}
+@keyframes crescerBar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion: reduce){.sbar{animation:none}.swap{animation:none}}
+.g-pe{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 2px 4px}
+#bt-topo{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--linha);background:rgba(20,20,22,.9);backdrop-filter:blur(8px);color:var(--ambar);font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s ease;z-index:40}
+#bt-topo.ver{opacity:1;pointer-events:auto;transform:none}
+#bt-topo:hover{border-color:var(--ambar);transform:translateY(-2px)}
 .graf.semanas{margin-top:12px;padding-bottom:14px}
 .sem-rolagem{overflow-x:auto;scrollbar-width:thin}
 .sem-tab{width:100%;border-collapse:collapse;min-width:560px}
@@ -159,7 +176,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painel de Performance</div></div>
   <h1>MIX NORTE ESPLANADA</h1>
   <div class="meta">
-    <div><span class="rot">Atualizado em</span><b>27/08/2026 08:58</b></div>
+    <div><span class="rot">Atualizado em</span><b>27/08/2026 09:22</b></div>
     <div><span class="rot">Resultado principal</span><b>Conversas</b></div>
     <div><span class="rot">Nicho</span><b>açaí e alimentação</b></div>
     <div><span class="rot">Atualização</span><b>todo dia de manhã</b></div>
@@ -194,7 +211,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="sec-h rev"><h2>Os 5 melhores criativos</h2><span class="rot" id="cria-rot"></span><a class="bt-bib" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=1230683530119809" target="_blank">todos os anúncios ativos na Biblioteca ↗</a></div>
   <div class="rev"><div id="cria7">
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIFkM1zInwDjfq-5vS7_bjV37OXVn-ibJntAPwrFXMfncTskliQQNns48FUFl2XgOQhg9RjKYTzdPogCUHdyBH8wYUN8z5N7uspvJnL-8GNOAqDiUWJA61asMxbIJ_k7BVYuJ1PeGeFgWy5bH1QE__f" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJFc_vcjVmXd-jQUp1RSP88cU4KzvzlrAIFnVmEeDz8dnOAHmcl_mEInrhqVfN9UuflcE73ph0eqrJOe9_oNgaSkP8hO5quUrgqRsLH-5kBKQjGGCyfAxd5-lKDlGWBEFpzpvf-PT6b9OzFKaxrWgE2" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[23.07][AD03]DELIVERY][VIDEO]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>35</b><small>R$ 5,53 cada</small></div><div class="m"><span>Cliques</span><b>112</b><small>R$ 1,73 cada</small></div><div class="m"><span>CTR</span><b>0.91%</b></div><div class="m"><span>CPM</span><b>R$ 8,22</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>15.426</b></div><div class="m"><span>Gasto</span><b>R$ 193,42</b></div><div class="m"><span>Vídeos assistidos</span><b>639</b></div></div>
@@ -207,7 +224,7 @@ footer b{color:var(--ambar);font-weight:600}
   </article>
      </div><div id="cria30">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJ-hPPEMj5IoMptrjX-EBtu-zy_cAOKQtSjm-oZtQpO61WzLlMl1fLjRpJGJRDgSFWV379RGEeofmFwUi5MKg--xCqJnZHH0E587EZY_ZsKgiuI65H7imYB5ZPZe-qRTJnSIUqdLqgMHh_xGEzS5cPY" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIl7KS_wXoQj_DSKIK76JATSRLPE_W2Pw6CJM-NyWnMTFvnwly7PDX2Fi9_bmS0xUGSkW9xRVQwSnZ6uvwE7ApTiJTBd_Nesz0ND4Ts9gPMdMXGWsK7SLTPlDBgrXtQP-aToHP-SBPwM4buGqUsTgdA" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>[12.06][AD01]MELHOR AÇAÍ][VIDEO]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 5,46 cada</small></div><div class="m"><span>Cliques</span><b>5</b><small>R$ 1,09 cada</small></div><div class="m"><span>CTR</span><b>1.64%</b></div><div class="m"><span>CPM</span><b>R$ 11,21</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>457</b></div><div class="m"><span>Gasto</span><b>R$ 5,46</b></div><div class="m"><span>Vídeos assistidos</span><b>18</b></div></div>
@@ -219,7 +236,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJVjf-NFnX5fVi_kRNpBxvZeI1rwk3-H4nGGkphLgFnzwvCe470KSrd8dFmO06IyoUWzrZn3r2dN5_eQ8DpIN9HBhB0mRFoNm7jUn-UJ8cvsiygxO94EN7QSLv-eRg0YxgJiutQ4RjZwgG-I7e46ghF" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJ_GWPu_9ZSUr3agzrJF_IYMN6uieGq7DFAqrImP1fLXc4atj5enI5XJYLh-HjcWD-3BTwgG_YGQwKxP7cLiQypBDISWeD5hdl-p884vi1SCiu5XfL9p3_29YSx6VsGEsqVjmWAuYz6-S1J6cw81EZk" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[23.07][AD03]DELIVERY][VIDEO]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>171</b><small>R$ 4,47 cada</small></div><div class="m"><span>Cliques</span><b>502</b><small>R$ 1,52 cada</small></div><div class="m"><span>CTR</span><b>1.10%</b></div><div class="m"><span>CPM</span><b>R$ 9,04</b></div><div class="m"><span>Freq</span><b>2.3</b></div><div class="m"><span>Alcance</span><b>37.177</b></div><div class="m"><span>Gasto</span><b>R$ 764,91</b></div><div class="m"><span>Vídeos assistidos</span><b>2.909</b></div></div>
@@ -249,6 +266,8 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
 
   <footer>Painel gerado automaticamente pela <b>ACT Digital</b> · métricas direto do Meta Ads, atualizadas todo dia de manhã · seguidores coletados semanalmente · link exclusivo deste cliente, não compartilhe.</footer>
 </div>
+
+<button id="bt-topo" aria-label="Voltar ao topo">↑</button>
 
 <script>window.ACT={"nome":"MIX NORTE ESPLANADA","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-28","g":32.25,"imp":3471,"cl":17,"clk":37,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":21.92,"imp":2496,"cl":4,"clk":14,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":23.19,"imp":2163,"cl":12,"clk":22,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":24.85,"imp":2677,"cl":23,"clk":41,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":26.32,"imp":3158,"cl":20,"clk":38,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":25.35,"imp":2608,"cl":16,"clk":25,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":25.85,"imp":2540,"cl":17,"clk":36,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":24.86,"imp":3097,"cl":17,"clk":34,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":27.01,"imp":3917,"cl":17,"clk":29,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":15.94,"imp":1963,"cl":9,"clk":19,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":30.46,"imp":3661,"cl":14,"clk":33,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":29.11,"imp":3839,"cl":26,"clk":47,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":25.55,"imp":2793,"cl":11,"clk":16,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":26.08,"imp":3143,"cl":23,"clk":42,"conv":10,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":28.69,"imp":3227,"cl":23,"clk":46,"conv":9,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":24.94,"imp":3453,"cl":16,"clk":31,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-14","g":18.74,"imp":2514,"cl":8,"clk":20,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":22.95,"imp":3222,"cl":13,"clk":24,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-16","g":22.51,"imp":2556,"cl":9,"clk":21,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-17","g":30.36,"imp":4212,"cl":26,"clk":40,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":32.42,"imp":3738,"cl":15,"clk":31,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":26.43,"imp":2621,"cl":22,"clk":35,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":23.8,"imp":1921,"cl":10,"clk":18,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-21","g":20.51,"imp":2630,"cl":19,"clk":31,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-22","g":21.54,"imp":3394,"cl":9,"clk":22,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-23","g":26.37,"imp":3176,"cl":14,"clk":31,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-24","g":29.39,"imp":3325,"cl":19,"clk":38,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":33.77,"imp":3597,"cl":18,"clk":32,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":34.89,"imp":3347,"cl":19,"clk":45,"conv":10,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":27.84,"imp":2089,"cl":25,"clk":37,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":22.55,"imp":1946,"cl":16,"clk":32,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":22.66,"imp":2444,"cl":13,"clk":26,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-30","g":20.62,"imp":1866,"cl":24,"clk":34,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-31","g":22.95,"imp":2294,"cl":18,"clk":34,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-01","g":29.18,"imp":3362,"cl":21,"clk":39,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":24.37,"imp":2888,"cl":19,"clk":28,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":32.35,"imp":3578,"cl":14,"clk":30,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-04","g":20.86,"imp":2023,"cl":22,"clk":32,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":20.44,"imp":2015,"cl":16,"clk":25,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-06","g":21.5,"imp":2022,"cl":11,"clk":22,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-07","g":21.71,"imp":1942,"cl":9,"clk":16,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":28.48,"imp":2824,"cl":18,"clk":38,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":32.63,"imp":3846,"cl":26,"clk":37,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":22.13,"imp":2270,"cl":14,"clk":29,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":25.13,"imp":2162,"cl":18,"clk":24,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-12","g":28.13,"imp":3034,"cl":17,"clk":31,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-13","g":23.42,"imp":2054,"cl":12,"clk":28,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":25.97,"imp":2938,"cl":12,"clk":23,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-15","g":29.63,"imp":3130,"cl":16,"clk":44,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":27.39,"imp":3661,"cl":27,"clk":53,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":23,"imp":3164,"cl":12,"clk":27,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-18","g":21.64,"imp":2388,"cl":22,"clk":35,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":30.21,"imp":3730,"cl":18,"clk":38,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":28.39,"imp":3526,"cl":12,"clk":25,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":25.53,"imp":2935,"cl":11,"clk":23,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":32.36,"imp":3638,"cl":28,"clk":46,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":33.16,"imp":4067,"cl":21,"clk":37,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":29.29,"imp":4030,"cl":22,"clk":45,"conv":9,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":17.89,"imp":2102,"cl":7,"clk":17,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-26","g":26.8,"imp":3236,"cl":11,"clk":21,"conv":3,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":6}]};(function scriptCliente() {
   const D = window.ACT;
@@ -399,28 +418,84 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   function renderSeguidores() {
     const seg = D.seguidores || [];
     const alvo = $("#gseg");
+    if (!alvo) return;
     if (!seg.length) {
       alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span></div><p class="vazio">A primeira coleta semanal ainda vai alimentar este gráfico.</p>';
       return;
     }
-    const W = Math.max(240, alvo.clientWidth - 34), H = 170, P = { t: 22, r: 8, b: 26, l: 8 };
+    const W = Math.max(240, alvo.clientWidth - 34), H = 195, P = { t: 26, r: 10, b: 30, l: 10 };
     const iw = W - P.l - P.r, ih = H - P.t - P.b;
     const max = Math.max.apply(null, seg.map((x) => x.seguidores)) * 1.15 || 1;
-    const bw = Math.min(52, (iw / seg.length) * 0.55);
-    const mostraRotulo = iw / seg.length > 34;
+    const media = seg.reduce((s, x) => s + x.seguidores, 0) / seg.length;
+    const total = seg.reduce((s, x) => s + x.seguidores, 0);
+    const bw = Math.min(56, (iw / seg.length) * 0.58);
+    const mostraTudo = iw / seg.length > 46;
+
     let s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '">';
+    const yMedia = P.t + ih - (media / max) * ih;
+    s += '<line x1="' + P.l + '" y1="' + yMedia.toFixed(1) + '" x2="' + (W - P.r) + '" y2="' + yMedia.toFixed(1) + '" stroke="#54545c" stroke-width="1" stroke-dasharray="4 5"/>';
+    s += '<text x="' + (W - P.r) + '" y="' + (yMedia - 5).toFixed(1) + '" text-anchor="end" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">média ' + brInt(media) + "</text>";
+    const centros = [];
     seg.forEach((x, i) => {
       const cx = P.l + ((i + 0.5) / seg.length) * iw;
+      centros.push(cx);
       const h = Math.max(2, (x.seguidores / max) * ih);
-      s += '<rect x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="4" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.42) + '"><title>semana até ' + ddmm(x.until) + ": " + brInt(x.seguidores) + " seguidores</title></rect>";
-      if (mostraRotulo || i === seg.length - 1) {
-        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 6).toFixed(1) + '" text-anchor="middle" font-size="10.5" fill="#ABA8A2" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
-        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + ddmm(x.until) + "</text>";
+      s += '<rect class="sbar" x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="5" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.34) + '"' + (mReduz ? "" : ' style="animation-delay:' + i * 60 + 'ms"') + "/>";
+      if (mostraTudo || i >= seg.length - 4) {
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 7).toFixed(1) + '" text-anchor="middle" font-size="10.5" font-weight="600" fill="' + (i === seg.length - 1 ? "#F5B113" : "#ABA8A2") + '" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 9) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + ddmm(x.until) + "</text>";
       }
     });
     s += "</svg>";
+
     const ult = seg[seg.length - 1];
-    alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div><div class="g-area">' + s + "</div>";
+    const ant = seg.length > 1 ? seg[seg.length - 2] : null;
+    let deltaSeg = "";
+    if (ant && ant.seguidores > 0) {
+      const d = (ult.seguidores - ant.seguidores) / ant.seguidores;
+      const pct = Math.round(Math.abs(d) * 100);
+      if (pct >= 1) deltaSeg = '<span class="delta ' + (d > 0 ? "bom" : "ruim") + '">' + (d > 0 ? "▲" : "▼") + " " + pct + "% vs semana anterior</span>";
+      else deltaSeg = '<span class="delta neutro">estável vs semana anterior</span>';
+    }
+    alvo.innerHTML =
+      '<div class="g-h"><span class="rot">Seguidores ganhos por semana · últimas ' + seg.length + ' semanas</span>' +
+      '<b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div>' +
+      '<div class="g-area">' + s + '<div class="gtip" hidden></div></div>' +
+      '<div class="g-pe">' + deltaSeg + '<span class="rot">total no período: ' + brInt(total) + " seguidores</span></div>";
+
+    // tooltip por barra (toque/mouse)
+    const areaEl = alvo.querySelector(".g-area");
+    const svg = areaEl.querySelector("svg");
+    const tip = areaEl.querySelector(".gtip");
+    const barras = svg.querySelectorAll(".sbar");
+    function mover(ev) {
+      const rect = svg.getBoundingClientRect();
+      const cx = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+      let melhor = 0, dist = 1e9;
+      centros.forEach((c, i) => { const dd = Math.abs(c - cx); if (dd < dist) { dist = dd; melhor = i; } });
+      const x = seg[melhor];
+      const antX = melhor > 0 ? seg[melhor - 1] : null;
+      let extra = "";
+      if (antX && antX.seguidores > 0) {
+        const d = Math.round(((x.seguidores - antX.seguidores) / antX.seguidores) * 100);
+        extra = '<i>' + (d >= 0 ? "▲ +" + d : "▼ " + d) + "% vs anterior</i>";
+      }
+      tip.innerHTML = "<b>semana até " + ddmm(x.until) + "</b>" + brInt(x.seguidores) + " seguidores" + extra;
+      tip.hidden = false;
+      barras.forEach((b, i) => b.setAttribute("opacity", i === melhor ? "1" : i === seg.length - 1 ? "0.8" : "0.22"));
+      const tw = tip.offsetWidth;
+      let esq = centros[melhor] - tw / 2;
+      esq = Math.max(4, Math.min(W - tw - 4, esq));
+      tip.style.left = esq + "px";
+      tip.style.top = "2px";
+    }
+    function sair() {
+      tip.hidden = true;
+      barras.forEach((b, i) => b.setAttribute("opacity", i === seg.length - 1 ? "1" : "0.34"));
+    }
+    areaEl.addEventListener("pointermove", mover);
+    areaEl.addEventListener("pointerdown", mover);
+    areaEl.addEventListener("pointerleave", sair);
   }
 
   function renderSemanas() {
@@ -507,6 +582,12 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     }
   }
 
+  function pulsar(el) {
+    if (!el || mReduz) return;
+    el.classList.remove("swap");
+    void el.offsetWidth;
+    el.classList.add("swap");
+  }
   function render() {
     $$("#chips button[data-p]").forEach((b) => b.classList.toggle("on", parseInt(b.dataset.p, 10) === periodo));
     $("#chip-comp").classList.toggle("on", comparar);
@@ -515,6 +596,8 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     renderKpis();
     renderGraficos();
     renderCriativos();
+    pulsar($("#kpis"));
+    pulsar($(".graficos"));
   }
 
   $$("#chips button[data-p]").forEach((b) => b.addEventListener("click", () => { periodo = parseInt(b.dataset.p, 10); render(); }));
@@ -532,6 +615,11 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   window.addEventListener("beforeprint", () => revs.forEach((el) => el.classList.add("in")));
   renderSemanas();
   window.addEventListener("resize", () => { clearTimeout(window.__rsem); window.__rsem = setTimeout(renderSemanas, 200); });
+  const topo = document.getElementById("bt-topo");
+  if (topo) {
+    window.addEventListener("scroll", () => topo.classList.toggle("ver", window.scrollY > 700), { passive: true });
+    topo.addEventListener("click", () => window.scrollTo({ top: 0, behavior: mReduz ? "auto" : "smooth" }));
+  }
   render();
 })();</script>
 </body></html>

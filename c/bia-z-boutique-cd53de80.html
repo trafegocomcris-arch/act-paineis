@@ -13,7 +13,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--fundo);color:var(--texto);font-family:var(--corpo);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--ambar);text-decoration:none}a:hover{text-decoration:underline}
 .rot{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ter)}
-.capa{background:var(--capa);padding:clamp(30px,5vw,50px) 6vw 0}
+.capa{background:radial-gradient(700px 320px at 88% -12%, rgba(245,177,19,.07), transparent 62%),var(--capa);padding:clamp(30px,5vw,50px) 6vw 0}
 .marca{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .logo{font-family:var(--tit);font-weight:800;font-size:22px;letter-spacing:-.03em}
 .logo i{color:var(--ambar);font-style:normal}
@@ -46,6 +46,23 @@ footer b{color:var(--ambar);font-weight:600}
 .delta.bom{background:rgba(70,192,139,.12);color:var(--verde)}
 .delta.ruim{background:rgba(229,72,77,.12);color:var(--verm)}
 .delta.neutro{background:var(--surf2);color:var(--ter)}
+@keyframes swapIn{from{opacity:.25;transform:translateY(7px)}to{opacity:1;transform:none}}
+.swap{animation:swapIn .38s cubic-bezier(.2,.7,.2,1)}
+.kpi{transition:transform .22s ease,border-color .22s ease}
+.kpi:hover{transform:translateY(-2px);border-color:rgba(245,177,19,.45)}
+.foto img{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.card:hover .foto img{transform:scale(1.045)}
+.chips button{transition:all .18s ease}
+.chips button:active{transform:scale(.94)}
+.sem-tab tbody tr{transition:background .18s ease}
+.sem-tab tbody tr:hover td:not(.atual){background:rgba(255,255,255,.025)}
+.sbar{animation:crescerBar .7s cubic-bezier(.2,.7,.2,1) both;transform-origin:bottom;transition:opacity .18s ease}
+@keyframes crescerBar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion: reduce){.sbar{animation:none}.swap{animation:none}}
+.g-pe{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 2px 4px}
+#bt-topo{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--linha);background:rgba(20,20,22,.9);backdrop-filter:blur(8px);color:var(--ambar);font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s ease;z-index:40}
+#bt-topo.ver{opacity:1;pointer-events:auto;transform:none}
+#bt-topo:hover{border-color:var(--ambar);transform:translateY(-2px)}
 .graf.semanas{margin-top:12px;padding-bottom:14px}
 .sem-rolagem{overflow-x:auto;scrollbar-width:thin}
 .sem-tab{width:100%;border-collapse:collapse;min-width:560px}
@@ -159,7 +176,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painel de Performance</div></div>
   <h1>BIA Z BOUTIQUE</h1>
   <div class="meta">
-    <div><span class="rot">Atualizado em</span><b>27/08/2026 08:58</b></div>
+    <div><span class="rot">Atualizado em</span><b>27/08/2026 09:22</b></div>
     <div><span class="rot">Resultado principal</span><b>Conversas</b></div>
     <div><span class="rot">Nicho</span><b>moda feminina</b></div>
     <div><span class="rot">Atualização</span><b>todo dia de manhã</b></div>
@@ -194,7 +211,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="sec-h rev"><h2>Os 5 melhores criativos</h2><span class="rot" id="cria-rot"></span><a class="bt-bib" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=852787431259759" target="_blank">todos os anúncios ativos na Biblioteca ↗</a></div>
   <div class="rev"><div id="cria7">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKBmQR8VE4rBB1GucB2wssoG5oX30gZzHv3JA7iWhtbFGrh-ou8MnnixZwkPY3XaMJEau5x8ckoZBdicYx66fDsBU2uDgZBXxER7R2-MO2OOn1T1FU7PJ125i4vzx78ML7oCEWtBOZEON2f9XkC5900" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLkxnif801bjnvfBN7daipLQyX51eW4mJHpKcohp3BQiuRkmTOpwSDlkY_PRSS0ylapNg1KQGW6vkNAWumM6n-yfPhkQq8rZDrpnjIp8OGaUBel1AjMLhyTT8BBsksz62Ai_eE8QbKKVxlmAMZ9LyBT" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 35 - 19.08 - BLUSINHA CANALETADA</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>84</b><small>R$ 2,02 cada</small></div><div class="m"><span>Cliques</span><b>123</b><small>R$ 1,38 cada</small></div><div class="m"><span>CTR</span><b>2.18%</b></div><div class="m"><span>CPM</span><b>R$ 10,00</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Alcance</span><b>10.318</b></div><div class="m"><span>Gasto</span><b>R$ 169,59</b></div><div class="m"><span>Vídeos assistidos</span><b>1.070</b></div></div>
@@ -206,7 +223,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLcXXRos__CIMv_m-PEG0mS43XpRbl8KmORS7HiuKYBPJ8IRtnl-rX3qKzc6ICjgCLDZ-J6U0q_QgnTTXE0T-eKAhWZa7x8_Q7c8hQTEtz8sl6HmroBuWwBIB22MsvOY57TwuHHg4quFMprxssPKrWc" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQI2A8faZ0ta-FLaLNnK8v9mSzO1nwj5Cs2IEaPFtm5LTGAMEbMxMwGdrVA6cWy6AGilDFBvYRRm3P9P-ZFFXNFIJK1jmh3D2FuGwoZ4CGUX4dtU6uKLTpQzb4iP3Qtm5_-va98D8LrApOuKtmi9gXLI" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 44 [19.08]-  VOCE ENTROU NA BIA Z</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>17</b><small>R$ 4,16 cada</small></div><div class="m"><span>Cliques</span><b>860</b><small>R$ 0,08 cada</small></div><div class="m"><span>CTR</span><b>4.67%</b></div><div class="m"><span>CPM</span><b>R$ 3,90</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>13.232</b></div><div class="m"><span>Gasto</span><b>R$ 70,64</b></div><div class="m"><span>Vídeos assistidos</span><b>317</b></div></div>
@@ -218,7 +235,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLcXXRos__CIMv_m-PEG0mS43XpRbl8KmORS7HiuKYBPJ8IRtnl-rX3qKzc6ICjgCLDZ-J6U0q_QgnTTXE0T-eKAhWZa7x8_Q7c8hQTEtz8sl6HmroBuWwBIB22MsvOY57TwuHHg4quFMprxssPKrWc" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQI2A8faZ0ta-FLaLNnK8v9mSzO1nwj5Cs2IEaPFtm5LTGAMEbMxMwGdrVA6cWy6AGilDFBvYRRm3P9P-ZFFXNFIJK1jmh3D2FuGwoZ4CGUX4dtU6uKLTpQzb4iP3Qtm5_-va98D8LrApOuKtmi9gXLI" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 44 [19.08]-  VOCE ENTROU NA BIA Z</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>23</b><small>R$ 2,87 cada</small></div><div class="m"><span>Cliques</span><b>871</b><small>R$ 0,08 cada</small></div><div class="m"><span>CTR</span><b>5.19%</b></div><div class="m"><span>CPM</span><b>R$ 3,99</b></div><div class="m"><span>Freq</span><b>1.3</b></div><div class="m"><span>Alcance</span><b>12.886</b></div><div class="m"><span>Gasto</span><b>R$ 66,03</b></div><div class="m"><span>Vídeos assistidos</span><b>270</b></div></div>
@@ -230,7 +247,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJrt_saNZ7D1U6EB23SIxrCA1ZA_G8prsUkdIsQ1UNOj-k3oNoXLU2VvcUkVjY7Xgz0KrzBh09DtolwhPN_MAHAlA52SueHD7c2rMa7kubbNxL57tSoxQpkIIp7FfiGx3QzSzCC3ATJnMxcJ-LpSnL_" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLNse12BIvFq7MeVTSYWQoK-li7jqtwJyOT1sZDjwRzS_g_flw3IRkqm4Vz7H5pF9KA4tXdtyeICLn8DkHRF4bdjSFTc5SyHaLk6c2itlwy2SYp4zaABX9IEMD0i9F-7PveMuSHeCUsRu5lpCp7N64w" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 25 - 19.06 - Embalando um pedido + feedback Junho v1</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>11</b><small>R$ 4,05 cada</small></div><div class="m"><span>Cliques</span><b>25</b><small>R$ 1,78 cada</small></div><div class="m"><span>CTR</span><b>2.52%</b></div><div class="m"><span>CPM</span><b>R$ 16,75</b></div><div class="m"><span>Freq</span><b>2.1</b></div><div class="m"><span>Alcance</span><b>1.242</b></div><div class="m"><span>Gasto</span><b>R$ 44,52</b></div><div class="m"><span>Vídeos assistidos</span><b>87</b></div></div>
@@ -242,7 +259,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJgRM16M2ShWprj0x4VhjoJ_uEBdzsw8eQDXLPiBYqAk5gfy_ikUVltJ1UPyX1iDq2RD_NJKueKfr8N31v7uU56IIes9k6wTEssMTJfDloD0IXL8MvFWGanX-f4e1sgDatz3H21mwVsNcoTGUspbLFL" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIkTK-q8e3zDkKsiSlKZ-TxKHy1XmTmRy7HT4qDWGBvVK-Mujc__vLpiHalj40pBd38oOMHxY8UB35EqjgJSI7mtsfIW5QK5TEW2ez7JgyWSA3WFYajKix9Te0_VDmb6iaM0vcrRFDBHhOAUVBw7DGY" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 26 - 22.06 - LOJA MAIS ESTILOSA  v1</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>9</b><small>R$ 2,31 cada</small></div><div class="m"><span>Cliques</span><b>12</b><small>R$ 1,73 cada</small></div><div class="m"><span>CTR</span><b>3.25%</b></div><div class="m"><span>CPM</span><b>R$ 11,83</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Alcance</span><b>1.098</b></div><div class="m"><span>Gasto</span><b>R$ 20,78</b></div><div class="m"><span>Vídeos assistidos</span><b>59</b></div></div>
@@ -257,7 +274,7 @@ footer b{color:var(--ambar);font-weight:600}
 
 Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div><div id="cria30">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKwmgIKs7fnr3wI_8-Tz_eFfNn-SdRPL58RgX_N1R_o2XV4w0V15lydyPyJ-vBOwc_VONhRWHviw-iZ98ol0JyLxDqNkbcLBH-h85EdYaZm_gqMDZooCuWDaTmxO7-fOkAY5p7-vFy5zrmNZLp6KaIE" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKZ7fG0uaZlAcFhqgWvIKUix4-3ZaOeV-Jy7WeZbQYR8cXNPp9INeD0Nh_nHjQvpbmcIRKoEFkeHj-M2LVAq64Sa9pfFATz_BJP7fdqUdqWFXaGMTUmV5gWhlpvgjWkHuC7Ja1SaJL9ecVek7-KcUI4" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 28 - 15.07 - COLEÇÃO NOVA DE VERÃO</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>133</b><small>R$ 2,41 cada</small></div><div class="m"><span>Cliques</span><b>156</b><small>R$ 2,05 cada</small></div><div class="m"><span>CTR</span><b>3.54%</b></div><div class="m"><span>CPM</span><b>R$ 12,58</b></div><div class="m"><span>Freq</span><b>2.5</b></div><div class="m"><span>Alcance</span><b>10.199</b></div><div class="m"><span>Gasto</span><b>R$ 319,91</b></div><div class="m"><span>Vídeos assistidos</span><b>1.424</b></div></div>
@@ -269,7 +286,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKzhHMSGOXQrE31j_QhPCq4CfaiBaji_v3kqhnbR_I_guvxxOqkVlgN_XXoNRbloWxk85vo4IzBhTI7VpMTKdPC_9mOF4vhRAGvUaU-ErM0CpFvUDiQYE5FApxBiP-MOa3NzRp86eUk3-CFMcKZM33K" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKGk-SJJfOPvylMcW0XhnOy9exEL6S3YO5-yMmxW197nXTgYGQk049TabgpsJvoKALbPEGjAhrHW5Bghg0DvlqpUh56dxopd28zHRtCsd8w_f5I7ltP6c5a-A4UAzvEWbUKKr7Izi_QhlkkPsTDlZ-i" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 35 - LOJA MAIS LINDA DE THE</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>65</b><small>R$ 3,23 cada</small></div><div class="m"><span>Cliques</span><b>2.109</b><small>R$ 0,10 cada</small></div><div class="m"><span>CTR</span><b>4.49%</b></div><div class="m"><span>CPM</span><b>R$ 4,51</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Alcance</span><b>28.951</b></div><div class="m"><span>Gasto</span><b>R$ 210,13</b></div><div class="m"><span>Vídeos assistidos</span><b>929</b></div></div>
@@ -281,7 +298,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKzhHMSGOXQrE31j_QhPCq4CfaiBaji_v3kqhnbR_I_guvxxOqkVlgN_XXoNRbloWxk85vo4IzBhTI7VpMTKdPC_9mOF4vhRAGvUaU-ErM0CpFvUDiQYE5FApxBiP-MOa3NzRp86eUk3-CFMcKZM33K" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKGk-SJJfOPvylMcW0XhnOy9exEL6S3YO5-yMmxW197nXTgYGQk049TabgpsJvoKALbPEGjAhrHW5Bghg0DvlqpUh56dxopd28zHRtCsd8w_f5I7ltP6c5a-A4UAzvEWbUKKr7Izi_QhlkkPsTDlZ-i" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 35 - LOJA MAIS LINDA DE THE — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>70</b><small>R$ 2,69 cada</small></div><div class="m"><span>Cliques</span><b>2.106</b><small>R$ 0,09 cada</small></div><div class="m"><span>CTR</span><b>4.64%</b></div><div class="m"><span>CPM</span><b>R$ 4,21</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>29.928</b></div><div class="m"><span>Gasto</span><b>R$ 188,33</b></div><div class="m"><span>Vídeos assistidos</span><b>874</b></div></div>
@@ -293,7 +310,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKKduGU9Oc2ckbsiWgN-FS7X1kG8OXDYxvXYu2vukp9BklNdPnVoaxPm8HGzPcG9zkS3J7CGrC6gUVYfyNVU7oDKiWujpwxEQwjo8jDG-W1DxYnMLpnY-DwnCkn2BLQMXMLHy1-x6r0K9nnon5e6mxx" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIQwH0QxPosLOhUoP1qOJEmkQ25ZBaGs20rqBjFh8kAQ-TojuidOhphbJU99pyWk6d6OepbKYaENy7-tU6QyLegG22s1qx7Bau_bnCg1MN55ts42R03KTFIekFRK5dFqrAWEVGTP1Bi4Q5T29UBRkDj" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 35 - 19.08 - BLUSINHA CANALETADA</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>92</b><small>R$ 1,95 cada</small></div><div class="m"><span>Cliques</span><b>136</b><small>R$ 1,32 cada</small></div><div class="m"><span>CTR</span><b>2.25%</b></div><div class="m"><span>CPM</span><b>R$ 9,97</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>10.656</b></div><div class="m"><span>Gasto</span><b>R$ 179,61</b></div><div class="m"><span>Vídeos assistidos</span><b>1.150</b></div></div>
@@ -305,7 +322,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLByQryPnpstctaTSlt7r3MRtksVo9BPgs6eo-TfKWr64mNBbG-VyPYiSTel4RjGhYwr1F87dfk4KsbkanMCw1jUPtpIK7vMQSgLFtpTrix-3Y1ej8OoO_BApG7ClruH_CK5W4rRXKK_e5fBMUWydzd" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJXdfVnjVASepLgBz7CKp48z3UWZ6etxC-W05acEapIsKMZmzCoVY5UCbtInwfq28_SQ0h1sTXCjLAgpf1ICEOgpUTVtAYCbq3ZS_huTE6-AzD5daGiSXO3rjcMIZz4V_rGLvqjj_nR73bJhArMPCLO" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 29 - 15.07 - EMBALANDO PEDIDO NOVO</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>68</b><small>R$ 2,43 cada</small></div><div class="m"><span>Cliques</span><b>82</b><small>R$ 2,02 cada</small></div><div class="m"><span>CTR</span><b>2.83%</b></div><div class="m"><span>CPM</span><b>R$ 13,69</b></div><div class="m"><span>Freq</span><b>2.0</b></div><div class="m"><span>Alcance</span><b>6.019</b></div><div class="m"><span>Gasto</span><b>R$ 165,38</b></div><div class="m"><span>Vídeos assistidos</span><b>679</b></div></div>
@@ -323,7 +340,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   <div class="sec-h rev"><h2>Os que precisam de atenção</h2><span class="rot" id="pior-rot"></span></div>
   <div class="rev"><div id="pior7">
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLFsqatId4MoE61T_neq-RGVcYI8sPrsLeHQKD9eQikH3uClNdFtgYCmVNsJzmrKbXf55DwyaJfcGPSdxkLVUcn4KT7ZksYwWTOHdfslexv3AFyNSI56bVMYikBlnZv7ytwXueJ5zGTr6EIl72LIgoj" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLJW9wgi12E0O4f75KQfwzPKUxGGWk-8qjlzZzDiKfaJwGgOTLevaFao9QNtgLgVrN-HQoxwvIiEhPSPH4FuMCgUMcvzTOsCKlmtP7SSidfnDDb3mYZAh3VGJgSTidmAm1xgdTs4IaNhWv6AqkZ6ReW" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 36 - 19.08 - EMBALANDO PEDIDO NOVO — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 5,61 cada</small></div><div class="m"><span>CTR</span><b>1.36%</b></div><div class="m"><span>CPM</span><b>R$ 12,69</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>292</b></div><div class="m"><span>Gasto</span><b>R$ 5,61</b></div><div class="m"><span>Vídeos assistidos</span><b>46</b></div></div>
@@ -335,7 +352,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIBvFF_PyTQt9-8u9XexMtDWJ0zoNyqSPXfBDYccs3uWkQLU4LJMLmWO2nYP2B7c4ip9vRhCwVIjzgsIqZFaKm3ecjy8eRNgi-6oPwJtFoqkAAivfBITM7wdcbwgknJ8Fnb93V_KCFXUmP5XpMkiH-H" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJ2mncK7X4rM-lqildtqFjGkkD1xjoTtcnRQke8t_Yo9Wk-wysB8xzIKaz6ZJejLUnA_2TLQlkok3ggkb0tzUzb9y22NpODAiIGB31VU0CfuOT0ATWi7i2enga3x74jtlgP1rTtmAkJa8beQENIefkP" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 01 - FEEDBACK v1</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 2,23 cada</small></div><div class="m"><span>CTR</span><b>1.20%</b></div><div class="m"><span>CPM</span><b>R$ 13,35</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>120</b></div><div class="m"><span>Gasto</span><b>R$ 2,23</b></div><div class="m"><span>Vídeos assistidos</span><b>13</b></div></div>
@@ -347,7 +364,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKb_og9LWIHiOm1lOqthmpNM64za844weZXJmqdUx8N7E35z6L8p0PJiUo4hIs0Ur1zj6s-wnlh1q36K8pIcjNjFjwqKJKXRMqwSScp-JKtwuuBQZKUvVZmwQdY-V0acD3CcxWm8qCXoLu7VUqoBx-N" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJy1bkothfuIGQ9ep48s2tEDFqr8-PBTFSWjMNLmDd5DglFmXQ8HGS0d1Ng11_CQbGjCB6fOvnIiqPY3UeOxFgxLNst2QbNzH0-zKQyLoiE2SCNtitYFGDGwGfpkC2Rcyq8DjD4zZSxGFe5WJQJxwWn" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 35 - LOJA MAIS LINDA DE THE</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>17</b><small>R$ 0,09 cada</small></div><div class="m"><span>CTR</span><b>5.42%</b></div><div class="m"><span>CPM</span><b>R$ 5,46</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>275</b></div><div class="m"><span>Gasto</span><b>R$ 1,61</b></div><div class="m"><span>Vídeos assistidos</span><b>3</b></div></div>
@@ -359,7 +376,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKb_og9LWIHiOm1lOqthmpNM64za844weZXJmqdUx8N7E35z6L8p0PJiUo4hIs0Ur1zj6s-wnlh1q36K8pIcjNjFjwqKJKXRMqwSScp-JKtwuuBQZKUvVZmwQdY-V0acD3CcxWm8qCXoLu7VUqoBx-N" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJy1bkothfuIGQ9ep48s2tEDFqr8-PBTFSWjMNLmDd5DglFmXQ8HGS0d1Ng11_CQbGjCB6fOvnIiqPY3UeOxFgxLNst2QbNzH0-zKQyLoiE2SCNtitYFGDGwGfpkC2Rcyq8DjD4zZSxGFe5WJQJxwWn" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 35 - LOJA MAIS LINDA DE THE — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>28</b><small>R$ 0,05 cada</small></div><div class="m"><span>CTR</span><b>9.24%</b></div><div class="m"><span>CPM</span><b>R$ 4,95</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>286</b></div><div class="m"><span>Gasto</span><b>R$ 1,50</b></div><div class="m"><span>Vídeos assistidos</span><b>2</b></div></div>
@@ -371,7 +388,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLFsqatId4MoE61T_neq-RGVcYI8sPrsLeHQKD9eQikH3uClNdFtgYCmVNsJzmrKbXf55DwyaJfcGPSdxkLVUcn4KT7ZksYwWTOHdfslexv3AFyNSI56bVMYikBlnZv7ytwXueJ5zGTr6EIl72LIgoj" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLJW9wgi12E0O4f75KQfwzPKUxGGWk-8qjlzZzDiKfaJwGgOTLevaFao9QNtgLgVrN-HQoxwvIiEhPSPH4FuMCgUMcvzTOsCKlmtP7SSidfnDDb3mYZAh3VGJgSTidmAm1xgdTs4IaNhWv6AqkZ6ReW" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 34 - 19.08 - ROUPAS QUE TE VALORIZA</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 1,33 cada</small></div><div class="m"><span>CTR</span><b>1.65%</b></div><div class="m"><span>CPM</span><b>R$ 10,99</b></div><div class="m"><span>Freq</span><b>1.3</b></div><div class="m"><span>Alcance</span><b>91</b></div><div class="m"><span>Gasto</span><b>R$ 1,33</b></div><div class="m"><span>Vídeos assistidos</span><b>5</b></div></div>
@@ -383,7 +400,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article></div><div id="pior30">
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIC--G798wRFN7pqn7jAnDKPZQ5i6XqqLFc-CH287yrJr6LQ5es2YP5nrmqbAFoAXOOPvmIuVr5TMAmL899sZHfLHSeg1X-OATwtpGrmueNsm_uqYsow0OwuXn9f0tpVoc3jC9NGI8hashCVHGy5El7" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKhWmisY51gbYx5jo7YsvZP0U03LGMr9n2638bNw1jK2eR8HMc4kkGDqQL5UkPK42qVpv3jwGl3rfJsD781slgNBb0xvdAW4k2rSlNL5jomLBhCld-BWtQ14JgZmipSAyTCTW45p049FLy10bFoE_k0" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 33 - 30.07 - EMBALANDO PEDIDO N3</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>4</b><small>R$ 2,53 cada</small></div><div class="m"><span>CTR</span><b>1.19%</b></div><div class="m"><span>CPM</span><b>R$ 10,93</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>538</b></div><div class="m"><span>Gasto</span><b>R$ 10,10</b></div><div class="m"><span>Vídeos assistidos</span><b>30</b></div></div>
@@ -395,7 +412,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJNcY6CErlPIv9GMbASVgnZQDiCxeuv1AF8sTKk4rV67SxFCc8ubUCQTu2AC3KzEEgLjVeiPK4tFuX-CyhAYua_pRRiWTiz0-3QyhBJlrL8VbLcKhlViCK5xrWYtazj5Q3PQawjRgAdYkJ4tQPM5aq5" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQL3LnqxXs9SEfBxCWmEBMSc_xaQyD-3ZCRAuVkDFK05-q2P4VzrgdIJNpekAAw4xb9y8YITEzZD1cVq9qVtPS99ZGldy40EnXuTDR_H4u25eUQj087ouAi_ZvLeInu6Dh1wT1Dla5TYWNhPFJME-VaD" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 42 - 30.07 - EMBALANDO PEDIDO N4 — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>28</b><small>R$ 0,33 cada</small></div><div class="m"><span>CTR</span><b>1.73%</b></div><div class="m"><span>CPM</span><b>R$ 5,97</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>1.450</b></div><div class="m"><span>Gasto</span><b>R$ 9,33</b></div><div class="m"><span>Vídeos assistidos</span><b>41</b></div></div>
@@ -407,7 +424,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKxJyogIpekes1--RqjSSW299nBOTohHF9zjX6F-3Tqz-g-DJlzGComIgTtOLNT8y7jGx5sIi7wGVBmJNfWEsL7D_cAOSXGO-A3P4DcWIMOzIWcHLgHhJDutXuXtxd2qOt-LmJKop5S0eQXt4Wr0Z5e" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQL3s2x2whrlVddr5fFjXaERaxKCso29rehaA2chEX5NUgeM6-iTv2l-mktdmPVD5SymEwWzIZJ2BOkZqoAAbFwYsiYkdBwubBmMaFP0XR4kg0FTmnqUbiqzMreJZOP19x932rJYNBPhLtmkjqkmC-z-" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 03 - Embalando pedido</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>4</b><small>R$ 1,59 cada</small></div><div class="m"><span>CTR</span><b>3.76%</b></div><div class="m"><span>CPM</span><b>R$ 14,95</b></div><div class="m"><span>Freq</span><b>1.6</b></div><div class="m"><span>Alcance</span><b>264</b></div><div class="m"><span>Gasto</span><b>R$ 6,37</b></div><div class="m"><span>Vídeos assistidos</span><b>25</b></div></div>
@@ -419,7 +436,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLByQryPnpstctaTSlt7r3MRtksVo9BPgs6eo-TfKWr64mNBbG-VyPYiSTel4RjGhYwr1F87dfk4KsbkanMCw1jUPtpIK7vMQSgLFtpTrix-3Y1ej8OoO_BApG7ClruH_CK5W4rRXKK_e5fBMUWydzd" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJXdfVnjVASepLgBz7CKp48z3UWZ6etxC-W05acEapIsKMZmzCoVY5UCbtInwfq28_SQ0h1sTXCjLAgpf1ICEOgpUTVtAYCbq3ZS_huTE6-AzD5daGiSXO3rjcMIZz4V_rGLvqjj_nR73bJhArMPCLO" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 33 - Coleção Nova VERÃO EMBALANDO PEDIDO — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>62</b><small>R$ 0,09 cada</small></div><div class="m"><span>CTR</span><b>4.60%</b></div><div class="m"><span>CPM</span><b>R$ 4,07</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>1.159</b></div><div class="m"><span>Gasto</span><b>R$ 5,31</b></div><div class="m"><span>Vídeos assistidos</span><b>49</b></div></div>
@@ -431,7 +448,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIM-cBbT_U4v2MqvRFcU2eduicaFJA-0VWA4__rxh-0gI4VN7nOS0kilVNi1FpoH3DuyPFcXsSCMZKkDwAtT9ilcQBN8UpIIfGjoNDKIvhLL02GASjW6tzXRI4zxPeQzIO8myEmMy8O93eTLP0-3Ihn" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLHP8UxhI7sAYd1S_B4LN-_96StC05t9BKFJr7nJINP-_oT0bVvOaWvANMg-jWUE8tIhQRQtPRQ7lfVokY-KI2s75JC_YqX038k95iI69B-th6_JuUWVxioymPzc2gIwUCOHMu5gmoA_FtaNeW8XlMe" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 37 - 28.07 - VIDEO LOJA MAIS ESTILOSA — Julho</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>33</b><small>R$ 0,12 cada</small></div><div class="m"><span>CTR</span><b>4.15%</b></div><div class="m"><span>CPM</span><b>R$ 5,13</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>699</b></div><div class="m"><span>Gasto</span><b>R$ 4,08</b></div><div class="m"><span>Vídeos assistidos</span><b>26</b></div></div>
@@ -457,6 +474,8 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
 
   <footer>Painel gerado automaticamente pela <b>ACT Digital</b> · métricas direto do Meta Ads, atualizadas todo dia de manhã · seguidores coletados semanalmente · link exclusivo deste cliente, não compartilhe.</footer>
 </div>
+
+<button id="bt-topo" aria-label="Voltar ao topo">↑</button>
 
 <script>window.ACT={"nome":"BIA Z BOUTIQUE","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-28","g":55.349999999999994,"imp":8993,"cl":254,"clk":358,"conv":9,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":58.76,"imp":8371,"cl":236,"clk":337,"conv":19,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":81.81,"imp":11778,"cl":304,"clk":481,"conv":42,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":78.74000000000001,"imp":11548,"cl":336,"clk":471,"conv":41,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":63.59,"imp":9728,"cl":349,"clk":435,"conv":29,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":67.52000000000001,"imp":10659,"cl":361,"clk":443,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":78.57,"imp":12373,"cl":351,"clk":471,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":77.44,"imp":12674,"cl":431,"clk":513,"conv":13,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":84.91,"imp":13462,"cl":347,"clk":401,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":94.89,"imp":12720,"cl":342,"clk":420,"conv":13,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":84.72999999999999,"imp":11223,"cl":346,"clk":424,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":69.47,"imp":9934,"cl":325,"clk":375,"conv":11,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":72.5,"imp":9752,"cl":307,"clk":361,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":84.89,"imp":11284,"cl":331,"clk":380,"conv":11,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":94.62,"imp":13223,"cl":423,"clk":493,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":67.71,"imp":8691,"cl":248,"clk":285,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-14","g":67.85,"imp":7933,"cl":249,"clk":302,"conv":18,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":68.44999999999999,"imp":8775,"cl":228,"clk":327,"conv":29,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-16","g":63.4,"imp":8035,"cl":235,"clk":347,"conv":21,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-17","g":46.17,"imp":6157,"cl":216,"clk":294,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":52.769999999999996,"imp":7873,"cl":207,"clk":297,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":47.3,"imp":7963,"cl":214,"clk":286,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":70.36,"imp":10518,"cl":310,"clk":425,"conv":31,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-21","g":71.53999999999999,"imp":10151,"cl":345,"clk":461,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-22","g":59.9,"imp":9048,"cl":267,"clk":349,"conv":22,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-23","g":48.82,"imp":7571,"cl":260,"clk":338,"conv":13,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-24","g":58.71000000000001,"imp":9112,"cl":233,"clk":336,"conv":19,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":77.21000000000001,"imp":10846,"cl":286,"clk":397,"conv":16,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":57.92,"imp":10229,"cl":322,"clk":418,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":62.879999999999995,"imp":8932,"cl":274,"clk":345,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":83.02,"imp":10822,"cl":311,"clk":424,"conv":36,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":59.56,"imp":7145,"cl":168,"clk":257,"conv":19,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-30","g":53.05,"imp":6315,"cl":141,"clk":193,"conv":28,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-31","g":47.47,"imp":6704,"cl":186,"clk":219,"conv":13,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-01","g":64.54,"imp":8486,"cl":259,"clk":347,"conv":29,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":58.16,"imp":10077,"cl":314,"clk":401,"conv":28,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":68.75,"imp":8888,"cl":262,"clk":369,"conv":30,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-04","g":68.7,"imp":9712,"cl":264,"clk":361,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":63.16,"imp":8036,"cl":266,"clk":345,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-06","g":51.870000000000005,"imp":6754,"cl":213,"clk":248,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-07","g":52.11,"imp":6737,"cl":223,"clk":274,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":64.69,"imp":7358,"cl":234,"clk":269,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":43.129999999999995,"imp":7428,"cl":277,"clk":296,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":88.86,"imp":9720,"cl":280,"clk":373,"conv":17,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":66.99000000000001,"imp":6640,"cl":198,"clk":275,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-12","g":72.01,"imp":9591,"cl":306,"clk":395,"conv":18,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-13","g":53.41,"imp":6174,"cl":256,"clk":315,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":55.760000000000005,"imp":7282,"cl":229,"clk":263,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-15","g":50,"imp":7391,"cl":232,"clk":272,"conv":20,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":55.230000000000004,"imp":8913,"cl":272,"clk":323,"conv":15,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":65.09,"imp":7460,"cl":158,"clk":217,"conv":12,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-18","g":74.01,"imp":8694,"cl":245,"clk":316,"conv":19,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":79.61,"imp":10196,"cl":358,"clk":427,"conv":40,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":63.709999999999994,"imp":9249,"cl":305,"clk":365,"conv":28,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":46.79,"imp":7630,"cl":279,"clk":332,"conv":24,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":45.980000000000004,"imp":8005,"cl":303,"clk":336,"conv":21,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":51.120000000000005,"imp":9660,"cl":330,"clk":359,"conv":26,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":82.48,"imp":11340,"cl":335,"clk":373,"conv":25,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":70.74,"imp":8170,"cl":274,"clk":333,"conv":23,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-26","g":65.28,"imp":7293,"cl":221,"clk":321,"conv":23,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":309}]};(function scriptCliente() {
   const D = window.ACT;
@@ -607,28 +626,84 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   function renderSeguidores() {
     const seg = D.seguidores || [];
     const alvo = $("#gseg");
+    if (!alvo) return;
     if (!seg.length) {
       alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span></div><p class="vazio">A primeira coleta semanal ainda vai alimentar este gráfico.</p>';
       return;
     }
-    const W = Math.max(240, alvo.clientWidth - 34), H = 170, P = { t: 22, r: 8, b: 26, l: 8 };
+    const W = Math.max(240, alvo.clientWidth - 34), H = 195, P = { t: 26, r: 10, b: 30, l: 10 };
     const iw = W - P.l - P.r, ih = H - P.t - P.b;
     const max = Math.max.apply(null, seg.map((x) => x.seguidores)) * 1.15 || 1;
-    const bw = Math.min(52, (iw / seg.length) * 0.55);
-    const mostraRotulo = iw / seg.length > 34;
+    const media = seg.reduce((s, x) => s + x.seguidores, 0) / seg.length;
+    const total = seg.reduce((s, x) => s + x.seguidores, 0);
+    const bw = Math.min(56, (iw / seg.length) * 0.58);
+    const mostraTudo = iw / seg.length > 46;
+
     let s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '">';
+    const yMedia = P.t + ih - (media / max) * ih;
+    s += '<line x1="' + P.l + '" y1="' + yMedia.toFixed(1) + '" x2="' + (W - P.r) + '" y2="' + yMedia.toFixed(1) + '" stroke="#54545c" stroke-width="1" stroke-dasharray="4 5"/>';
+    s += '<text x="' + (W - P.r) + '" y="' + (yMedia - 5).toFixed(1) + '" text-anchor="end" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">média ' + brInt(media) + "</text>";
+    const centros = [];
     seg.forEach((x, i) => {
       const cx = P.l + ((i + 0.5) / seg.length) * iw;
+      centros.push(cx);
       const h = Math.max(2, (x.seguidores / max) * ih);
-      s += '<rect x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="4" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.42) + '"><title>semana até ' + ddmm(x.until) + ": " + brInt(x.seguidores) + " seguidores</title></rect>";
-      if (mostraRotulo || i === seg.length - 1) {
-        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 6).toFixed(1) + '" text-anchor="middle" font-size="10.5" fill="#ABA8A2" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
-        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + ddmm(x.until) + "</text>";
+      s += '<rect class="sbar" x="' + (cx - bw / 2).toFixed(1) + '" y="' + (P.t + ih - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="5" fill="#F5B113" opacity="' + (i === seg.length - 1 ? 1 : 0.34) + '"' + (mReduz ? "" : ' style="animation-delay:' + i * 60 + 'ms"') + "/>";
+      if (mostraTudo || i >= seg.length - 4) {
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (P.t + ih - h - 7).toFixed(1) + '" text-anchor="middle" font-size="10.5" font-weight="600" fill="' + (i === seg.length - 1 ? "#F5B113" : "#ABA8A2") + '" font-family="JetBrains Mono,monospace">' + brInt(x.seguidores) + "</text>";
+        s += '<text x="' + cx.toFixed(1) + '" y="' + (H - 9) + '" text-anchor="middle" font-size="9" fill="#77746F" font-family="JetBrains Mono,monospace">' + ddmm(x.until) + "</text>";
       }
     });
     s += "</svg>";
+
     const ult = seg[seg.length - 1];
-    alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div><div class="g-area">' + s + "</div>";
+    const ant = seg.length > 1 ? seg[seg.length - 2] : null;
+    let deltaSeg = "";
+    if (ant && ant.seguidores > 0) {
+      const d = (ult.seguidores - ant.seguidores) / ant.seguidores;
+      const pct = Math.round(Math.abs(d) * 100);
+      if (pct >= 1) deltaSeg = '<span class="delta ' + (d > 0 ? "bom" : "ruim") + '">' + (d > 0 ? "▲" : "▼") + " " + pct + "% vs semana anterior</span>";
+      else deltaSeg = '<span class="delta neutro">estável vs semana anterior</span>';
+    }
+    alvo.innerHTML =
+      '<div class="g-h"><span class="rot">Seguidores ganhos por semana · últimas ' + seg.length + ' semanas</span>' +
+      '<b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div>' +
+      '<div class="g-area">' + s + '<div class="gtip" hidden></div></div>' +
+      '<div class="g-pe">' + deltaSeg + '<span class="rot">total no período: ' + brInt(total) + " seguidores</span></div>";
+
+    // tooltip por barra (toque/mouse)
+    const areaEl = alvo.querySelector(".g-area");
+    const svg = areaEl.querySelector("svg");
+    const tip = areaEl.querySelector(".gtip");
+    const barras = svg.querySelectorAll(".sbar");
+    function mover(ev) {
+      const rect = svg.getBoundingClientRect();
+      const cx = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+      let melhor = 0, dist = 1e9;
+      centros.forEach((c, i) => { const dd = Math.abs(c - cx); if (dd < dist) { dist = dd; melhor = i; } });
+      const x = seg[melhor];
+      const antX = melhor > 0 ? seg[melhor - 1] : null;
+      let extra = "";
+      if (antX && antX.seguidores > 0) {
+        const d = Math.round(((x.seguidores - antX.seguidores) / antX.seguidores) * 100);
+        extra = '<i>' + (d >= 0 ? "▲ +" + d : "▼ " + d) + "% vs anterior</i>";
+      }
+      tip.innerHTML = "<b>semana até " + ddmm(x.until) + "</b>" + brInt(x.seguidores) + " seguidores" + extra;
+      tip.hidden = false;
+      barras.forEach((b, i) => b.setAttribute("opacity", i === melhor ? "1" : i === seg.length - 1 ? "0.8" : "0.22"));
+      const tw = tip.offsetWidth;
+      let esq = centros[melhor] - tw / 2;
+      esq = Math.max(4, Math.min(W - tw - 4, esq));
+      tip.style.left = esq + "px";
+      tip.style.top = "2px";
+    }
+    function sair() {
+      tip.hidden = true;
+      barras.forEach((b, i) => b.setAttribute("opacity", i === seg.length - 1 ? "1" : "0.34"));
+    }
+    areaEl.addEventListener("pointermove", mover);
+    areaEl.addEventListener("pointerdown", mover);
+    areaEl.addEventListener("pointerleave", sair);
   }
 
   function renderSemanas() {
@@ -715,6 +790,12 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     }
   }
 
+  function pulsar(el) {
+    if (!el || mReduz) return;
+    el.classList.remove("swap");
+    void el.offsetWidth;
+    el.classList.add("swap");
+  }
   function render() {
     $$("#chips button[data-p]").forEach((b) => b.classList.toggle("on", parseInt(b.dataset.p, 10) === periodo));
     $("#chip-comp").classList.toggle("on", comparar);
@@ -723,6 +804,8 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     renderKpis();
     renderGraficos();
     renderCriativos();
+    pulsar($("#kpis"));
+    pulsar($(".graficos"));
   }
 
   $$("#chips button[data-p]").forEach((b) => b.addEventListener("click", () => { periodo = parseInt(b.dataset.p, 10); render(); }));
@@ -740,6 +823,11 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   window.addEventListener("beforeprint", () => revs.forEach((el) => el.classList.add("in")));
   renderSemanas();
   window.addEventListener("resize", () => { clearTimeout(window.__rsem); window.__rsem = setTimeout(renderSemanas, 200); });
+  const topo = document.getElementById("bt-topo");
+  if (topo) {
+    window.addEventListener("scroll", () => topo.classList.toggle("ver", window.scrollY > 700), { passive: true });
+    topo.addEventListener("click", () => window.scrollTo({ top: 0, behavior: mReduz ? "auto" : "smooth" }));
+  }
   render();
 })();</script>
 </body></html>
