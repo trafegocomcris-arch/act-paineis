@@ -25,7 +25,7 @@ h1 em{font-style:normal;color:var(--ambar)}
 .meta>div:first-child{border-left:none;padding-left:0}
 .meta span{display:block;margin-bottom:4px}
 .meta b{font-family:var(--tit);font-weight:700;font-size:14px}
-.wrap{max-width:1060px;margin:0 auto;padding:0 6vw 90px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 5vw 90px}
 .rev{opacity:0;transform:translateY(12px);transition:opacity .55s ease var(--d,0ms),transform .55s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
 .rev.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -46,6 +46,28 @@ footer b{color:var(--ambar);font-weight:600}
 .delta.bom{background:rgba(70,192,139,.12);color:var(--verde)}
 .delta.ruim{background:rgba(229,72,77,.12);color:var(--verm)}
 .delta.neutro{background:var(--surf2);color:var(--ter)}
+.graf.semanas{margin-top:12px;padding-bottom:14px}
+.sem-rolagem{overflow-x:auto;scrollbar-width:thin}
+.sem-tab{width:100%;border-collapse:collapse;min-width:560px}
+.sem-tab th,.sem-tab td{padding:8px 12px;text-align:right;font-size:13.5px;border-top:1px solid var(--linha)}
+.sem-tab thead th{border-top:none;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;color:var(--ter);padding-bottom:10px;vertical-align:bottom}
+.sem-tab thead th em{display:block;font-style:normal;font-size:9px;letter-spacing:.04em;color:var(--ter);opacity:.7;margin-top:2px}
+.sem-tab thead th.atual{color:var(--ambar)}
+.sem-tab td.rotulo,.sem-tab th:first-child{text-align:left;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sec);white-space:nowrap}
+.sem-tab td{color:var(--ter);font-variant-numeric:tabular-nums}
+.sem-tab tr.forte td:not(.rotulo){color:var(--sec);font-family:var(--tit);font-weight:700;font-size:15px}
+.sem-tab td.atual{background:rgba(245,177,19,.05);color:var(--texto);border-left:1px solid rgba(245,177,19,.25);border-right:1px solid rgba(245,177,19,.25)}
+.sem-tab tr.forte td.atual{font-size:16.5px}
+.sem-tab thead th.atual{background:rgba(245,177,19,.05);border-left:1px solid rgba(245,177,19,.25);border-right:1px solid rgba(245,177,19,.25);border-radius:8px 8px 0 0}
+.sem-tab .mini{font-style:normal;font-family:var(--mono);font-size:9.5px;font-weight:600;margin-left:7px;padding:1px 6px;border-radius:12px;vertical-align:middle}
+.sem-tab .mini.bom{background:rgba(70,192,139,.14);color:var(--verde)}
+.sem-tab .mini.ruim{background:rgba(229,72,77,.14);color:var(--verm)}
+.sem-tab .mini.neutro{background:var(--surf2);color:var(--ter)}
+.sem-tab tr.barras td{padding-top:12px;vertical-align:bottom;border-top:1px solid var(--linha)}
+.vbar{display:inline-block;width:34px;border-radius:5px 5px 2px 2px;background:var(--ter);opacity:.45;transform-origin:bottom;animation:crescerV .8s cubic-bezier(.2,.7,.2,1) both}
+.vbar.on{background:var(--ambar);opacity:1}
+@keyframes crescerV{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion: reduce){.vbar{animation:none}}
 .graficos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
 .graf{background:var(--surf);border:1px solid var(--linha);border-radius:14px;padding:16px 16px 10px;min-width:0}
 .graf svg{display:block;touch-action:none}
@@ -137,7 +159,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painel de Performance</div></div>
   <h1>JOÃO E MARIA FESTAS</h1>
   <div class="meta">
-    <div><span class="rot">Atualizado em</span><b>26/08/2026 14:03</b></div>
+    <div><span class="rot">Atualizado em</span><b>27/08/2026 08:58</b></div>
     <div><span class="rot">Resultado principal</span><b>Conversas</b></div>
     <div><span class="rot">Nicho</span><b>festas e eventos</b></div>
     <div><span class="rot">Atualização</span><b>todo dia de manhã</b></div>
@@ -159,6 +181,8 @@ footer b{color:var(--ambar);font-weight:600}
 <div class="wrap">
   <div class="kpis rev in" id="kpis"></div>
 
+  <div class="graf semanas rev in" id="semanas"></div>
+
   <div class="graficos rev in">
     <div class="graf" id="g1"></div>
     <div class="graf" id="g2"></div>
@@ -170,70 +194,70 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="sec-h rev"><h2>Os 5 melhores criativos</h2><span class="rot" id="cria-rot"></span><a class="bt-bib" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">todos os anúncios ativos na Biblioteca ↗</a></div>
   <div class="rev"><div id="cria7">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t15.5256-10/772177727_1045674598330373_6804640722052482410_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_ohc=WMrpyt2KctQQ7kNvwGtB592&amp;_nc_oc=AdpU_8BV2n32iGXFwlAemrmHZad4tYjzGIInPTIEAmff-QnvVgUJmaowiQ6suSrFMJM&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ByRDaiVN_LeWYRr6Z8ICDQ&amp;_nc_tpa=Q5bMBQKYqK0qDUfmMxw3lCunFKojUxKdWbdlw2x8sKUXQcQm5_avE4RAxuYYonQTdeGnbQiBPBxdjnzNGA&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQEKtBYxV9e8rWzpzqs6OAMTre1o0Z8uTQKVMHrA45fsDQ&amp;oe=6A95034F" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIA4V9LQmqyJPDcUb0dlolSwRRtdJZ2qtH7ivXy5m9WXHqqKB_SFsRUJ688rFkVaq6fKDCpmB68PbESs2ue53UfOuyIVokRY2Hmd9hbjoDoN8zq3Fn4cz8lIIl2JbyMKKHK-IeaUGtUI8dorNNu2S5u" alt="" loading="lazy"></div>
     <div class="info">
-      <header><span class="pill vencedor">Vencedor</span><h3>AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 2,26 cada</small></div><div class="m"><span>Cliques</span><b>4</b><small>R$ 0,57 cada</small></div><div class="m"><span>CTR</span><b>4.35%</b></div><div class="m"><span>CPM</span><b>R$ 12,28</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>172</b></div><div class="m"><span>Gasto</span><b>R$ 2,26</b></div><div class="m"><span>Vídeos assistidos</span><b>7</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 9%</span><span class="rot2">custo</span><span class="delta bom">▼ 94%</span></div>
-      <p class="hist">período anterior era pausar</p>
-      <div class="why bom"><span>Por que funciona</span>CTR de 4.35% é forte — o criativo chama atenção de verdade; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
-      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 0,32/dia, ir pra ~R$ 0,39/dia) e não mexer no criativo</div>
+      <header><span class="pill vencedor">Vencedor</span><h3>AD 18- [29.07] - [VIDEO AMBIENTE JM]</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>3</b><small>R$ 3,04 cada</small></div><div class="m"><span>Cliques</span><b>6</b><small>R$ 1,52 cada</small></div><div class="m"><span>CTR</span><b>2.83%</b></div><div class="m"><span>CPM</span><b>R$ 13,56</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>593</b></div><div class="m"><span>Gasto</span><b>R$ 9,11</b></div><div class="m"><span>Vídeos assistidos</span><b>35</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta neutro">estável</span><span class="rot2">custo</span><span class="delta bom">▼ 72%</span></div>
+      <p class="hist">período anterior era médio</p>
+      <div class="why bom"><span>Por que funciona</span>CTR de 2.83% é forte — o criativo chama atenção de verdade; e cada resultado sai 92% mais barato que a média</div>
+      <div class="plano"><span>Plano</span>Escalar: subir o orçamento em 20% (hoje roda ~R$ 1,30/dia, ir pra ~R$ 1,56/dia) e não mexer no criativo</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t15.5256-10/713304207_1553260366503529_5666371029688054739_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_ohc=fCigPnw8IF8Q7kNvwEpwo4p&amp;_nc_oc=AdroXiBOXeGndbstpLdQ57DX83RCjV77PJuJpj06rK3mRm9skuxrxoN0QZrTy0DdWwg&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ByRDaiVN_LeWYRr6Z8ICDQ&amp;_nc_tpa=Q5bMBQK1Dlub8hBA_wzoxJI94VLzC4lJujyzAnerh9UbxHZ_v0yVwTEzOscsvtvBbUUyB_VjRf43wkdNCA&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQFH8dD2edVr0GRF80VuK_yG7GeSuIBk4mah77YYUQ1Now&amp;oe=6A94DFB5" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/772177727_1045674598330373_6804640722052482410_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_ohc=WMrpyt2KctQQ7kNvwGQzFps&amp;_nc_oc=AdrXaYXED7Hs_t-uylKLqsp8uXzwfnINtT994s70Aw9BSuU6K81yMkRUvQNS90dCwOw&amp;_nc_zt=23&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ExYjFapuWhjvRnPEZ7rX3Q&amp;_nc_tpa=Q5bMBQKBhWlV80roB847H-3GeWC9HQGZZmwM4ciT8Nx71KmjGyZ_6UUiqbHQ6yMGxgN4yqdbTwbo4wjDfQ&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQHVUIs4mscboOUkbZWldGGPETmSH5ApJV_Ree9lR71EXw&amp;oe=6A95E44F" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 12,42 cada</small></div><div class="m"><span>Cliques</span><b>10</b><small>R$ 1,24 cada</small></div><div class="m"><span>CTR</span><b>4.63%</b></div><div class="m"><span>CPM</span><b>R$ 13,37</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>828</b></div><div class="m"><span>Gasto</span><b>R$ 12,42</b></div><div class="m"><span>Vídeos assistidos</span><b>48</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 16%</span><span class="rot2">custo</span><span class="delta bom">▼ 65%</span></div>
+      <p class="hist">período anterior era pausar</p>
+      <div class="why bom"><span>Por que funciona</span>CTR de 4.63% é forte — o criativo chama atenção de verdade; e cada resultado sai 66% mais barato que a média</div>
+      <div class="plano"><span>Plano</span>Manter e monitorar por mais 3 a 5 dias</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/713304207_1553260366503529_5666371029688054739_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_ohc=Eylt3Cuhbu0Q7kNvwHCPp6e&amp;_nc_oc=AdqFwkkx1LdsPQBiijCIgvDFi_ug20A3EOATd_zOpflEIEny2VyTLWPd7suGebv9OEM&amp;_nc_zt=23&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ExYjFapuWhjvRnPEZ7rX3Q&amp;_nc_tpa=Q5bMBQKlKAJH_t5hJsCuI0Ii2-sy4r_IKpSAo5ybHA3CxPaayhDW326o5x3aRrFk1vErBbs_3AvqQzIDnw&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQGW1dXE3A5Jm3nkrcLZg1ehBciX6PTfK8E9fvxqmH1v9g&amp;oe=6A95F8F5" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 06 - 01.06 - Comemorando no Condomínio (Boteco do Lucas)</h3></header>
-      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Seguidores</span><b>13</b><small>R$ 1,27 cada</small></div><div class="m"><span>Cliques</span><b>130</b><small>R$ 0,13 cada</small></div><div class="m"><span>CTR</span><b>3.42%</b></div><div class="m"><span>CPM</span><b>R$ 4,59</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>3.116</b></div><div class="m"><span>Gasto</span><b>R$ 16,49</b></div><div class="m"><span>Vídeos assistidos</span><b>66</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta neutro">estável</span></div>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>73</b><small>R$ 0,12 cada</small></div><div class="m"><span>CTR</span><b>3.62%</b></div><div class="m"><span>CPM</span><b>R$ 4,62</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>1.739</b></div><div class="m"><span>Gasto</span><b>R$ 8,80</b></div><div class="m"><span>Vídeos assistidos</span><b>42</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 20%</span></div>
       <p class="hist">manteve o status do período anterior</p>
-      <div class="why bom"><span>Por que funciona</span>CTR de 3.42% é forte — o criativo chama atenção de verdade; e frequência baixa (1.2) — ainda tem muito público novo pra alcançar</div>
+      <div class="why bom"><span>Por que funciona</span>CTR de 3.62% é forte — o criativo chama atenção de verdade; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
       <div class="plano"><span>Plano</span>Deixar rodar mais alguns dias antes de decidir</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIS1IlwasHrP5Nc-Pqvm0Ra23itUd8qrYEXwQedOcW4t9SM0cId7o4Rx8_FkB2pJLtdjdCJxBaYDfbj4qIAuOaABpPAIt3fnCf4reft2mk_JHPJbT7LLknVtBKsqcsBzH6VQoHbkA9hxUOC_7OgBEuv" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKN_gd5_yfB_-vJLGEGsDEzCWyqZcBbauTTDesvOwSQpbxSrBxeEMXcuclTxaD9M138GtT9OJUiNbigKauofZycw5zZLbz1kDJP4wPPa-XVGCHX-BLtwR1guKVrTA35TdJMQ7U5BiL6ENQNDPXK5may" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 17 - 06.08 -  FEEDBACK Cliente na LOJA</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>3</b><small>R$ 0,08 cada</small></div><div class="m"><span>CTR</span><b>11.11%</b></div><div class="m"><span>CPM</span><b>R$ 9,26</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>25</b></div><div class="m"><span>Gasto</span><b>R$ 0,25</b></div><div class="m"><span>Vídeos assistidos</span><b>2</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 167%</span></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 196%</span></div>
       <p class="hist">manteve o status do período anterior</p>
-      <div class="why bom"><span>Por que funciona</span>o CTR de 11.11% está 99% acima da média da conta — o gancho prende a atenção; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
+      <div class="why bom"><span>Por que funciona</span>o CTR de 11.11% está 116% acima da média da conta — o gancho prende a atenção; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
       <div class="plano"><span>Plano</span>Deixar rodar mais alguns dias antes de decidir</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJNj5Z64jqzwV6zuGqk9LlX7N2uq2Ccm8MXGFnByyX0T6ZcbRF1EhuLjIOn12BOXzdIn3diWqiRiusgut5PvuHdnbCXbJR9On4irXThuYzdm6sX0L5hSQLWw7CkAwGZ6R2TspwDu6504ysmeynQPgCI" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLTXHeeC55Xg2DkQyERxKpwedv946P0SwGyMx__Pc3WRpTLHBAh4gOhfdCLU8drH7nZ7TH_XUpuHAfp85nY6LVY_Uz9461BbViff7Rxm8k7GSC3KIjve_TsE8txbyp7g_7YnV5U-O4HKL71JONuXtQx" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 18 - 06.08 -  FEEDBACK Cliente no WhatsApp</h3></header>
-      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>0.00%</b></div><div class="m"><span>CPM</span><b>R$ 6,00</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>9</b></div><div class="m"><span>Gasto</span><b>R$ 0,06</b></div></div>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>0.00%</b></div><div class="m"><span>CPM</span><b>R$ 6,67</b></div><div class="m"><span>Freq</span><b>1.0</b></div><div class="m"><span>Alcance</span><b>6</b></div><div class="m"><span>Gasto</span><b>R$ 0,04</b></div></div>
       
       <p class="hist">manteve o status do período anterior</p>
-      <div class="why bom"><span>Por que funciona</span>frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
+      <div class="why bom"><span>Por que funciona</span>frequência baixa (1.0) — ainda tem muito público novo pra alcançar</div>
       <div class="plano"><span>Plano</span>Deixar rodar mais alguns dias antes de decidir</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
-  <article class="card" data-st="pausar">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQI2twhPe-uxuWuhy5WTyiECQwD45mlT9ZK8ZimQtF7x5Al8MIIhDD1AAgfswV8CJFvSvH9Cp2PL7nuqXM9R0IiUF30ierdSj5nFIz00jmE3zYK_v6pPyJr6-riga-ohD39P-ApduhLcnWuOO-ldLNC_" alt="" loading="lazy"></div>
-    <div class="info">
-      <header><span class="pill pausar">Pausar</span><h3>AD 16 - 29.07 -  AMBIENTE JM</h3></header>
-      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Seguidores</span><b>114</b><small>R$ 0,76 cada</small></div><div class="m"><span>Cliques</span><b>380</b><small>R$ 0,23 cada</small></div><div class="m"><span>CTR</span><b>3.50%</b></div><div class="m"><span>CPM</span><b>R$ 8,21</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>7.305</b></div><div class="m"><span>Gasto</span><b>R$ 86,38</b></div><div class="m"><span>Vídeos assistidos</span><b>654</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 21%</span></div>
-      <p class="hist">manteve o status do período anterior</p>
-      <div class="why bom"><span>Por que funciona</span>CTR de 3.50% é forte — o criativo chama atenção de verdade; e frequência baixa (1.4) — ainda tem muito público novo pra alcançar</div>
-      <div class="plano"><span>Plano</span>Pausar e realocar os ~R$ 12,34/dia pro vencedor &quot;AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia&quot;</div>
-      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
-    </div>
-  </article>
-     <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia&quot; está na frente porque a frequência de 1.1 mostra que ainda tem muito público novo pra alcançar antes de saturar; além disso, a taxa de clique no link mostra que a oferta está clara, não é só curiosidade.
+     <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;AD 18- [29.07] - [VIDEO AMBIENTE JM]&quot; está na frente porque cada resultado sai 94% mais barato que nos outros criativos; além disso, a frequência de 1.1 mostra que ainda tem muito público novo pra alcançar antes de saturar.
 
 Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div><div id="cria30">
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJvVtfmm6DSSP4rQculdvOyr-TdnasAlROzuHiTslyqRf8zKBdtrVTKeTXGcUjWE63ZBu83BW8BOKoVDcAWOqHIsFcSoE2-1Dh-112lX6HyLn6xceKjyv_s91FjYKZy278eoVIsKDl60C5pE6GJR1OV" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQK5PvMMcyUFvqJTp0fF4iupFG-VD3MT_AdRmR4X7k8i0LysQLxOLaltnasA3Ozc0aCROMCTWv91Kcotwn8QI1D_t9kh3pUOEVuvPci0_Mt-9xu8QLNKRyaroQuIMwPjK4uVZBv254DO1voV_HtoN5sL" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 19- [07.08] - [VIDEO DIA DOS PAIS ]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>11</b><small>R$ 7,30 cada</small></div><div class="m"><span>Cliques</span><b>33</b><small>R$ 2,43 cada</small></div><div class="m"><span>CTR</span><b>3.03%</b></div><div class="m"><span>CPM</span><b>R$ 18,15</b></div><div class="m"><span>Freq</span><b>2.0</b></div><div class="m"><span>Alcance</span><b>2.204</b></div><div class="m"><span>Gasto</span><b>R$ 80,31</b></div><div class="m"><span>Vídeos assistidos</span><b>215</b></div></div>
@@ -245,7 +269,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="vencedor">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIn4J6O-vBPJf56zcVOodRYJeaSZvQ0_-wUzKoDWnDyHESfAUUjcAGN7DDm_1i-ieWPEZplwMpboilI8C39rvpQeZA6bWhLlp3LErc05GoKLNLLUkA2Y8dUiyG1swvEpVWD9o2QJ_bKFj4vi8MWeC9a" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQITGhUpK9mwPW7aQY-Hxchm46qxAbuw62boVivorWVUu_fkL4o7isp3cs2KJ0xG76vLZotUybsDi7cfezKmkGWdNeg7se6IIgS_LS8kfs708kPp1aE39U2OPLF9rHuemd0KerDnETnEHrO8_i3jKXqJ" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill vencedor">Vencedor</span><h3>AD 04 - 08.04 - CASAMENTO</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>3</b><small>R$ 2,12 cada</small></div><div class="m"><span>Cliques</span><b>7</b><small>R$ 0,91 cada</small></div><div class="m"><span>CTR</span><b>2.66%</b></div><div class="m"><span>CPM</span><b>R$ 12,07</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>381</b></div><div class="m"><span>Gasto</span><b>R$ 6,35</b></div><div class="m"><span>Vídeos assistidos</span><b>16</b></div></div>
@@ -257,31 +281,31 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t15.5256-10/713304207_1553260366503529_5666371029688054739_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_ohc=fCigPnw8IF8Q7kNvwEpwo4p&amp;_nc_oc=AdroXiBOXeGndbstpLdQ57DX83RCjV77PJuJpj06rK3mRm9skuxrxoN0QZrTy0DdWwg&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ivU6gwyiUQ0bxz8F6T9Fsw&amp;_nc_tpa=Q5bMBQJ74nCZ2wJ6IePf4pw1CsZXXVRJp-IzE6zSEHdp0BwH7wesKkr48gvo33485TXJvnm2Eo2mktqc7w&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQFCMsLJgRBOkxRH-PjxkWxxm7hsVgJmXYWxeoeTYOkRKg&amp;oe=6A94DFB5" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/713304207_1553260366503529_5666371029688054739_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_ohc=Eylt3Cuhbu0Q7kNvwHCPp6e&amp;_nc_oc=AdqFwkkx1LdsPQBiijCIgvDFi_ug20A3EOATd_zOpflEIEny2VyTLWPd7suGebv9OEM&amp;_nc_zt=23&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=Tie0tyXPG6T1em___Ljbyw&amp;_nc_tpa=Q5bMBQKPINaeMg6rYh-zGkKo8iQEwbf-XhUprTpJguQcBKUC89gaSa4imjT07n4ydZGj_SmIsHYoro3rCQ&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQFh80BX9CWtPba2jxoiPyXGrBNNQb1uA0L3Iw3c-hL9mg&amp;oe=6A95F8F5" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 06 - 01.06 - Comemorando no Condomínio (Boteco do Lucas)</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>3</b><small>R$ 16,87 cada</small></div><div class="m"><span>Seguidores</span><b>13</b><small>R$ 3,89 cada</small></div><div class="m"><span>Cliques</span><b>375</b><small>R$ 0,13 cada</small></div><div class="m"><span>CTR</span><b>3.46%</b></div><div class="m"><span>CPM</span><b>R$ 4,82</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>7.514</b></div><div class="m"><span>Gasto</span><b>R$ 50,61</b></div><div class="m"><span>Vídeos assistidos</span><b>257</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 7%</span><span class="rot2">custo</span><span class="delta bom">▼ 44%</span></div>
+      <div class="grid"><div class="m"><span>Conversas</span><b>3</b><small>R$ 16,87 cada</small></div><div class="m"><span>Cliques</span><b>375</b><small>R$ 0,13 cada</small></div><div class="m"><span>CTR</span><b>3.46%</b></div><div class="m"><span>CPM</span><b>R$ 4,82</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>7.514</b></div><div class="m"><span>Gasto</span><b>R$ 50,61</b></div><div class="m"><span>Vídeos assistidos</span><b>257</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 6%</span><span class="rot2">custo</span><span class="delta bom">▼ 42%</span></div>
       <p class="hist">período anterior era pausar</p>
-      <div class="why bom"><span>Por que funciona</span>CTR de 3.46% é forte — o criativo chama atenção de verdade; e cada resultado sai 59% mais barato que a média</div>
+      <div class="why bom"><span>Por que funciona</span>CTR de 3.46% é forte — o criativo chama atenção de verdade; e cada resultado sai 58% mais barato que a média</div>
       <div class="plano"><span>Plano</span>Manter e monitorar por mais 3 a 5 dias</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t15.5256-10/747753015_1562818468761576_4384755807618099558_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_ohc=5VoLZwv0GskQ7kNvwHvXmUv&amp;_nc_oc=Adq1azN1-TjvGAqiOlQu-HOI35QNIjeWgfv2bUIfWnoZ5DbkO0Op43j0lydbIWVlPak&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ivU6gwyiUQ0bxz8F6T9Fsw&amp;_nc_tpa=Q5bMBQIXO-Bw-eccmDU47brmIWJF7ZYVh-ILFDy6gDATz8_KXtmy02Ljdsw65oGzDqD6fbX08tqRF5DDtA&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=afbe02&amp;_nc_sid=58080a&amp;oh=00_AQH0aGdrEe8gqGkwVk04jbDWg-EYfh9SkJ2df3KxGyb9bQ&amp;oe=6A95014A" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/747753015_1562818468761576_4384755807618099558_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_ohc=5VoLZwv0GskQ7kNvwFzXJyy&amp;_nc_oc=Ado6hMgcRr_HAgn4aj1hBKnvBmTseiXFAR7XjzIkyXffe2x9GyASqRLNDPN84G1WFZQ&amp;_nc_zt=23&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=Tie0tyXPG6T1em___Ljbyw&amp;_nc_tpa=Q5bMBQKkPrEEswl6BWPK1BRJvyUWQFK5h8SaB2ERLSbmLaveK3gjB-Nz9JYjNvXhZOwD3DSnWbmaVKjcVA&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=afbe02&amp;_nc_sid=58080a&amp;oh=00_AQHKPi5zyhFBHW9ncHnDpoOCKG2GHvqCZ9qRAsoQZxyjAw&amp;oe=6A95E24A" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 16 - 24.06 - DETALHES</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>10.53%</b></div><div class="m"><span>CPM</span><b>R$ 36,84</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>18</b></div><div class="m"><span>Gasto</span><b>R$ 0,70</b></div><div class="m"><span>Vídeos assistidos</span><b>1</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 450%</span></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 466%</span></div>
       <p class="hist">período anterior era vencedor</p>
-      <div class="why bom"><span>Por que funciona</span>o CTR de 10.53% está 173% acima da média da conta — o gancho prende a atenção; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
+      <div class="why bom"><span>Por que funciona</span>o CTR de 10.53% está 172% acima da média da conta — o gancho prende a atenção; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
       <div class="plano"><span>Plano</span>Deixar rodar mais alguns dias antes de decidir</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQL1fxp-ksA4og0VfgcldRy6lc47Rxbx8eOyTeCdoiGNXBPMUhsAysgspRUcyEhI_rEpOxDjPnp_xbLwMDo3xxjWL5I9JYrf3lzQ1YK_6W6XrvJWjhPe3JJrLRnrXzmuCMc7Gkyf1RSTJOiz_xmzybIY" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKewZFvBWQNJr-7zhVIlMm_CXgH29rGt9Ltn4_siWHNjRxvistviPXEr7RxH4fwlym42ZYyEF2pn4BGYFGxY3Ugr_y_K-drGW7zk_ZNTLw2qZUgKrNObLIeI_m1G6GR_kmbW3oqorR_VgXvEFHrvfnO" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>AD 18 - 06.08 -  FEEDBACK Cliente no WhatsApp</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 0,19 cada</small></div><div class="m"><span>CTR</span><b>1.85%</b></div><div class="m"><span>CPM</span><b>R$ 3,52</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>48</b></div><div class="m"><span>Gasto</span><b>R$ 0,19</b></div></div>
@@ -292,14 +316,26 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
-     <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot; está na frente porque cada resultado sai 85% mais barato que nos outros criativos; além disso, a frequência de 2.0 mostra que ainda tem muito público novo pra alcançar antes de saturar.
+     <div class="bloco porque"><div class="b-h"><i>★</i><b>Por que o #1 funciona</b></div><p>&quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot; está na frente porque cada resultado sai 84% mais barato que nos outros criativos; além disso, a frequência de 2.0 mostra que ainda tem muito público novo pra alcançar antes de saturar.
 
 Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p></div></div></div>
 
   <div class="sec-h rev"><h2>Os que precisam de atenção</h2><span class="rot" id="pior-rot"></span></div>
-  <div class="rev"><div id="pior7"><p class="vazio">Nada precisando de atenção nessa janela — todos os criativos rodando estão saudáveis.</p></div><div id="pior30">
+  <div class="rev"><div id="pior7">
   <article class="card" data-st="pausar">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLuJCHv--v1YjqiSI2CIa8jzgcwLTKI4c7K0dTynx5GCJdEjCHMEs6PRroP_wZG7ElO2hlrT9972VRfxZoQK3i7IdSabfC1cLntVZ1Bray1vSskHhfuDQkxV8pxKkTjDAkWl2dRYWFbaxqjD2lsgjTA" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIA4V9LQmqyJPDcUb0dlolSwRRtdJZ2qtH7ivXy5m9WXHqqKB_SFsRUJ688rFkVaq6fKDCpmB68PbESs2ue53UfOuyIVokRY2Hmd9hbjoDoN8zq3Fn4cz8lIIl2JbyMKKHK-IeaUGtUI8dorNNu2S5u" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill pausar">Pausar</span><h3>AD 16 - 29.07 -  AMBIENTE JM</h3></header>
+      <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 92,69 cada</small></div><div class="m"><span>Cliques</span><b>395</b><small>R$ 0,23 cada</small></div><div class="m"><span>CTR</span><b>3.48%</b></div><div class="m"><span>CPM</span><b>R$ 8,44</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>7.859</b></div><div class="m"><span>Gasto</span><b>R$ 92,69</b></div><div class="m"><span>Vídeos assistidos</span><b>659</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 15%</span><span class="rot2">custo</span><span class="delta ruim">▲ 71%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 157% mais que a média da conta; e o CTR de 3.48% está bem abaixo da média — o gancho não está prendendo</div>
+      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 13,24/dia pro vencedor &quot;AD 18- [29.07] - [VIDEO AMBIENTE JM]&quot;</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article></div><div id="pior30">
+  <article class="card" data-st="pausar">
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJECE1BjM6lp4ZY738LZ7eOTBTH9ytQI8evAwGEwbtpFJQZ5iFRQPMiT4DyH5E6Gk5QZrQs-WBixWILOg0C7Nd7ayv3KNI2jIIgw4HIiIbNb2WbTcHGwvr_D51sqDOtXP1QDM7GTIFLBtm-R_lHZ02T" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill pausar">Pausar</span><h3>AD 17 - 06.08 -  FEEDBACK Cliente na LOJA</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>289</b><small>R$ 0,25 cada</small></div><div class="m"><span>CTR</span><b>3.00%</b></div><div class="m"><span>CPM</span><b>R$ 7,54</b></div><div class="m"><span>Freq</span><b>1.4</b></div><div class="m"><span>Alcance</span><b>6.607</b></div><div class="m"><span>Gasto</span><b>R$ 71,60</b></div><div class="m"><span>Vídeos assistidos</span><b>411</b></div></div>
@@ -311,56 +347,56 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     </div>
   </article>
   <article class="card" data-st="pausar">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLsSCgMBjeLW0uqLyR-1lYqkdunzOnd-NaGEoVzGtWuGsB9fQ7uwtnxq_ne3HltNBRdClXAur5psOGoioKog5uHE_JAXx5Pp8vurBoL-YIf8SozPmYNRUpPgtBgmkmSbfOzJB2hir-Gs-umFuDdzJ4O" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKzx5y37dWQ4Vtlp0YSpCMovs9dm3J5vCSxtYCd2MnK-ndyYp5JI9yyHURnwzxmaaXgJOhhgQyx_2V-8-5yfEfaUNHYMmbxUGUJpfCuMGbcV-kzRZllh7lyypzPl9HPd_alFYlvu_jhqBl2mOlZCKAq" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill pausar">Pausar</span><h3>AD 16 - 29.07 -  AMBIENTE JM</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>3</b><small>R$ 99,78 cada</small></div><div class="m"><span>Seguidores</span><b>114</b><small>R$ 2,63 cada</small></div><div class="m"><span>Cliques</span><b>1.325</b><small>R$ 0,23 cada</small></div><div class="m"><span>CTR</span><b>3.28%</b></div><div class="m"><span>CPM</span><b>R$ 7,54</b></div><div class="m"><span>Freq</span><b>2.1</b></div><div class="m"><span>Alcance</span><b>18.495</b></div><div class="m"><span>Gasto</span><b>R$ 299,33</b></div><div class="m"><span>Vídeos assistidos</span><b>2.513</b></div></div>
+      <div class="grid"><div class="m"><span>Conversas</span><b>4</b><small>R$ 79,55 cada</small></div><div class="m"><span>Cliques</span><b>1.410</b><small>R$ 0,23 cada</small></div><div class="m"><span>CTR</span><b>3.31%</b></div><div class="m"><span>CPM</span><b>R$ 7,61</b></div><div class="m"><span>Freq</span><b>2.1</b></div><div class="m"><span>Alcance</span><b>19.532</b></div><div class="m"><span>Gasto</span><b>R$ 318,18</b></div><div class="m"><span>Vídeos assistidos</span><b>2.637</b></div></div>
       
       <p class="hist">novo no ranking neste período</p>
-      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 140% mais que a média da conta</div>
-      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 9,98/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
+      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 100% mais que a média da conta</div>
+      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 10,61/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="pausar">
-    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t15.5256-10/709646784_1514472443522897_7541447310513561326_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_ohc=Yw-e6asq0QsQ7kNvwGp9VVV&amp;_nc_oc=AdoGEYGxo0DhrbHhZhs_f9WIGoptMn4T2YBhtWF4nVSXPzbWp75Z_kiZ81igstzr9dc&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ivU6gwyiUQ0bxz8F6T9Fsw&amp;_nc_tpa=Q5bMBQJx_JqK7TPW_OIYFZShQ9WpWq0lgJHQnaCLbWW9SX-TB72sXSdpXcqoUb2aYvHmaBuGX1kkKOCDCg&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQEaMryIe7YkfDi_9e7s4kz62cBxafCBTL3c-PcE14DuOQ&amp;oe=6A94DACF" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/709646784_1514472443522897_7541447310513561326_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_ohc=Yw-e6asq0QsQ7kNvwHtUcj3&amp;_nc_oc=Adrn5mqvD7qg_EQj9jKfmhaiYBKxRCMVoRSLzppRA8FmgqoNuHk9WBlEI9CSNbsENKI&amp;_nc_zt=23&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=Tie0tyXPG6T1em___Ljbyw&amp;_nc_tpa=Q5bMBQI6eXDz-o-vg391BwQqtGPLaYzm1idrunVUEQvbu5aV6xTfnFNmOB3xxCQOmJBBMBln96ndeffaHw&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQGP2KjdPxYQDOfNbCXZwaUsGKPX2nxlqt_DT0U7T3E_qw&amp;oe=6A95F40F" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill pausar">Pausar</span><h3>AD 07 - 01.06 - Aniversário no sítio feminino — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 72,50 cada</small></div><div class="m"><span>Cliques</span><b>587</b><small>R$ 0,12 cada</small></div><div class="m"><span>CTR</span><b>3.58%</b></div><div class="m"><span>CPM</span><b>R$ 4,56</b></div><div class="m"><span>Freq</span><b>1.3</b></div><div class="m"><span>Alcance</span><b>12.295</b></div><div class="m"><span>Gasto</span><b>R$ 72,50</b></div><div class="m"><span>Vídeos assistidos</span><b>536</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 13%</span><span class="rot2">custo</span><span class="delta ruim">▲ 35%</span></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 12%</span><span class="rot2">custo</span><span class="delta ruim">▲ 40%</span></div>
       <p class="hist">manteve o status do período anterior</p>
-      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 74% mais que a média da conta</div>
+      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 82% mais que a média da conta</div>
       <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 2,42/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="pausar">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLsSCgMBjeLW0uqLyR-1lYqkdunzOnd-NaGEoVzGtWuGsB9fQ7uwtnxq_ne3HltNBRdClXAur5psOGoioKog5uHE_JAXx5Pp8vurBoL-YIf8SozPmYNRUpPgtBgmkmSbfOzJB2hir-Gs-umFuDdzJ4O" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQKzx5y37dWQ4Vtlp0YSpCMovs9dm3J5vCSxtYCd2MnK-ndyYp5JI9yyHURnwzxmaaXgJOhhgQyx_2V-8-5yfEfaUNHYMmbxUGUJpfCuMGbcV-kzRZllh7lyypzPl9HPd_alFYlvu_jhqBl2mOlZCKAq" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill pausar">Pausar</span><h3>AD 18- [29.07] - [VIDEO AMBIENTE JM]</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>4</b><small>R$ 56,02 cada</small></div><div class="m"><span>Cliques</span><b>160</b><small>R$ 1,40 cada</small></div><div class="m"><span>CTR</span><b>3.18%</b></div><div class="m"><span>CPM</span><b>R$ 12,58</b></div><div class="m"><span>Freq</span><b>2.3</b></div><div class="m"><span>Alcance</span><b>7.677</b></div><div class="m"><span>Gasto</span><b>R$ 224,09</b></div><div class="m"><span>Vídeos assistidos</span><b>1.139</b></div></div>
+      <div class="grid"><div class="m"><span>Compras</span><b>4</b><small>R$ 58,30 cada</small></div><div class="m"><span>Cliques</span><b>166</b><small>R$ 1,40 cada</small></div><div class="m"><span>CTR</span><b>3.17%</b></div><div class="m"><span>CPM</span><b>R$ 12,61</b></div><div class="m"><span>Freq</span><b>2.3</b></div><div class="m"><span>Alcance</span><b>7.901</b></div><div class="m"><span>Gasto</span><b>R$ 233,20</b></div><div class="m"><span>Vídeos assistidos</span><b>1.174</b></div></div>
       
       <p class="hist">novo no ranking neste período</p>
-      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 35% mais que a média da conta</div>
-      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 7,47/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
+      <div class="why ruim"><span>Por que não está funcionando</span>cada resultado custa 47% mais que a média da conta</div>
+      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 7,77/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="pausar">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t15.5256-10/772177727_1045674598330373_6804640722052482410_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_ohc=WMrpyt2KctQQ7kNvwGtB592&amp;_nc_oc=AdpU_8BV2n32iGXFwlAemrmHZad4tYjzGIInPTIEAmff-QnvVgUJmaowiQ6suSrFMJM&amp;_nc_zt=23&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ivU6gwyiUQ0bxz8F6T9Fsw&amp;_nc_tpa=Q5bMBQLvK6NKYBEWL30qnu_Cf7MgVxgANqTczoa1HZuBYzOT4eBfDUI3Zv0URRAXZNh72MmXiJCLdQB4tg&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQHFXdoodhmXYiwJv_nRFlp59N5fV7350kuamTJSS4a0PQ&amp;oe=6A95034F" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t15.5256-10/772177727_1045674598330373_6804640722052482410_n.jpg?_nc_cat=101&amp;ccb=1-7&amp;_nc_ohc=WMrpyt2KctQQ7kNvwGQzFps&amp;_nc_oc=AdrXaYXED7Hs_t-uylKLqsp8uXzwfnINtT994s70Aw9BSuU6K81yMkRUvQNS90dCwOw&amp;_nc_zt=23&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=Tie0tyXPG6T1em___Ljbyw&amp;_nc_tpa=Q5bMBQKa4mS7dgC_nAjxFz2dXL0D6-U7ROlUnftAwRYJsNCOt3YCTmamvefOeI1c1WgKr7FvMHu27CaoWg&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=a7ce7f&amp;_nc_sid=58080a&amp;oh=00_AQEO_a945YCXmmsDprRVJuVjGWX_LbLnRCFIiMahl66U3Q&amp;oe=6A95E44F" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill pausar">Pausar</span><h3>AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia</h3></header>
-      <div class="grid"><div class="m"><span>Compras</span><b>2</b><small>R$ 36,44 cada</small></div><div class="m"><span>Cliques</span><b>47</b><small>R$ 1,55 cada</small></div><div class="m"><span>CTR</span><b>3.99%</b></div><div class="m"><span>CPM</span><b>R$ 12,20</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>3.472</b></div><div class="m"><span>Gasto</span><b>R$ 72,88</b></div><div class="m"><span>Vídeos assistidos</span><b>291</b></div></div>
+      <div class="grid"><div class="m"><span>Compras</span><b>2</b><small>R$ 41,52 cada</small></div><div class="m"><span>Cliques</span><b>53</b><small>R$ 1,57 cada</small></div><div class="m"><span>CTR</span><b>4.06%</b></div><div class="m"><span>CPM</span><b>R$ 12,36</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>3.922</b></div><div class="m"><span>Gasto</span><b>R$ 83,04</b></div><div class="m"><span>Vídeos assistidos</span><b>332</b></div></div>
       
       <p class="hist">novo no ranking neste período</p>
       <div class="why ruim"><span>Por que não está funcionando</span>o desempenho ficou atrás dos outros criativos da conta no período</div>
-      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 2,43/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
+      <div class="plano"><span>O que vamos fazer</span>Pausar e realocar os ~R$ 2,77/dia pro vencedor &quot;AD 19- [07.08] - [VIDEO DIA DOS PAIS ]&quot;</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=741568685704729" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article></div></div>
 
   <div class="rev"><div id="res7"><div class="bloco resumo"><div class="b-h"><i>▸</i><b>Resumo de ações</b></div>
-      <p class="res ok"><span>Escalar</span>AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia</p><p class="res bad"><span>Pausar</span>AD 16 - 29.07 -  AMBIENTE JM</p>
+      <p class="res ok"><span>Escalar</span>AD 18- [29.07] - [VIDEO AMBIENTE JM]</p><p class="res bad"><span>Pausar</span>AD 16 - 29.07 -  AMBIENTE JM</p>
     </div></div><div id="res30"><div class="bloco resumo"><div class="b-h"><i>▸</i><b>Resumo de ações</b></div>
       <p class="res ok"><span>Escalar</span>AD 04 - 08.04 - CASAMENTO · AD 19- [07.08] - [VIDEO DIA DOS PAIS ]</p><p class="res bad"><span>Pausar</span>AD 07 - 01.06 - Aniversário no sítio feminino — Cópia · AD 18- [29.07] - [VIDEO AMBIENTE JM] · AD 16 - 29.07 -  AMBIENTE JM · AD 17 - 06.08 -  FEEDBACK Cliente na LOJA · AD 20 - [13.08] - [VIDEO DECORADOR + ANIVERSÁRIO MENINA] — Cópia</p>
     </div></div></div>
@@ -374,7 +410,7 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
   <footer>Painel gerado automaticamente pela <b>ACT Digital</b> · métricas direto do Meta Ads, atualizadas todo dia de manhã · seguidores coletados semanalmente · link exclusivo deste cliente, não compartilhe.</footer>
 </div>
 
-<script>window.ACT={"nome":"JOÃO E MARIA FESTAS","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-27","g":27.880000000000003,"imp":3488,"cl":71,"clk":82,"conv":5,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-28","g":0.02,"imp":4,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":20.17,"imp":3423,"cl":96,"clk":107,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":12.72,"imp":1795,"cl":33,"clk":44,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":47.56,"imp":6130,"cl":122,"clk":141,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":62.18,"imp":7972,"cl":169,"clk":204,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":61.599999999999994,"imp":8410,"cl":201,"clk":228,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":42.29,"imp":7185,"cl":191,"clk":216,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":38.620000000000005,"imp":7020,"cl":172,"clk":198,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":36.45,"imp":7050,"cl":153,"clk":183,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":34.92,"imp":5507,"cl":133,"clk":158,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":30.050000000000004,"imp":4693,"cl":138,"clk":161,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":32.39,"imp":5450,"cl":106,"clk":134,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":20.29,"imp":3152,"cl":76,"clk":90,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":0,"imp":0,"cl":0,"clk":0,"conv":1,"comp":2,"val":0,"leads":4,"vis":0},{"d":"2026-07-14","g":29.92,"imp":4987,"cl":120,"clk":140,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":36.94,"imp":5138,"cl":119,"clk":145,"conv":2,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-07-16","g":58.61,"imp":6827,"cl":166,"clk":182,"conv":8,"comp":1,"val":0,"leads":1,"vis":0},{"d":"2026-07-17","g":58.599999999999994,"imp":8607,"cl":173,"clk":200,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":60.72,"imp":8685,"cl":231,"clk":265,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":34.71,"imp":5773,"cl":150,"clk":158,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":38.19,"imp":5717,"cl":138,"clk":170,"conv":4,"comp":1,"val":0,"leads":6,"vis":0},{"d":"2026-07-21","g":39.67,"imp":5411,"cl":155,"clk":185,"conv":6,"comp":4,"val":0,"leads":7,"vis":0},{"d":"2026-07-22","g":34.55,"imp":4952,"cl":138,"clk":149,"conv":5,"comp":0,"val":0,"leads":2,"vis":0},{"d":"2026-07-23","g":32.53,"imp":4283,"cl":124,"clk":143,"conv":0,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-07-24","g":14.8,"imp":1768,"cl":66,"clk":75,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":43.53,"imp":5138,"cl":153,"clk":206,"conv":6,"comp":0,"val":0,"leads":3,"vis":0},{"d":"2026-07-30","g":54.22,"imp":6311,"cl":152,"clk":212,"conv":13,"comp":1,"val":0,"leads":5,"vis":0},{"d":"2026-07-31","g":56.72,"imp":5916,"cl":158,"clk":207,"conv":8,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-08-01","g":60.95,"imp":7668,"cl":175,"clk":232,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":39.57,"imp":6529,"cl":173,"clk":198,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":38.42,"imp":5485,"cl":155,"clk":183,"conv":4,"comp":0,"val":0,"leads":1,"vis":0},{"d":"2026-08-04","g":34.63,"imp":4697,"cl":154,"clk":179,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":33.65,"imp":3795,"cl":131,"clk":154,"conv":8,"comp":0,"val":0,"leads":9,"vis":0},{"d":"2026-08-06","g":27.8,"imp":3141,"cl":81,"clk":107,"conv":2,"comp":2,"val":0,"leads":9,"vis":0},{"d":"2026-08-07","g":33.67,"imp":3593,"cl":96,"clk":109,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":16.1,"imp":1096,"cl":29,"clk":40,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":0.01,"imp":3,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":28.490000000000002,"imp":3409,"cl":74,"clk":84,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":57.03,"imp":5439,"cl":118,"clk":164,"conv":3,"comp":0,"val":0,"leads":2,"vis":0},{"d":"2026-08-12","g":44.379999999999995,"imp":4605,"cl":131,"clk":159,"conv":2,"comp":0,"val":0,"leads":1,"vis":0},{"d":"2026-08-13","g":48.04,"imp":4648,"cl":92,"clk":135,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":34.83,"imp":3710,"cl":99,"clk":144,"conv":2,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-08-15","g":35.19,"imp":4084,"cl":95,"clk":139,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":31.91,"imp":4142,"cl":81,"clk":104,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":37.870000000000005,"imp":4406,"cl":102,"clk":149,"conv":4,"comp":1,"val":0,"leads":1,"vis":0},{"d":"2026-08-18","g":16.11,"imp":2280,"cl":58,"clk":67,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":20.25,"imp":3339,"cl":127,"clk":122,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":18.58,"imp":2328,"cl":81,"clk":78,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":18.63,"imp":2202,"cl":89,"clk":86,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":17.88,"imp":2393,"cl":97,"clk":92,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":20.43,"imp":2578,"cl":88,"clk":85,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":9.649999999999999,"imp":1489,"cl":35,"clk":39,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":0.02,"imp":5,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":154}]};(function scriptCliente() {
+<script>window.ACT={"nome":"JOÃO E MARIA FESTAS","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-28","g":0.02,"imp":4,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":20.17,"imp":3423,"cl":96,"clk":107,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":12.72,"imp":1795,"cl":33,"clk":44,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":47.56,"imp":6130,"cl":122,"clk":141,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":62.18,"imp":7972,"cl":169,"clk":204,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":61.599999999999994,"imp":8410,"cl":201,"clk":228,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":42.29,"imp":7185,"cl":191,"clk":216,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":38.620000000000005,"imp":7020,"cl":172,"clk":198,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":36.45,"imp":7050,"cl":153,"clk":183,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":34.92,"imp":5507,"cl":133,"clk":158,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":30.050000000000004,"imp":4693,"cl":138,"clk":161,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":32.39,"imp":5450,"cl":106,"clk":134,"conv":8,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":20.29,"imp":3152,"cl":76,"clk":90,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":0,"imp":0,"cl":0,"clk":0,"conv":1,"comp":2,"val":0,"leads":4,"vis":0},{"d":"2026-07-14","g":29.92,"imp":4987,"cl":120,"clk":140,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":36.94,"imp":5138,"cl":119,"clk":145,"conv":2,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-07-16","g":58.61,"imp":6827,"cl":166,"clk":182,"conv":8,"comp":1,"val":0,"leads":1,"vis":0},{"d":"2026-07-17","g":58.599999999999994,"imp":8607,"cl":173,"clk":200,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":60.72,"imp":8685,"cl":231,"clk":265,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":34.71,"imp":5773,"cl":150,"clk":158,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":38.19,"imp":5717,"cl":138,"clk":170,"conv":4,"comp":1,"val":0,"leads":6,"vis":0},{"d":"2026-07-21","g":39.67,"imp":5411,"cl":155,"clk":185,"conv":6,"comp":4,"val":0,"leads":7,"vis":0},{"d":"2026-07-22","g":34.55,"imp":4952,"cl":138,"clk":149,"conv":5,"comp":0,"val":0,"leads":2,"vis":0},{"d":"2026-07-23","g":32.53,"imp":4283,"cl":124,"clk":143,"conv":0,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-07-24","g":14.8,"imp":1768,"cl":66,"clk":75,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":43.53,"imp":5138,"cl":153,"clk":206,"conv":6,"comp":0,"val":0,"leads":3,"vis":0},{"d":"2026-07-30","g":54.22,"imp":6311,"cl":152,"clk":212,"conv":13,"comp":1,"val":0,"leads":5,"vis":0},{"d":"2026-07-31","g":56.72,"imp":5916,"cl":158,"clk":207,"conv":8,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-08-01","g":60.95,"imp":7668,"cl":175,"clk":232,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":39.57,"imp":6529,"cl":173,"clk":198,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":38.42,"imp":5485,"cl":155,"clk":183,"conv":4,"comp":0,"val":0,"leads":1,"vis":0},{"d":"2026-08-04","g":34.63,"imp":4697,"cl":154,"clk":179,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":33.65,"imp":3795,"cl":131,"clk":154,"conv":8,"comp":0,"val":0,"leads":9,"vis":0},{"d":"2026-08-06","g":27.8,"imp":3141,"cl":81,"clk":107,"conv":2,"comp":2,"val":0,"leads":9,"vis":0},{"d":"2026-08-07","g":33.67,"imp":3593,"cl":96,"clk":109,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":16.1,"imp":1096,"cl":29,"clk":40,"conv":3,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":0.01,"imp":3,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":28.490000000000002,"imp":3409,"cl":74,"clk":84,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":57.03,"imp":5439,"cl":118,"clk":164,"conv":3,"comp":0,"val":0,"leads":2,"vis":0},{"d":"2026-08-12","g":44.379999999999995,"imp":4605,"cl":131,"clk":159,"conv":2,"comp":0,"val":0,"leads":1,"vis":0},{"d":"2026-08-13","g":48.04,"imp":4648,"cl":92,"clk":135,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":34.83,"imp":3710,"cl":99,"clk":144,"conv":2,"comp":1,"val":0,"leads":2,"vis":0},{"d":"2026-08-15","g":35.19,"imp":4084,"cl":95,"clk":139,"conv":6,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":31.91,"imp":4142,"cl":81,"clk":104,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":37.870000000000005,"imp":4406,"cl":102,"clk":149,"conv":4,"comp":1,"val":0,"leads":1,"vis":0},{"d":"2026-08-18","g":16.11,"imp":2280,"cl":58,"clk":67,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":20.25,"imp":3339,"cl":127,"clk":122,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":18.58,"imp":2328,"cl":81,"clk":78,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":18.63,"imp":2202,"cl":89,"clk":86,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":17.88,"imp":2393,"cl":97,"clk":92,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":20.43,"imp":2578,"cl":88,"clk":85,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":9.649999999999999,"imp":1489,"cl":35,"clk":39,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":0.02,"imp":5,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-26","g":38.120000000000005,"imp":3528,"cl":97,"clk":136,"conv":4,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":154}]};(function scriptCliente() {
   const D = window.ACT;
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -547,6 +583,71 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div><div class="g-area">' + s + "</div>";
   }
 
+  function renderSemanas() {
+    const el = $("#semanas");
+    if (!el) return;
+    const n = D.serie.length;
+    if (n < 14) { el.style.display = "none"; return; }
+    const semanas = [];
+    for (let i = 3; i >= 0; i--) {
+      const fim = n - 7 * i;
+      const ini = fim - 7;
+      if (ini < 0) continue;
+      const fatia = D.serie.slice(ini, fim);
+      semanas.push({ fatia, k: kpisDe(soma(fatia)), ini: fatia[0].d, fim: fatia[fatia.length - 1].d, atual: i === 0 });
+    }
+    if (semanas.length < 2) { el.style.display = "none"; return; }
+    const temVendas = semanas.some((s) => s.k.vendas > 0);
+
+    const dseta = (v, ant, inv) => {
+      if (ant == null || !isFinite(ant) || ant === 0 || !isFinite(v)) return "";
+      const d = (v - ant) / ant;
+      const pct = Math.round(Math.abs(d) * 100);
+      if (pct < 3) return '<i class="mini neutro">=</i>';
+      const bom = inv ? d < 0 : d > 0;
+      return '<i class="mini ' + (bom ? "bom" : "ruim") + '">' + (d > 0 ? "▲" : "▼") + pct + "%</i>";
+    };
+
+    const linhas = [
+      { rot: D.resultado.nome, fn: (k) => brInt(k.resultado), val: (k) => k.resultado, inv: false, forte: true },
+      { rot: "Custo por " + D.resultado.nome.toLowerCase().replace(/s$/, ""), fn: (k) => (k.custo > 0 ? "R$ " + br(k.custo) : "—"), val: (k) => k.custo, inv: true, forte: true },
+    ];
+    if (temVendas) {
+      linhas.push({ rot: "Vendas", fn: (k) => "R$ " + br(k.vendas), val: (k) => k.vendas, inv: false, forte: true });
+      linhas.push({ rot: "ROAS", fn: (k) => (k.roas > 0 ? br(k.roas) + "x" : "—"), val: (k) => k.roas, inv: false, forte: false });
+    }
+    linhas.push({ rot: "Investimento", fn: (k) => "R$ " + br(k.gasto), val: (k) => k.gasto, inv: false, forte: false });
+    linhas.push({ rot: "Cliques no link", fn: (k) => brInt(k.cliques), val: (k) => k.cliques, inv: false, forte: false });
+    linhas.push({ rot: "CTR", fn: (k) => k.ctr.toFixed(2) + "%", val: (k) => k.ctr, inv: false, forte: false });
+    linhas.push({ rot: "CPM", fn: (k) => "R$ " + br(k.cpm), val: (k) => k.cpm, inv: true, forte: false });
+
+    let h = '<div class="g-h"><span class="rot">Semana a semana · últimas ' + semanas.length + ' semanas</span><b style="color:#F5B113">semana atual em destaque</b></div>';
+    h += '<div class="sem-rolagem"><table class="sem-tab"><thead><tr><th></th>';
+    semanas.forEach((s, i) => {
+      h += '<th class="' + (s.atual ? "atual" : "") + '">' + (s.atual ? "SEMANA ATUAL" : "S-" + (semanas.length - 1 - i)) + "<em>" + ddmm(s.ini) + " – " + ddmm(s.fim) + "</em></th>";
+    });
+    h += "</tr></thead><tbody>";
+    for (const l of linhas) {
+      h += '<tr class="' + (l.forte ? "forte" : "") + '"><td class="rotulo">' + l.rot + "</td>";
+      semanas.forEach((s, i) => {
+        const ant = i > 0 ? l.val(semanas[i - 1].k) : null;
+        h += '<td class="' + (s.atual ? "atual" : "") + '">' + l.fn(s.k) + (s.atual ? dseta(l.val(s.k), ant, l.inv) : "") + "</td>";
+      });
+      h += "</tr>";
+    }
+    // barra visual da evolução do resultado principal
+    const maxR = Math.max.apply(null, semanas.map((s) => s.k.resultado).concat([1]));
+    h += '<tr class="barras"><td class="rotulo">Evolução</td>';
+    semanas.forEach((s) => {
+      const pct = Math.max(4, Math.round((s.k.resultado / maxR) * 100));
+      h += '<td class="' + (s.atual ? "atual" : "") + '"><span class="vbar' + (s.atual ? " on" : "") + '" style="height:' + Math.round(pct * 0.38) + 'px" title="' + brInt(s.k.resultado) + '"></span></td>';
+    });
+    h += "</tr></tbody></table></div>";
+    el.innerHTML = h;
+    const rol = el.querySelector(".sem-rolagem");
+    if (rol) rol.scrollLeft = rol.scrollWidth;
+  }
+
   function renderCriativos() {
     const usa30 = periodo > 7;
     const rot = usa30 ? "últimos 30 dias" : "últimos 7 dias";
@@ -589,6 +690,8 @@ Na prática: replicar esse gancho e essa estrutura nas próximas variações.</p
     revs.forEach((el) => io.observe(el));
   }
   window.addEventListener("beforeprint", () => revs.forEach((el) => el.classList.add("in")));
+  renderSemanas();
+  window.addEventListener("resize", () => { clearTimeout(window.__rsem); window.__rsem = setTimeout(renderSemanas, 200); });
   render();
 })();</script>
 </body></html>

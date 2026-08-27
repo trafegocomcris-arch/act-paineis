@@ -25,7 +25,7 @@ h1 em{font-style:normal;color:var(--ambar)}
 .meta>div:first-child{border-left:none;padding-left:0}
 .meta span{display:block;margin-bottom:4px}
 .meta b{font-family:var(--tit);font-weight:700;font-size:14px}
-.wrap{max-width:1060px;margin:0 auto;padding:0 6vw 90px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 5vw 90px}
 .rev{opacity:0;transform:translateY(12px);transition:opacity .55s ease var(--d,0ms),transform .55s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
 .rev.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -46,6 +46,28 @@ footer b{color:var(--ambar);font-weight:600}
 .delta.bom{background:rgba(70,192,139,.12);color:var(--verde)}
 .delta.ruim{background:rgba(229,72,77,.12);color:var(--verm)}
 .delta.neutro{background:var(--surf2);color:var(--ter)}
+.graf.semanas{margin-top:12px;padding-bottom:14px}
+.sem-rolagem{overflow-x:auto;scrollbar-width:thin}
+.sem-tab{width:100%;border-collapse:collapse;min-width:560px}
+.sem-tab th,.sem-tab td{padding:8px 12px;text-align:right;font-size:13.5px;border-top:1px solid var(--linha)}
+.sem-tab thead th{border-top:none;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;color:var(--ter);padding-bottom:10px;vertical-align:bottom}
+.sem-tab thead th em{display:block;font-style:normal;font-size:9px;letter-spacing:.04em;color:var(--ter);opacity:.7;margin-top:2px}
+.sem-tab thead th.atual{color:var(--ambar)}
+.sem-tab td.rotulo,.sem-tab th:first-child{text-align:left;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sec);white-space:nowrap}
+.sem-tab td{color:var(--ter);font-variant-numeric:tabular-nums}
+.sem-tab tr.forte td:not(.rotulo){color:var(--sec);font-family:var(--tit);font-weight:700;font-size:15px}
+.sem-tab td.atual{background:rgba(245,177,19,.05);color:var(--texto);border-left:1px solid rgba(245,177,19,.25);border-right:1px solid rgba(245,177,19,.25)}
+.sem-tab tr.forte td.atual{font-size:16.5px}
+.sem-tab thead th.atual{background:rgba(245,177,19,.05);border-left:1px solid rgba(245,177,19,.25);border-right:1px solid rgba(245,177,19,.25);border-radius:8px 8px 0 0}
+.sem-tab .mini{font-style:normal;font-family:var(--mono);font-size:9.5px;font-weight:600;margin-left:7px;padding:1px 6px;border-radius:12px;vertical-align:middle}
+.sem-tab .mini.bom{background:rgba(70,192,139,.14);color:var(--verde)}
+.sem-tab .mini.ruim{background:rgba(229,72,77,.14);color:var(--verm)}
+.sem-tab .mini.neutro{background:var(--surf2);color:var(--ter)}
+.sem-tab tr.barras td{padding-top:12px;vertical-align:bottom;border-top:1px solid var(--linha)}
+.vbar{display:inline-block;width:34px;border-radius:5px 5px 2px 2px;background:var(--ter);opacity:.45;transform-origin:bottom;animation:crescerV .8s cubic-bezier(.2,.7,.2,1) both}
+.vbar.on{background:var(--ambar);opacity:1}
+@keyframes crescerV{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion: reduce){.vbar{animation:none}}
 .graficos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
 .graf{background:var(--surf);border:1px solid var(--linha);border-radius:14px;padding:16px 16px 10px;min-width:0}
 .graf svg{display:block;touch-action:none}
@@ -137,7 +159,7 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="marca"><div class="logo">act<i>.</i></div><div class="kicker">Painel de Performance</div></div>
   <h1>SUPER ÓTICA</h1>
   <div class="meta">
-    <div><span class="rot">Atualizado em</span><b>26/08/2026 14:03</b></div>
+    <div><span class="rot">Atualizado em</span><b>27/08/2026 08:58</b></div>
     <div><span class="rot">Resultado principal</span><b>Conversas</b></div>
     <div><span class="rot">Nicho</span><b>ótica</b></div>
     <div><span class="rot">Atualização</span><b>todo dia de manhã</b></div>
@@ -159,6 +181,8 @@ footer b{color:var(--ambar);font-weight:600}
 <div class="wrap">
   <div class="kpis rev in" id="kpis"></div>
 
+  <div class="graf semanas rev in" id="semanas"></div>
+
   <div class="graficos rev in">
     <div class="graf" id="g1"></div>
     <div class="graf" id="g2"></div>
@@ -170,31 +194,19 @@ footer b{color:var(--ambar);font-weight:600}
   <div class="sec-h rev"><h2>Os 5 melhores criativos</h2><span class="rot" id="cria-rot"></span><a class="bt-bib" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=108233428681445" target="_blank">todos os anúncios ativos na Biblioteca ↗</a></div>
   <div class="rev"><div id="cria7">
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/759504711_122200727510527476_3602545714752360416_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KfNpdhADD-oQ7kNvwFI_nAl&amp;_nc_oc=Adoc9gBLlPoDSvDX9uGTjeDCTaszBim6acpqadsjNYW-1l4yPJtYVZIxXkJPeYYuhdY&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=BrGCRoB--vWQJ3Pvf2jNYQ&amp;_nc_tpa=Q5bMBQKam5lxhNd3f7jr4xviTEJ3DarDEytPVpNVthyBFGliwCOGSe6hNdcPbUdwSeSH1iIhINz387PxrQ&amp;oh=00_AQGKHZd8AaDQoV42ixBlAE6iCdHBR0Tgxd_1O2mFNxAENA&amp;oe=6A94FC31" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/759504711_122200727510527476_3602545714752360416_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KfNpdhADD-oQ7kNvwFYw_ag&amp;_nc_oc=AdrEt_q2XYkiWt-DIwlK55kZ8TA-ADVD_uLzIJGbBbfr8PkuvuIYsdUbrL0KfpxPgJA&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=7B-UnlKSi_utN6lDhGgCHA&amp;_nc_tpa=Q5bMBQJVhETAQGoeK3jKo5iN1SaQj5ewMw-rK2JMnNxtLUULMY8uYN_sgoTVoNttUJyMcNIjeXTXnvxEwA&amp;oh=00_AQHSlTIR7ZmXosYQKVavhkBBdAbLhjGqRyyOs4guQsphVw&amp;oe=6A95DD31" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD01][31.07][MIX IMG]</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>5</b><small>R$ 12,45 cada</small></div><div class="m"><span>Seguidores</span><b>1</b><small>R$ 62,23 cada</small></div><div class="m"><span>Cliques</span><b>34</b><small>R$ 1,83 cada</small></div><div class="m"><span>CTR</span><b>0.84%</b></div><div class="m"><span>CPM</span><b>R$ 10,27</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>4.128</b></div><div class="m"><span>Gasto</span><b>R$ 62,23</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 35%</span><span class="rot2">custo</span><span class="delta bom">▼ 8%</span></div>
+      <div class="grid"><div class="m"><span>Conversas</span><b>5</b><small>R$ 12,45 cada</small></div><div class="m"><span>Cliques</span><b>34</b><small>R$ 1,83 cada</small></div><div class="m"><span>CTR</span><b>0.84%</b></div><div class="m"><span>CPM</span><b>R$ 10,27</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>4.128</b></div><div class="m"><span>Gasto</span><b>R$ 62,23</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">custo</span><span class="delta ruim">▲ 1730%</span></div>
       <p class="hist">manteve o status do período anterior</p>
-      <div class="why bom"><span>Por que funciona</span>cada resultado sai 36% mais barato que a média; e frequência baixa (1.5) — ainda tem muito público novo pra alcançar</div>
+      <div class="why bom"><span>Por que funciona</span>cada resultado sai 49% mais barato que a média; e frequência baixa (1.5) — ainda tem muito público novo pra alcançar</div>
       <div class="plano"><span>Plano</span>Manter e monitorar por mais 3 a 5 dias</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=108233428681445" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/756535459_122200727582527476_7115750073811618949_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=BDcMPNIA14gQ7kNvwGmsGpd&amp;_nc_oc=AdoAcRqvI72D1etSNeL5ClQ_F92t1P94KCumaJFPmDBcKgTSb5xMY42y_3V2GfdCcoQ&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=BrGCRoB--vWQJ3Pvf2jNYQ&amp;_nc_tpa=Q5bMBQIcr2S3Tsul4ppyCJuGc-xmkHAH58L-akiYX50DI5lXsoabhsHcgL19-Q04-0sTps5MV2rKRZgV5Q&amp;oh=00_AQEueIp8pLed4RNNcigzC_a-ZGGu7HK2sLb0B5uF6JU8pQ&amp;oe=6A94E207" alt="" loading="lazy"></div>
-    <div class="info">
-      <header><span class="pill medio">Médio</span><h3>[AD05][14.08][EXAME COMPLETO MULTIRÃO]</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>4</b><small>R$ 10,17 cada</small></div><div class="m"><span>Seguidores</span><b>1</b><small>R$ 40,66 cada</small></div><div class="m"><span>Cliques</span><b>20</b><small>R$ 2,03 cada</small></div><div class="m"><span>CTR</span><b>0.92%</b></div><div class="m"><span>CPM</span><b>R$ 12,92</b></div><div class="m"><span>Freq</span><b>1.3</b></div><div class="m"><span>Alcance</span><b>2.466</b></div><div class="m"><span>Gasto</span><b>R$ 40,66</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 40%</span><span class="rot2">custo</span><span class="delta bom">▼ 64%</span></div>
-      <p class="hist">período anterior era pausar</p>
-      <div class="why bom"><span>Por que funciona</span>cada resultado sai 48% mais barato que a média; e frequência baixa (1.3) — ainda tem muito público novo pra alcançar</div>
-      <div class="plano"><span>Plano</span>Manter e monitorar por mais 3 a 5 dias</div>
-      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=108233428681445" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
-    </div>
-  </article>
-  <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/759728467_122200727492527476_1163510866697320968_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=aKPgIl0A1YgQ7kNvwEgDs3j&amp;_nc_oc=AdpE3XLgszUdUAkuFtLcj2sMU-4d-YBpuziyvURqupQuruX9Kpdl6fo1fXjTrInR4sc&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=BrGCRoB--vWQJ3Pvf2jNYQ&amp;_nc_tpa=Q5bMBQIzQ9vZsLfEVQY7roQg8dUFGW-hMmMb1Nf52zMENIu4y6diTqjawds-F-P_gA2iQ54jmHHoEXGekg&amp;oh=00_AQEoFlhM12k_UEtqdqT0YP8UbjvYNwReSXExTn9jreiapQ&amp;oe=6A94EF3E" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/759728467_122200727492527476_1163510866697320968_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=JKkANrmYPMQQ7kNvwEobZB7&amp;_nc_oc=AdqsT7mCO6VoWHCj6lA5JIcRkgDHojTdn8WRE7v8_r_aK932qxUSA_pATWTXxYF4kzI&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=7B-UnlKSi_utN6lDhGgCHA&amp;_nc_tpa=Q5bMBQIQv5SB7GAaqZwXYuAZJ0HH8G9679jFaN8CtjVKVNk9Zaomwal4QuZnOWlmkxNSPKgrjzLWaGnZKA&amp;oh=00_AQHr_bSBRWd4NJ-dlYOOkonbmW8UaszySNA1w0aZ2b-FcQ&amp;oe=6A96087E" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD04][06.08][EXAME COMPLETO v1 IMG]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 35,96 cada</small></div><div class="m"><span>Cliques</span><b>17</b><small>R$ 2,12 cada</small></div><div class="m"><span>CTR</span><b>0.53%</b></div><div class="m"><span>CPM</span><b>R$ 9,13</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>3.429</b></div><div class="m"><span>Gasto</span><b>R$ 35,96</b></div></div>
@@ -206,7 +218,19 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/777766859_122123148795122791_3601069044273804875_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=O4353nGFJMoQ7kNvwGsA0U8&amp;_nc_oc=AdqZ2iY72Rh6wEXNMInmhxBYbs8zXcjFNtvwPhuovL7Uf-Dt-YCT8HKkJQP2CEk0zik&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=BrGCRoB--vWQJ3Pvf2jNYQ&amp;_nc_tpa=Q5bMBQJfPk0PwPR7_gqXqn7wVrI7lISzf92VyDsgtWsc_3GOirquY1j-w608ZmwdEV3LHbkwBqMEwgxTkw&amp;oh=00_AQEKVO2LAs2qGRJJvYotCYWSs05tbCXq5Cl-gxKOO0K83g&amp;oe=6A94EC9C" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/756535459_122200727582527476_7115750073811618949_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=Wew_0IRk3yUQ7kNvwExPIrZ&amp;_nc_oc=Adqg3tnd4r7pq2K0MeZt8hOsJxgnYSChAIauP3yp6VlsQuJ7uJOZ9l2pMICVe6-xZw0&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=7B-UnlKSi_utN6lDhGgCHA&amp;_nc_tpa=Q5bMBQKo8T4KkfLuwxUBVTNnkGM8rfyNiwzgffCUN7nrDwvlqx5i6tI0Hp1qxwOhHCHCitegCH4S3CE6eg&amp;oh=00_AQEdPsbhGq8z6zfuUIRIQy-wNM7dCUOCWzvM22NmtwtoqA&amp;oe=6A95FB47" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD05][14.08][EXAME COMPLETO MULTIRÃO]</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>3</b><small>R$ 2,30 cada</small></div><div class="m"><span>CTR</span><b>0.56%</b></div><div class="m"><span>CPM</span><b>R$ 13,01</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>493</b></div><div class="m"><span>Gasto</span><b>R$ 6,91</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta ruim">▼ 29%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why bom"><span>Por que funciona</span>frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
+      <div class="plano"><span>Plano</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=108233428681445" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article>
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/777766859_122123148795122791_3601069044273804875_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=EVmS4iZ4yjcQ7kNvwEL8GNe&amp;_nc_oc=AdqfDphosqoblO3TZydtAw3FmdyYkCbDYt2xZoptAK7D_cNptPnVC7l_OyqGvh4_3zg&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=7B-UnlKSi_utN6lDhGgCHA&amp;_nc_tpa=Q5bMBQLIN-HGDt0HP1SOItRGRp2_6WUpeJ6VoSSN4ymPAF9wp-3r9Wa-MDrhYjpchjYgJfs7p4D_xAK1NA&amp;oh=00_AQH-f2CiOaDQ9zXa4hKojMu1N5YHVelHID9ZrQE996CUtA&amp;oe=6A9605DC" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD08][20.08][PROBLEMA DE VISTA- IMG] — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>0.24%</b></div><div class="m"><span>CPM</span><b>R$ 9,18</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>369</b></div><div class="m"><span>Gasto</span><b>R$ 3,82</b></div></div>
@@ -218,23 +242,23 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/761642138_122200727630527476_3350589150460906603_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=Dop8OIr5IBcQ7kNvwFagEij&amp;_nc_oc=AdoN_aqpVu-RkCKFhbDnCKaIgtKPL7wHOxfiuacfs1b-pacKiyIqIz2-_6GIWmDGIvM&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=BrGCRoB--vWQJ3Pvf2jNYQ&amp;_nc_tpa=Q5bMBQLDYNWEIawb13VTwwz_5356JSgW6a-Vt_ftRHh4SP9pFnQEl3Z5xT5WgDy138iHTxSuMah4eF-p7w&amp;oh=00_AQFGR_Gb_JJzsM8_WiqG2tmG_2sCDMPF56PNxXm9tv_57A&amp;oe=6A94D632" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/783255812_122123721429122791_74211404054689909_n.png?stp=dst-jpg_tt6&amp;_nc_cat=103&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=PNxayiS8BGAQ7kNvwFQ_8a2&amp;_nc_oc=AdqvSL09C3RVwU-kKr8W_61t4tW6ycNGX546de44n7CRunME5W0plbEEeP428fIDV_o&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=7B-UnlKSi_utN6lDhGgCHA&amp;_nc_tpa=Q5bMBQIc7cjtviLndhTihBhH9UwZOXurQ05JUf2vEAOy18cKSyx9fImJh9tHUALWjC_RFh6s4WfVrKMeVw&amp;oh=00_AQG2IP0UW-f_j92I28mZIg_2Pm4k2ABTygVdbwCdDaZOxQ&amp;oe=6A961450" alt="" loading="lazy"></div>
     <div class="info">
-      <header><span class="pill medio">Médio</span><h3>[AD07][14.08][EXAME COMPLETO v1 IMG]</h3></header>
-      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 0,64 cada</small></div><div class="m"><span>CTR</span><b>2.04%</b></div><div class="m"><span>CPM</span><b>R$ 13,06</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>43</b></div><div class="m"><span>Gasto</span><b>R$ 0,64</b></div></div>
-      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 190%</span></div>
-      <p class="hist">manteve o status do período anterior</p>
-      <div class="why bom"><span>Por que funciona</span>o CTR de 2.04% está 123% acima da média da conta — o gancho prende a atenção; e frequência baixa (1.1) — ainda tem muito público novo pra alcançar</div>
+      <header><span class="pill medio">Médio</span><h3>[AD05][26.08][GANHE 200 DE BONUS NA TROCA DO OCULOS]</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 0,75 cada</small></div><div class="m"><span>CTR</span><b>1.22%</b></div><div class="m"><span>CPM</span><b>R$ 9,15</b></div><div class="m"><span>Freq</span><b>1.0</b></div><div class="m"><span>Alcance</span><b>79</b></div><div class="m"><span>Gasto</span><b>R$ 0,75</b></div></div>
+      
+      <p class="hist">novo no ranking neste período</p>
+      <div class="why bom"><span>Por que funciona</span>o CTR de 1.22% está 35% acima da média da conta — o gancho prende a atenção; e frequência baixa (1.0) — ainda tem muito público novo pra alcançar</div>
       <div class="plano"><span>Plano</span>Deixar rodar mais alguns dias antes de decidir</div>
       <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=108233428681445" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
     </div>
   </article>
      </div><div id="cria30">
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/759504711_122200727510527476_3602545714752360416_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KfNpdhADD-oQ7kNvwFI_nAl&amp;_nc_oc=Adoc9gBLlPoDSvDX9uGTjeDCTaszBim6acpqadsjNYW-1l4yPJtYVZIxXkJPeYYuhdY&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQKJsEdafT-nZHOFXTjMem_y8uolRk9RIjJs1RHvWLM1ROsRTHeqRsbILBc9G333ViARpRX60fhlQA&amp;oh=00_AQHZn5IpdoGdW02YOVMBx2wpv1w2ahFnAMQgK82PdzLQow&amp;oe=6A94FC31" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/759504711_122200727510527476_3602545714752360416_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KfNpdhADD-oQ7kNvwFYw_ag&amp;_nc_oc=AdrEt_q2XYkiWt-DIwlK55kZ8TA-ADVD_uLzIJGbBbfr8PkuvuIYsdUbrL0KfpxPgJA&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQLK-kPsN_ReUU4GCR2ez8FZJVyVn5W3Pp_BH4Y3tIhyKluKwT51zzMWgMRe0aCst62XtUszHzOwQQ&amp;oh=00_AQEC5roCE5C9E1iH5ka3WKlO9ifselm-0Gne3Km5rok-xA&amp;oe=6A95DD31" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD01][31.07][MIX IMG]</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>26</b><small>R$ 8,52 cada</small></div><div class="m"><span>Seguidores</span><b>1</b><small>R$ 221,58 cada</small></div><div class="m"><span>Cliques</span><b>123</b><small>R$ 1,80 cada</small></div><div class="m"><span>CTR</span><b>0.76%</b></div><div class="m"><span>CPM</span><b>R$ 10,07</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>13.164</b></div><div class="m"><span>Gasto</span><b>R$ 221,58</b></div><div class="m"><span>Vídeos assistidos</span><b>1</b></div></div>
+      <div class="grid"><div class="m"><span>Conversas</span><b>26</b><small>R$ 8,52 cada</small></div><div class="m"><span>Cliques</span><b>123</b><small>R$ 1,80 cada</small></div><div class="m"><span>CTR</span><b>0.76%</b></div><div class="m"><span>CPM</span><b>R$ 10,07</b></div><div class="m"><span>Freq</span><b>1.7</b></div><div class="m"><span>Alcance</span><b>13.164</b></div><div class="m"><span>Gasto</span><b>R$ 221,58</b></div><div class="m"><span>Vídeos assistidos</span><b>1</b></div></div>
       
       <p class="hist">novo no ranking neste período</p>
       <div class="why bom"><span>Por que funciona</span>cada resultado sai 49% mais barato que a média; e frequência baixa (1.7) — ainda tem muito público novo pra alcançar</div>
@@ -243,10 +267,10 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/756535459_122200727582527476_7115750073811618949_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=BDcMPNIA14gQ7kNvwGmsGpd&amp;_nc_oc=AdoAcRqvI72D1etSNeL5ClQ_F92t1P94KCumaJFPmDBcKgTSb5xMY42y_3V2GfdCcoQ&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQJxu3Od4sWqnUFuzKDAkqO2PIFoOCNKNpib9INuoG8UUmHd5JVO3TZEXRT8Mw61xor-xacHv168nQ&amp;oh=00_AQErf0GpV3J4_ZDVEWsDSntAwKtATAowxtbI-Ss6xTDkTQ&amp;oe=6A94E207" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/756535459_122200727582527476_7115750073811618949_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=Wew_0IRk3yUQ7kNvwExPIrZ&amp;_nc_oc=Adqg3tnd4r7pq2K0MeZt8hOsJxgnYSChAIauP3yp6VlsQuJ7uJOZ9l2pMICVe6-xZw0&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQKRCYtunKagd1A79JUvgTC9m718aot62WPCtltvB7picqtvMD5bqaYseHkmoN9AkSN_4fCbcoDQMA&amp;oh=00_AQEDsCWa36PAl3NPxBAyf-Lai5WcwTf6SiKBBW6MLHrYaQ&amp;oe=6A95FB47" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD05][14.08][EXAME COMPLETO MULTIRÃO]</h3></header>
-      <div class="grid"><div class="m"><span>Conversas</span><b>6</b><small>R$ 16,19 cada</small></div><div class="m"><span>Seguidores</span><b>1</b><small>R$ 97,14 cada</small></div><div class="m"><span>Cliques</span><b>39</b><small>R$ 2,49 cada</small></div><div class="m"><span>CTR</span><b>0.77%</b></div><div class="m"><span>CPM</span><b>R$ 13,68</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>4.766</b></div><div class="m"><span>Gasto</span><b>R$ 97,14</b></div></div>
+      <div class="grid"><div class="m"><span>Conversas</span><b>6</b><small>R$ 16,19 cada</small></div><div class="m"><span>Cliques</span><b>39</b><small>R$ 2,49 cada</small></div><div class="m"><span>CTR</span><b>0.77%</b></div><div class="m"><span>CPM</span><b>R$ 13,68</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>4.766</b></div><div class="m"><span>Gasto</span><b>R$ 97,14</b></div></div>
       
       <p class="hist">novo no ranking neste período</p>
       <div class="why bom"><span>Por que funciona</span>frequência baixa (1.5) — ainda tem muito público novo pra alcançar</div>
@@ -255,7 +279,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/759728467_122200727492527476_1163510866697320968_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=aKPgIl0A1YgQ7kNvwEgDs3j&amp;_nc_oc=AdpE3XLgszUdUAkuFtLcj2sMU-4d-YBpuziyvURqupQuruX9Kpdl6fo1fXjTrInR4sc&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQLtgB3eO38tnkHqH0OtASgr8AhTDLOFEQuytqogWiunjAAdd6l8t_r7W_L0lPTKPgMFFibP6zzieQ&amp;oh=00_AQHpC2dVHj-BBTsMQj-r_QyeT4vly0LDz-U8ckqMEz4L-w&amp;oe=6A94EF3E" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/759728467_122200727492527476_1163510866697320968_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=JKkANrmYPMQQ7kNvwEobZB7&amp;_nc_oc=AdqsT7mCO6VoWHCj6lA5JIcRkgDHojTdn8WRE7v8_r_aK932qxUSA_pATWTXxYF4kzI&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQIcyct3pqO3bW3p90aCbWtFFIA_ucJ5yQ_dzZTruImQp25hMeT3m7ww_sTEUu1tqZfG4XqQHsFB6Q&amp;oh=00_AQGaWBBeNm3cFP1yyXka_-0YhsrCiUhHqbBVFOamYMt-WA&amp;oe=6A96087E" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD04][06.08][EXAME COMPLETO v1 IMG]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>4</b><small>R$ 15,06 cada</small></div><div class="m"><span>Cliques</span><b>30</b><small>R$ 2,01 cada</small></div><div class="m"><span>CTR</span><b>0.64%</b></div><div class="m"><span>CPM</span><b>R$ 10,23</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>4.756</b></div><div class="m"><span>Gasto</span><b>R$ 60,25</b></div><div class="m"><span>Vídeos assistidos</span><b>1</b></div></div>
@@ -267,7 +291,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/761642138_122200727630527476_3350589150460906603_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=Dop8OIr5IBcQ7kNvwFagEij&amp;_nc_oc=AdoN_aqpVu-RkCKFhbDnCKaIgtKPL7wHOxfiuacfs1b-pacKiyIqIz2-_6GIWmDGIvM&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQJublchWAMj2jLg7bBxt7asvxEiqT3mDUMz-XnGL1HmE8IDHVME2WFnnfitq2cYDPldprQMhXVmOg&amp;oh=00_AQE0eWotyeiHe3HEuQVBpYZ1yN6GtuFHyN0b7cIO2qS1TA&amp;oe=6A94D632" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/761642138_122200727630527476_3350589150460906603_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=Dop8OIr5IBcQ7kNvwF3HIek&amp;_nc_oc=AdpgzcydY7izfqvVjwJd4ZvtOEMW6e1tTje0P3PMcKeoSX5ZfI9XVTYPqinkWn_keQo&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQJb9FDbYRW5F0QOW6J0OdwmYzT-XrhTJpy57pYIOmG5v_jT4Lp2Vz8zg9Do_V_LXohm1I_pHuYEKQ&amp;oh=00_AQFWBn_iBWSiRxCYOjhHP-q7Pe7R7t8MePq3jnmpNoibqw&amp;oe=6A95EF72" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD05][06.08][IA v1 + Texto IMG]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>3</b><small>R$ 19,49 cada</small></div><div class="m"><span>Cliques</span><b>14</b><small>R$ 4,18 cada</small></div><div class="m"><span>CTR</span><b>0.35%</b></div><div class="m"><span>CPM</span><b>R$ 10,86</b></div><div class="m"><span>Freq</span><b>1.3</b></div><div class="m"><span>Alcance</span><b>4.120</b></div><div class="m"><span>Gasto</span><b>R$ 58,46</b></div></div>
@@ -279,7 +303,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJr_gxXoskp2Vxr9eN6NaAfcwX5fV0xZaSBcIlCxjrBszVAAGaVuFZraCmBF4dNuarnhOnBrIR6nPFbQE4veQcDh1SgiEZclLoEwHFpf9xfmJOJnAaGQKV3Kfl5M_-O9YVhPV2lsAAwZE22Gl5-wA9L" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJ9Xf6mrDcd1wCfm_QHV7Dzomjc3XwYC7Gj1gxfX8EsNaQSc2REzqRvdDHR4SNzJzjCvzi6znwoXrA_Fzc5nrGoFb3iSALI00vC-af9XBFyMTUGMkx5e6PaXxw0ovqn2RCIm92dDmyYAeNzgKYyPGr8" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD02][03.08][VÍDEO SANTA INÊS]</h3></header>
       <div class="grid"><div class="m"><span>Conversas</span><b>1</b><small>R$ 38,35 cada</small></div><div class="m"><span>Cliques</span><b>6</b><small>R$ 6,39 cada</small></div><div class="m"><span>CTR</span><b>0.44%</b></div><div class="m"><span>CPM</span><b>R$ 11,29</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>2.730</b></div><div class="m"><span>Gasto</span><b>R$ 38,35</b></div><div class="m"><span>Vídeos assistidos</span><b>126</b></div></div>
@@ -293,9 +317,21 @@ footer b{color:var(--ambar);font-weight:600}
      </div></div>
 
   <div class="sec-h rev"><h2>Os que precisam de atenção</h2><span class="rot" id="pior-rot"></span></div>
-  <div class="rev"><div id="pior7"><p class="vazio">Nada precisando de atenção nessa janela — todos os criativos rodando estão saudáveis.</p></div><div id="pior30">
+  <div class="rev"><div id="pior7">
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/759504711_122200727510527476_3602545714752360416_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KfNpdhADD-oQ7kNvwFI_nAl&amp;_nc_oc=Adoc9gBLlPoDSvDX9uGTjeDCTaszBim6acpqadsjNYW-1l4yPJtYVZIxXkJPeYYuhdY&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQKJsEdafT-nZHOFXTjMem_y8uolRk9RIjJs1RHvWLM1ROsRTHeqRsbILBc9G333ViARpRX60fhlQA&amp;oh=00_AQHZn5IpdoGdW02YOVMBx2wpv1w2ahFnAMQgK82PdzLQow&amp;oe=6A94FC31" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/761642138_122200727630527476_3350589150460906603_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=Dop8OIr5IBcQ7kNvwF3HIek&amp;_nc_oc=AdpgzcydY7izfqvVjwJd4ZvtOEMW6e1tTje0P3PMcKeoSX5ZfI9XVTYPqinkWn_keQo&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=7B-UnlKSi_utN6lDhGgCHA&amp;_nc_tpa=Q5bMBQKroGdefzopYbutb1f823l2-KGvY40HB8r0BGJRJcmOU5zYgmgfURm02sFAQLuYX2Vq75CKZykn_w&amp;oh=00_AQEdbye26AShx1wJ_dNZnze2esK7RRPE9NgH0SyhB7xB9A&amp;oe=6A95EF72" alt="" loading="lazy"></div>
+    <div class="info">
+      <header><span class="pill medio">Médio</span><h3>[AD07][14.08][EXAME COMPLETO v1 IMG]</h3></header>
+      <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 0,64 cada</small></div><div class="m"><span>CTR</span><b>2.04%</b></div><div class="m"><span>CPM</span><b>R$ 13,06</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>43</b></div><div class="m"><span>Gasto</span><b>R$ 0,64</b></div></div>
+      <div class="tend"><span class="rot">vs período anterior</span><span class="rot2">CTR</span><span class="delta bom">▲ 190%</span></div>
+      <p class="hist">manteve o status do período anterior</p>
+      <div class="why ruim"><span>Por que não está funcionando</span>gastou R$ 0,64 sem trazer nenhum resultado</div>
+      <div class="plano"><span>O que vamos fazer</span>Deixar rodar mais alguns dias antes de decidir</div>
+      <p class="links"><a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;view_all_page_id=108233428681445" target="_blank">ver na Biblioteca de Anúncios ↗</a></p>
+    </div>
+  </article></div><div id="pior30">
+  <article class="card" data-st="medio">
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/759504711_122200727510527476_3602545714752360416_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=KfNpdhADD-oQ7kNvwFYw_ag&amp;_nc_oc=AdrEt_q2XYkiWt-DIwlK55kZ8TA-ADVD_uLzIJGbBbfr8PkuvuIYsdUbrL0KfpxPgJA&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQLK-kPsN_ReUU4GCR2ez8FZJVyVn5W3Pp_BH4Y3tIhyKluKwT51zzMWgMRe0aCst62XtUszHzOwQQ&amp;oh=00_AQEC5roCE5C9E1iH5ka3WKlO9ifselm-0Gne3Km5rok-xA&amp;oe=6A95DD31" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD01][31.07][MIX IMG]</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>9</b><small>R$ 2,16 cada</small></div><div class="m"><span>CTR</span><b>0.59%</b></div><div class="m"><span>CPM</span><b>R$ 8,83</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>1.870</b></div><div class="m"><span>Gasto</span><b>R$ 19,47</b></div><div class="m"><span>Vídeos assistidos</span><b>1</b></div></div>
@@ -307,7 +343,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQItHVxignsDEUx9CQxTDeMKaICMc7WXaWAvh_IW5OFOlO-Fdj4jqdunLIs5Apl61K1IhWQj04yV7RIDb0zxT13tEO4j4mk2zAL9pSOFIThMBW8EwCsCclZpKSISu00--zq7kY0V2H2mmhqnXTtwlz7Z" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQIkSzo0aeaUoo0ah74VY_nLmSGe0n2w8U9YaGCEzbzJUnMEl8u6f-9a6Wm6Zpmp6fzCZC1NrCym_RHADSRMvuFvPFRXC7cz_-sgdllP6g6eGfV2D0bnWUGhlZpJQPAISHqzSt2ZH5Mvauz60C8cVT4r" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD02][31.07][VÍDEO 01][DOR/PROBLEMA]</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>1</b><small>R$ 8,34 cada</small></div><div class="m"><span>CTR</span><b>0.42%</b></div><div class="m"><span>CPM</span><b>R$ 11,75</b></div><div class="m"><span>Freq</span><b>1.5</b></div><div class="m"><span>Alcance</span><b>460</b></div><div class="m"><span>Gasto</span><b>R$ 8,34</b></div><div class="m"><span>Vídeos assistidos</span><b>17</b></div></div>
@@ -319,7 +355,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/760539985_122200727636527476_6605240638897208079_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=IcDJatea5lgQ7kNvwFhnblA&amp;_nc_oc=AdrxLJmh8ycWfg7DVsWuOg8riOlTd1Sxxsl-X3mi6uRmkGSGS4SxmPvVtJBFJ1Nf7PE&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQI-eZ9fVNUw7-cz2VDwuLUp_SUXfMI0UY1Cx0Uhz7c4OJjrYv9zHZR4Q_1vgIvXMOZtwDe7JFjSww&amp;oh=00_AQFsIHON6jBajGI-p3AD77w5Weo9DOyIwhy3KXWV6jKSHw&amp;oe=6A94F691" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-1.xx.fbcdn.net/v/t45.1600-4/760539985_122200727636527476_6605240638897208079_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=IcDJatea5lgQ7kNvwGyfxA8&amp;_nc_oc=Adrzm_uksdcFLSwFtVKsXWxBI71j0hZEJ7C1knrf1lqQqjBtgpw76aQdO4L2p-xQCPE&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-1.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQI79id9Bjpv-7J6a3MrSe7wgQKiSg-dcWc0y7-fQPsJI00vFC7CB0bZ24iaJZABL4LR1REWYmg2pA&amp;oh=00_AQH-u8J8dq5VTMSWmmQB1GKLmXqP8wUDy2jEspQdeejJIA&amp;oe=6A960FD1" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD08][14.08][EXAME COMPLETO v1 IMG] — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>Cliques</span><b>3</b><small>R$ 1,54 cada</small></div><div class="m"><span>CTR</span><b>0.87%</b></div><div class="m"><span>CPM</span><b>R$ 13,35</b></div><div class="m"><span>Freq</span><b>1.2</b></div><div class="m"><span>Alcance</span><b>288</b></div><div class="m"><span>Gasto</span><b>R$ 4,62</b></div></div>
@@ -331,7 +367,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQLDAUo_h-L5Qag1n8QZHTXvBEiW195nWH3OmESq9Jo8HefdcdU2iTp7JAGxtKBrkJPvZ_muV14QoflUQihKefROLQZIIJklD6MuZVPKzrw4vBOIUatXHUrdtQT6dBh_KW3g7_wAdDwjyNChLW0mXz1K" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://www.facebook.com/ads/image/?d=AQJqUvCiyXPSL7iOoRtfNMTXJhIRdKBV6R3xZ9gcNV-M2mijcXBPvnl6YUo8WXrd3g4Nce-PX5GuvlXNDcnaH5X1q_Dfp8oWOGt5hpOXtwEcXDq4Q_lzUmpRTzX2GgFRkvVaXfVdTmhMPBVdEHajFZfy" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD07][12.08][ VÍDEO 2 PROMOÇÃO AGOSTO]</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>1.02%</b></div><div class="m"><span>CPM</span><b>R$ 22,50</b></div><div class="m"><span>Freq</span><b>1.9</b></div><div class="m"><span>Alcance</span><b>101</b></div><div class="m"><span>Gasto</span><b>R$ 4,41</b></div></div>
@@ -343,7 +379,7 @@ footer b{color:var(--ambar);font-weight:600}
     </div>
   </article>
   <article class="card" data-st="medio">
-    <div class="foto"><img src="https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/777766859_122123148795122791_3601069044273804875_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=O4353nGFJMoQ7kNvwGsA0U8&amp;_nc_oc=AdqZ2iY72Rh6wEXNMInmhxBYbs8zXcjFNtvwPhuovL7Uf-Dt-YCT8HKkJQP2CEk0zik&amp;_nc_zt=1&amp;_nc_ht=scontent-atl3-3.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=vL-Vyv3RbVkQ61gEujALOQ&amp;_nc_tpa=Q5bMBQLQaz3pGucaJunLryTWbX5kqy07ErvdCSnxrkqZwpBFo2_oM-r_K4kGbPk6qn4BiDrfIYEZjhgmUw&amp;oh=00_AQHiwbUy_IDFQwH4inYhMTJMfiCmCNbkxzJrDf3cT09G6Q&amp;oe=6A94EC9C" alt="" loading="lazy"></div>
+    <div class="foto"><img src="https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/777766859_122123148795122791_3601069044273804875_n.jpg?_nc_cat=107&amp;ccb=1-7&amp;_nc_sid=d5bd00&amp;_nc_ohc=EVmS4iZ4yjcQ7kNvwEL8GNe&amp;_nc_oc=AdqfDphosqoblO3TZydtAw3FmdyYkCbDYt2xZoptAK7D_cNptPnVC7l_OyqGvh4_3zg&amp;_nc_zt=1&amp;_nc_ht=scontent-ord5-2.xx&amp;edm=AAwGEdEEAAAA&amp;_nc_gid=ok6EqBfoa9mpezi0bynxtg&amp;_nc_tpa=Q5bMBQIl_jLkZ2mHYrsvEN5IeABDtCaAAvcihSZgk8pY7_wmw2eDvEdFfKqCu11spWsLtxJtDs_G-butzA&amp;oh=00_AQEnfLiFgCDvHZc3jolnprpNMJcUxGoOBIRqu9G-ajJ8jw&amp;oe=6A9605DC" alt="" loading="lazy"></div>
     <div class="info">
       <header><span class="pill medio">Médio</span><h3>[AD08][20.08][PROBLEMA DE VISTA- IMG] — Cópia</h3></header>
       <div class="grid"><div class="m"><span>Resultados</span><b>0</b></div><div class="m"><span>CTR</span><b>0.24%</b></div><div class="m"><span>CPM</span><b>R$ 9,18</b></div><div class="m"><span>Freq</span><b>1.1</b></div><div class="m"><span>Alcance</span><b>369</b></div><div class="m"><span>Gasto</span><b>R$ 3,82</b></div></div>
@@ -366,7 +402,7 @@ footer b{color:var(--ambar);font-weight:600}
   <footer>Painel gerado automaticamente pela <b>ACT Digital</b> · métricas direto do Meta Ads, atualizadas todo dia de manhã · seguidores coletados semanalmente · link exclusivo deste cliente, não compartilhe.</footer>
 </div>
 
-<script>window.ACT={"nome":"SUPER ÓTICA","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-27","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-28","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-14","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-16","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-17","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-21","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-22","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-23","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-24","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-30","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-31","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-01","g":20.82,"imp":1814,"cl":10,"clk":19,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":29.72,"imp":2151,"cl":12,"clk":20,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-04","g":54.76,"imp":4558,"cl":13,"clk":30,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":50.81,"imp":5140,"cl":22,"clk":31,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-06","g":38.97,"imp":3417,"cl":16,"clk":25,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-07","g":36.33,"imp":3081,"cl":7,"clk":13,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":24.17,"imp":2788,"cl":9,"clk":10,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":6.94,"imp":446,"cl":6,"clk":6,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":55.88,"imp":5910,"cl":30,"clk":41,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-12","g":52.63,"imp":5191,"cl":26,"clk":33,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-13","g":12.17,"imp":868,"cl":2,"clk":9,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":22.55,"imp":1680,"cl":5,"clk":14,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-15","g":18.39,"imp":1543,"cl":10,"clk":11,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":12.09,"imp":1048,"cl":5,"clk":7,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-18","g":34.6,"imp":2099,"cl":9,"clk":14,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":33.75,"imp":2615,"cl":17,"clk":26,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":26.97,"imp":2183,"cl":13,"clk":17,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":21.32,"imp":1949,"cl":12,"clk":19,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":9.99,"imp":1328,"cl":7,"clk":10,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":23.47,"imp":2656,"cl":9,"clk":13,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":27.81,"imp":2881,"cl":14,"clk":18,"conv":1,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":4}]};(function scriptCliente() {
+<script>window.ACT={"nome":"SUPER ÓTICA","resultado":{"chave":"conv","nome":"Conversas"},"serie":[{"d":"2026-06-28","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-29","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-06-30","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-01","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-02","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-03","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-04","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-05","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-06","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-07","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-08","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-09","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-10","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-11","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-12","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-13","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-14","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-15","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-16","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-17","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-18","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-19","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-20","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-21","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-22","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-23","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-24","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-25","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-26","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-27","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-28","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-29","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-30","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-07-31","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-01","g":20.82,"imp":1814,"cl":10,"clk":19,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-02","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-03","g":29.72,"imp":2151,"cl":12,"clk":20,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-04","g":54.76,"imp":4558,"cl":13,"clk":30,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-05","g":50.81,"imp":5140,"cl":22,"clk":31,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-06","g":38.97,"imp":3417,"cl":16,"clk":25,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-07","g":36.33,"imp":3081,"cl":7,"clk":13,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-08","g":24.17,"imp":2788,"cl":9,"clk":10,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-09","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-10","g":6.94,"imp":446,"cl":6,"clk":6,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-11","g":55.88,"imp":5910,"cl":30,"clk":41,"conv":7,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-12","g":52.63,"imp":5191,"cl":26,"clk":33,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-13","g":12.17,"imp":868,"cl":2,"clk":9,"conv":2,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-14","g":22.55,"imp":1680,"cl":5,"clk":14,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-15","g":18.39,"imp":1543,"cl":10,"clk":11,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-16","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-17","g":12.09,"imp":1048,"cl":5,"clk":7,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-18","g":34.6,"imp":2099,"cl":9,"clk":14,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-19","g":33.75,"imp":2615,"cl":17,"clk":26,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-20","g":26.97,"imp":2183,"cl":13,"clk":17,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-21","g":21.32,"imp":1949,"cl":12,"clk":19,"conv":4,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-22","g":9.99,"imp":1328,"cl":7,"clk":10,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-23","g":0,"imp":0,"cl":0,"clk":0,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-24","g":23.47,"imp":2656,"cl":9,"clk":13,"conv":0,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-25","g":27.81,"imp":2881,"cl":14,"clk":18,"conv":1,"comp":0,"val":0,"leads":0,"vis":0},{"d":"2026-08-26","g":0.75,"imp":82,"cl":1,"clk":1,"conv":0,"comp":0,"val":0,"leads":0,"vis":0}],"seguidores":[{"until":"2026-08-23","seguidores":4}]};(function scriptCliente() {
   const D = window.ACT;
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
@@ -539,6 +575,71 @@ footer b{color:var(--ambar);font-weight:600}
     alvo.innerHTML = '<div class="g-h"><span class="rot">Seguidores ganhos por semana</span><b style="color:#F5B113">' + brInt(ult.seguidores) + ' <small>última semana</small></b></div><div class="g-area">' + s + "</div>";
   }
 
+  function renderSemanas() {
+    const el = $("#semanas");
+    if (!el) return;
+    const n = D.serie.length;
+    if (n < 14) { el.style.display = "none"; return; }
+    const semanas = [];
+    for (let i = 3; i >= 0; i--) {
+      const fim = n - 7 * i;
+      const ini = fim - 7;
+      if (ini < 0) continue;
+      const fatia = D.serie.slice(ini, fim);
+      semanas.push({ fatia, k: kpisDe(soma(fatia)), ini: fatia[0].d, fim: fatia[fatia.length - 1].d, atual: i === 0 });
+    }
+    if (semanas.length < 2) { el.style.display = "none"; return; }
+    const temVendas = semanas.some((s) => s.k.vendas > 0);
+
+    const dseta = (v, ant, inv) => {
+      if (ant == null || !isFinite(ant) || ant === 0 || !isFinite(v)) return "";
+      const d = (v - ant) / ant;
+      const pct = Math.round(Math.abs(d) * 100);
+      if (pct < 3) return '<i class="mini neutro">=</i>';
+      const bom = inv ? d < 0 : d > 0;
+      return '<i class="mini ' + (bom ? "bom" : "ruim") + '">' + (d > 0 ? "▲" : "▼") + pct + "%</i>";
+    };
+
+    const linhas = [
+      { rot: D.resultado.nome, fn: (k) => brInt(k.resultado), val: (k) => k.resultado, inv: false, forte: true },
+      { rot: "Custo por " + D.resultado.nome.toLowerCase().replace(/s$/, ""), fn: (k) => (k.custo > 0 ? "R$ " + br(k.custo) : "—"), val: (k) => k.custo, inv: true, forte: true },
+    ];
+    if (temVendas) {
+      linhas.push({ rot: "Vendas", fn: (k) => "R$ " + br(k.vendas), val: (k) => k.vendas, inv: false, forte: true });
+      linhas.push({ rot: "ROAS", fn: (k) => (k.roas > 0 ? br(k.roas) + "x" : "—"), val: (k) => k.roas, inv: false, forte: false });
+    }
+    linhas.push({ rot: "Investimento", fn: (k) => "R$ " + br(k.gasto), val: (k) => k.gasto, inv: false, forte: false });
+    linhas.push({ rot: "Cliques no link", fn: (k) => brInt(k.cliques), val: (k) => k.cliques, inv: false, forte: false });
+    linhas.push({ rot: "CTR", fn: (k) => k.ctr.toFixed(2) + "%", val: (k) => k.ctr, inv: false, forte: false });
+    linhas.push({ rot: "CPM", fn: (k) => "R$ " + br(k.cpm), val: (k) => k.cpm, inv: true, forte: false });
+
+    let h = '<div class="g-h"><span class="rot">Semana a semana · últimas ' + semanas.length + ' semanas</span><b style="color:#F5B113">semana atual em destaque</b></div>';
+    h += '<div class="sem-rolagem"><table class="sem-tab"><thead><tr><th></th>';
+    semanas.forEach((s, i) => {
+      h += '<th class="' + (s.atual ? "atual" : "") + '">' + (s.atual ? "SEMANA ATUAL" : "S-" + (semanas.length - 1 - i)) + "<em>" + ddmm(s.ini) + " – " + ddmm(s.fim) + "</em></th>";
+    });
+    h += "</tr></thead><tbody>";
+    for (const l of linhas) {
+      h += '<tr class="' + (l.forte ? "forte" : "") + '"><td class="rotulo">' + l.rot + "</td>";
+      semanas.forEach((s, i) => {
+        const ant = i > 0 ? l.val(semanas[i - 1].k) : null;
+        h += '<td class="' + (s.atual ? "atual" : "") + '">' + l.fn(s.k) + (s.atual ? dseta(l.val(s.k), ant, l.inv) : "") + "</td>";
+      });
+      h += "</tr>";
+    }
+    // barra visual da evolução do resultado principal
+    const maxR = Math.max.apply(null, semanas.map((s) => s.k.resultado).concat([1]));
+    h += '<tr class="barras"><td class="rotulo">Evolução</td>';
+    semanas.forEach((s) => {
+      const pct = Math.max(4, Math.round((s.k.resultado / maxR) * 100));
+      h += '<td class="' + (s.atual ? "atual" : "") + '"><span class="vbar' + (s.atual ? " on" : "") + '" style="height:' + Math.round(pct * 0.38) + 'px" title="' + brInt(s.k.resultado) + '"></span></td>';
+    });
+    h += "</tr></tbody></table></div>";
+    el.innerHTML = h;
+    const rol = el.querySelector(".sem-rolagem");
+    if (rol) rol.scrollLeft = rol.scrollWidth;
+  }
+
   function renderCriativos() {
     const usa30 = periodo > 7;
     const rot = usa30 ? "últimos 30 dias" : "últimos 7 dias";
@@ -581,6 +682,8 @@ footer b{color:var(--ambar);font-weight:600}
     revs.forEach((el) => io.observe(el));
   }
   window.addEventListener("beforeprint", () => revs.forEach((el) => el.classList.add("in")));
+  renderSemanas();
+  window.addEventListener("resize", () => { clearTimeout(window.__rsem); window.__rsem = setTimeout(renderSemanas, 200); });
   render();
 })();</script>
 </body></html>
